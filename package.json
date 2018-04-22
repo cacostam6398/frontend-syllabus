@@ -1,5 +1,5 @@
 {
-  "name": "node-example",
+  "name": "SyllabusFrontEndApp",
   "version": "1.0.0",
   "description": "This example is so cool.",
   "main": "js/app.js",
@@ -15,6 +15,6 @@
     
     "engines": {
         "node": "8.10.0"
-    },
+    }
 }
 
