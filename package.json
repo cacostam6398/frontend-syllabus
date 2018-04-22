@@ -1,10 +1,20 @@
-#!/usr/bin/env bash
-# bin/detect <build-dir>
+{
+  "name": "node-example",
+  "version": "1.0.0",
+  "description": "This example is so cool.",
+  "main": "js/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "example",
+    "heroku"
+  ],
+  "author": "jane-doe",
+  "license": "MIT",
+    
+    "engines": {
+        "node": "8.10.0"
+    },
+}
 
-if [ -f $1/package.json ]; then
-  echo 'Node.js'
-  exit 0
-fi
-
->&2 echo 'Node.js: package.json not found in application root'
-exit 1
