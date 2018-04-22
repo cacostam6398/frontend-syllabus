@@ -1,0 +1,77 @@
+﻿
+
+
+<div class="main_content" style="margin-top:2%">
+    <div class="boxedWrap">
+        <div class="mainWrap without_sidebar">
+            <div class="main">
+                <div class="content">
+
+                    <div class="row">
+                        <!-- Buscador -->
+
+                        <div class="col-md-12">
+                            <div class="ng-pristine ng-valid">
+                                <div class="input-group form-group">
+                                    <span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></span>
+                                    <input type="text" class="form-control" placeholder="Busqueda" aria-describedby="sizing-addon1" ng-model="LsProCtrl.busqueda">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                        <section class="">
+                            <div class="container">
+                                
+                                <article class="postLeft hrShadow odd post" style="margin-top:5%" ng-repeat="prod in LsProCtrl.ListProductos | filter: LsProCtrl.busqueda | orderBy: '-ProdId' ">
+                                    <div class="sc_section columns1_2 post_thumb thumb ">
+                                        <a href="#">
+                                            <img alt="Residential Services" ng-src="{{prod.urlImagen}}" width="270" height="400" />
+                                        </a>
+                                    </div>
+                                    <h2 class="post_title">
+                                        <a href="features-blog-post-single.html">{{prod.ProdNombre}}</a>
+                                    </h2>
+                                    <div class="postStandard">
+                                        <p>{{prod.ProdDescripcion }}</p>
+                                    </div>
+                                    <div class="postSharing">
+                                        <ul>
+                                            <li class="sc_button sc_button_style_global filled sc_button_size_medium roundButton global medium">
+                                                <a class="icon-eye" title="Views - 479" href="#">479</a>
+                                            </li>
+                                            <li class="sc_button sc_button_style_global filled sc_button_size_medium roundButton global medium">
+                                                <a class="icon-comment-3" title="Comments - 0" href="#">0</a>
+                                            </li>
+                                            <li class="sc_button sc_button_style_global filled sc_button_size_medium roundButton global medium likeButton like" data-postid="4460" data-likes="0" data-title-like="Like" data-title-dislike="Dislike">
+                                                <a class="icon-heart-1" title="Like - 0" href="#">
+                                                    <span class="likePost">0</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <br />
+                                        <button id="buy-now" class="btn btn-lg btn-compra" style="margin-top:2%" ng-click="LsProCtrl.AgregarCotizacion(prod)">
+                                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                                            Comprar Ahora
+                                        </button>
+
+                                    </div>
+
+                                    <div class="post_info infoPost">
+
+
+                                        Posted <a href="#" class="post_date">March 11, 2015</a>
+                                        <span class="separator">|</span>
+                                        by <a href="#" class="post_author">Id: {{prod.ProdId }}</a>
+                                        <span class="separator">|</span>
+                                        <span class="post_cats">in <a class="cat_link" href="#">Plumbing</a> </span>
+                                    </div>
+                                </article>
+                            </div>
+                        </section>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+

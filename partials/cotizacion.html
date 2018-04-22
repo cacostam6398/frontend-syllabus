@@ -1,0 +1,201 @@
+﻿
+
+
+<style>
+    .cart-item {
+    border-bottom: 1px solid #ccc;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 24px 12px 20px;
+    display: table;
+    width: 100%;
+}
+
+    .cart-item .image-container {
+    text-align: center;
+    display: table-cell;
+    float: none;
+    vertical-align: top;
+}
+
+    .cart-item .alert, .cart-item .item-title {
+    margin-bottom: 20px;
+}
+
+    .cart-item .delete-section {
+    float: right;
+    padding-right: 12px;
+}
+
+    .cart-item .price-section {
+    padding-right: 12px;
+}
+    .price-secondary {
+    color: #ea2840;
+}
+
+
+    .price, .price-deal, .price-from, .price-light, .price-main, .price-secondary {
+    font-size: 16px;
+    color: #666;
+    line-height: 20px;
+    font-weight: 700;
+}
+
+    .cart-item .amount-section {
+    float: right;
+    padding-right: 8px;
+}
+
+    .cart-item .amount-section select {
+    float: left;
+    margin: 0;
+    width: 60px;
+}
+
+    .cart-item .delivery-section {
+    padding-right: 12px;
+}
+
+
+/*s***************************************s*/
+
+.cart-summary-section {
+    padding-left: 28px;
+    padding-right: 0;
+}
+
+    @media (min-width: 992px) {
+
+        .cart-summary-section .summary-container {
+            border: 1px solid #ccc;
+            padding-top: 16px;
+        }
+    }
+
+.cart-summary-section .summary-container {
+    border-left: 1px solid #ccc;
+    margin-left: -1px;
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+
+
+.title-summary {
+    width: 100%;
+    text-transform: uppercase;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #ccc;
+}
+
+.summary {
+    color: #666;
+    list-style-type: none;
+    margin: 8px 0;
+}
+
+.summary li {
+    border-bottom: 1px solid #ccc;
+    margin-left: 0;
+    padding-bottom: .5rem;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #f50;
+    border-color: #f50;
+}
+
+li.summary-pay .btn {
+    margin-bottom: 8px;
+    margin-top: 8px;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+
+</style>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-9">
+            <div class="cart-item row" ng-repeat=" prod in productosCotizar" ng-init="CotCtrl.sumaPrecioTotal(prod.ProdPrecio)">
+                <div class="image-container col-xs-2">
+                    <a href="/#/" title="">
+                        <img ng-src="{{ prod.urlImagen}}">
+                    </a>
+                </div>
+                <div class="item-title col-md-12 col-sm-11 col-xs-10">
+                    <a href="/p/televisor-samsung-55-smart-tv-55j5300-full-hd-ldm9x0">{{prod.ProdNombre}} - {{prod.ProdDescripcion  }}</a>
+                </div>
+                <div class="delete-section col-xs-1">
+                    <span class="glyphicon glyphicon-remove-circle"></span>
+                </div>
+                <div class="price-section col-md-3 col-xs-8">
+                    <div class="discount-container">
+                        <span class="original-price">{{prod.ProdPrecio + 300000}}</span>
+                        <!--<span class="discount">- 37%</span>-->
+                    </div>
+                    <div class="price-secondary">$ {{prod.ProdPrecio}}</div>
+                </div>
+                <div class="amount-section col-md-3 col-xs-4">
+                    <p>Cantidad:</p>
+                    <select class="form-control form-control-sm" ng-model="prod.Cantidad" ng-change="CotCtrl.multiplicarCantidad(productosCotizar)">
+                        <option label="1" value="1" selected="selected">1</option>
+                        <option label="2" value="2">2</option>
+                        <option label="3" value="3">3</option>
+                        <option label="4" value="4">4</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="cart-summary-section col-xl-3 col-lg-3 col-md-12 col-xs-12" ng-show="productosCotizar.length > 0">
+            <div class="summary-container">
+                <h4 class="title-summary">Resumen de tu pedido</h4>
+                <ul class="summary">
+                    <li>{{CotCtrl.preciototalfac}}
+                        <p>Subtotal (1)</p>
+                        <span class="price-secondary pull-xs-right">$ {{ (CotCtrl.preciototalfac ) | currency:""}}</span>
+                    </li>
+
+                    <li class="">
+                        <p>Envío</p>
+                        <span class="price pull-xs-right ng-hide"></span>
+                        <span class="price pull-xs-right ng-hide">Envío gratis</span>
+                    </li>
+
+                    <li class="ng-hide">
+                        <p>Descuento</p>
+                        <span class="price-light pull-xs-right">-$0</span>
+                    </li>
+                    <li class="">
+                        <p>36 pagos de:</p>
+                        <span class="price pull-xs-right">$ {{ (CotCtrl.redondear( ( (CotCtrl.preciototalfac)/36))  | currency:"")}}</span>
+                    </li>
+
+
+
+                    <section class="summary-total-pay-section">
+                        <li class="summary-total">
+                            <h4>
+                                Total
+                                <span class="price-secondary pull-xs-right">${{ (CotCtrl.preciototalfac ) | currency:""}}</span>
+                            </h4>
+                        </li>
+                        <li class="summary-pay row">
+                            <a ng-click="CotCtrl.armarjsonDetalle()" class="btn btn-sm btn-primary summary-btn-process-pay col-md-12">
+                                Procesar Compra
+                            </a>
+                        </li>
+                    </section>
+                </ul>
+
+            </div>
+        </div>
+
+    </div>
+</div>

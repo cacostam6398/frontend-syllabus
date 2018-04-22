@@ -1,0 +1,270 @@
+﻿<!DOCTYPE html>
+<html lang="en" ng-app="Identi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Identiline</title>
+    <link rel="icon" type="image/x-icon" href="website/assets/images/favicon.ico" />
+
+
+</head>
+<body class="home page themerex_body fullscreen top_panel_above" ng-controller="MainController as MainCtrl" ng-cloak>
+
+    <link href="assets/css/bootstrap-3.3.6-dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="assets/css/materialize.min.css" rel="stylesheet" />
+    <link href="assets/css/color.css" rel="stylesheet" />
+    <link href="assets/js/vendor/prettyphoto/css/prettyPhoto.css" rel="stylesheet" />
+    <link href="assets/js/vendor/magnific-popup/magnific-popup.css" rel="stylesheet" />
+    <link rel='stylesheet' href='assets/js/vendor/essential-grid/public/assets/css/settings.css' type='text/css' media='all' />
+    <link rel='stylesheet' href='assets/js/vendor/revslider/public/assets/css/settings.css' type='text/css' media='all' />
+    <link rel='stylesheet' href='assets/css/fontello/css/fontello.css' type='text/css' media='all' />
+    <link rel='stylesheet' href='assets/css/fontello/css/animation.css' type='text/css' media='all' />
+    <link rel='stylesheet' href='assets/css/style.css' type='text/css' media='all' />
+    <link rel='stylesheet' href='assets/css/shortcodes.css' type='text/css' media='all' />
+    <link rel='stylesheet' href='assets/css/animation.css' type='text/css' media='all' />
+    <link rel='stylesheet' href='assets/css/default.css' type='text/css' media='all' />
+    <link rel='stylesheet' href='assets/css/responsive.css' type='text/css' media='all' />
+    <link rel='stylesheet' href='assets/css/default-responsive.css' type='text/css' media='all' />
+    <style id='theme-skin-inline-css' type='text/css'></style>
+    <link rel='stylesheet' href='assets/custom_tools/css/_customizer.css' type='text/css' media='all' />
+    <link href="assets/js/vendor/magnific-popup/magnific-popup.css" rel="stylesheet" />
+    <link href="js/sweetalert/sweetalert-Master.css" rel="stylesheet" />
+    <link href="assets/css/Site.css" rel="stylesheet" />
+
+
+   
+
+    <header class="noFixMenu menu_right with_user_menu">
+        <div class="topWrapFixed"></div>
+        <div class="topWrap">
+            <div class="usermenu_area">
+                <div class="main">
+
+
+                    <div class="" ng-if="!user.UsuaId">
+                        <ul id="usermenu" class="usermenu_list">
+                            <li class=" sc_button sc_button_style_global    global medium">
+                                <a data-toggle="modal" data-target="#myModal" class=""> Iniciar Sesion</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="" ng-if="user.UsuaId">
+                        <ul id="usermenu" class="usermenu_list">
+                            <li class="usermenu_login sc_button sc_button_style_global filled sc_button_size_medium filledButton global medium">
+                                <a ng-click=" MainCtrl.cerrarSesion()" class="user-popup-link"> Cerrar Sesión</a>
+                            </li>
+                        </ul>
+                    </div>
+
+
+
+                    <img src="assets/images/logo_home1.jpg" width='120' height='120' class="logo_main" alt="">
+                    <div class="menu_user_left">
+                        <!-- <div class="menuUsItem menuItemLeft text1_left_side">
+                            Identico&nbsp; -->
+                    </div>
+                    <!-- <div class="menuUsItem menuItemLeft text2_left_side">
+                        <a href="#">Herramienta</a>&nbsp; -->
+                </div>
+            </div>
+            <div class="menu_user_right">
+                <!-- <div class="menuUsItem menuItemRight text2_right_side">
+                    <a href="#">Get a free quote.</a>&nbsp; -->
+            </div>
+            <!-- <div class="menuUsItem menuItemRight text1_right_side">
+                Want an approximate price?&nbsp; -->
+        </div>
+
+
+
+    </header>
+
+    <div class="main_content" ng-if="user.UsuaId">
+        <div class="boxedWrap">
+
+            <header class="noFixMenu menu_right with_user_menu">
+                <div class="topWrapFixed"></div>
+                <div class="topWrap">
+
+                    <div class="mainmenu_area">
+                        <div class="main">
+                            <div class="logo logo_left">
+
+                            </div>
+                            <!-- <div class="search" title="Open/close search form">
+                                <div class="searchForm">
+                                    <form method="get" class="search-form" action="#">
+                                        <button type="submit" class="searchSubmit" title="Start search">
+                                            <span class="icoSearch"></span>
+                                        </button>
+                                        <input type="text" class="searchField" placeholder="Search &hellip;" value="" name="s" title="Search for:" />
+                                    </form>
+                                </div>
+                                <div class="ajaxSearchResults"></div>
+                            </div> -->
+                            <div class="responsiveMenu">
+                                <a href="#" class="openResponsiveMenu">Menu</a>
+                            </div>
+
+                            <nav class="menuTopWrap topMenuStyleLine">
+                                <ul id="mainmenu" class="">
+                                    <li class="sc_button sc_button_style_global global medium appointment-btn_menu menu-item">
+                                        <a href="/#/listaProductos">Lista de Productos</a>
+                                    </li>
+                                    <li class="menu-item menu-item-has-children">
+                                            <a href="index-2.html">Inicio</a>
+                                             <ul class="sub-menu">
+                                                <li class="menu-item">
+                                                    <a href="index-2.html">Homepage Default</a>
+                                                </li>
+                                                <li class="menu-item">
+                                                    <a href="index2.html">Homepage Optional</a>
+                                                </li>
+                                                <li class="menu-item">
+                                                    <a href="index3.html">Homepage E-Commerce</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    <li class="menu-item menu-item-has-children current-menu-ancestor">
+                                        <a title="Tools and Pages" href="/#/Pedidos">
+                                            <span class="menu_icon icon-params"></span>
+                                            Pedidos
+                                        </a>
+                                    </li>
+
+
+                                    <li class="menu-item">
+
+
+                                        <a href="/#/CarritoCompras">
+                                            <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+                                            <span class="badge">{{numProductosCarrito}}</span>
+                                        </a>
+
+                                    </li>
+                                    <li class="menu-item menu-item-has-children columns custom_view_item">
+                                        <a href="#">Administrar</a>
+                                        <ul class="menu-panel columns">
+                                            <li>
+                                                <ul class="custom-menu-style columns sub-menu">
+                                                    <li class="menu-item menu-item-has-children">
+                                                        <a href="#">Service #1</a>
+                                                        <ul class="sub-menu">
+                                                            <li class="menu-item">
+                                                                <a href="services.html">Crear Usuario</a>
+                                                            </li>
+                                                            <li class="menu-item">
+                                                                <a href="services.html">Modificar Usuario</a>
+                                                            </li>
+                                                            <li class="menu-item">
+                                                                <a href="services.html">Borrar Usuario</a>
+                                                            </li>
+                                                        </ul>
+
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                             
+
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <div id="topOfPage" class="topTabsWrap">
+                <div class="main">
+                    <!-- <div class="speedBar">
+                        <a class="home" href="#">Home</a><span class="breadcrumbs_delimiter"> / </span><a class="all" href="#">All Posts</a><span class="breadcrumbs_delimiter"> / </span><span class="current">Usuario "Tatata"</span>
+                    </div> -->
+                    <h3 class="pageTitle h3">Usuario <b>{{user.UsuaNoCo}} </b></h3>
+                </div>
+            </div>
+
+
+
+            <!-- /.footerContentWrap -->
+
+        </div><!-- ./boxedWrap -->
+    </div><!-- ./main_content -->
+
+    <div ng-view></div>
+
+
+
+    <script type='text/javascript' src='assets/js/vendor/jquery-1.12.3.min.js'></script>
+    <!-- Scripts -->
+
+    <script src="assets/js/bootstrap.js"></script>
+    <script src="assets/js/modernizr.js"></script>
+
+    <!-- Javascript -->
+    <!-- librerias del framework -->
+    <script src="js/angular/angular.min.js"></script>
+    <script src="js/angular/angular-route.min.js"></script>
+    <script src="js/angular/angular-ui-tree.min.js"></script>
+    <script src="js/angular/angular-animate.js"></script>
+
+    <!-- librerias esenciales de JQueryUi -->
+
+    <script src="js/jqueryui/jquery-ui.js"></script>
+    <script src="js/jqueryui/spanish.js"></script>
+    <script src="js/jqueryui/jquery.scrollTo.min.js"></script>
+    <script src="js/jqueryui/moment.min.js"></script>
+    <script src="js/jqueryui/datetimepicker.js"></script>
+    <script src="js/jqueryui/validate.jquery.js"></script>
+
+    <!-- librerias esenciales de sweet alert -->
+
+    <script src="js/sweetalert/sweetalert.min.js"></script>
+
+    <!-- librerias esenciales de UI Bootstrap-->
+    <script src="js/angular/ui-bootstrap-tpls-0.13.0.js"></script>
+    <script src="js/angular/angular-locale_es-co.js"></script>
+    <script src="js/idle/angular-idle.min.js"></script>
+
+    <!-- --------------------------->
+    <!-- Controlador Principal -->
+    <script src="js/app.js"></script>
+
+    <!-- --------------------------->
+    <!-- Servicios A Consumir -->
+    <script src="js/services/communications-service.js"></script>
+    <script src="js/services/login-services.js"></script>
+    <script src="js/services/session-service.js"></script>
+
+    <!-- Controladores -->
+    <script type="text/javascript" src="js/controllers/main-controller.js"></script>
+    <script src="js/controllers/login-controller.js"></script>
+    <script src="js/controllers/home-controller.js"></script>
+    <script src="js/controllers/listaProductos-controller.js"></script>
+    <script src="js/controllers/facturas-controller.js"></script>
+    <script src="js/controllers/cotizacion-controller.js"></script>
+
+
+
+
+    <script type='text/javascript' src='assets/js/vendor/jquery-migrate.min.js'></script>
+    <script type='text/javascript' src='assets/js/vendor/essential-grid/public/assets/js/jquery.themepunch.tools.min.js'></script>
+    <script type='text/javascript' src='assets/js/vendor/essential-grid/public/assets/js/jquery.themepunch.essential.min.js'></script>
+    <script type='text/javascript' src='assets/js/vendor/revslider/public/assets/js/jquery.themepunch.revolution.min.js'></script>
+    <script type="text/javascript" src="assets/js/vendor/revslider/public/assets/js/extensions/revolution.extension.slideanims.min.js"></script>
+    <script type="text/javascript" src="assets/js/vendor/revslider/public/assets/js/extensions/revolution.extension.layeranimation.min.js"></script>
+    <script type="text/javascript" src="assets/js/vendor/revslider/public/assets/js/extensions/revolution.extension.navigation.min.js"></script>
+
+
+    <script type='text/javascript' src='assets/js/custom/_main.min.js'></script>
+    <script type='text/javascript' src='assets/js/custom/shortcodes_init.min.js'></script>
+    <script type='text/javascript' src='assets/js/custom/_utils.min.js'></script>
+    <script type='text/javascript' src='assets/js/custom/_front.min.js'></script>
+    <script type='text/javascript' src='assets/js/custom/_form_contact.js'></script>
+    <script src="assets/custom_tools/js/_customizer.js"></script>
+
+    <script src="assets/js/vendor/__packed.js"></script>
+
+
+
+</body>
+</html>
