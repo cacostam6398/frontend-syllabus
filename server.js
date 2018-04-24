@@ -10,7 +10,7 @@ var express = require('express'),
 
 //WebServer setup
 var ip = undefined;
-var port = process.env.PORT || 9001;
+var port = process.env.PORT || 8080;
 var app = express();
 var rootPath = path.normalize(__dirname);
 
