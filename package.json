@@ -1,0 +1,27 @@
+{
+  "name": "syllabusfrontendapp",
+  "version": "1.0.0",
+  "description": "front app universidad EAN",
+  "main": "server.js",
+  "scripts": {
+    "test": "npm init",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cacostam6398/SyllabusFrontEndApp.git"
+  },
+  "author": "David Acosta",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.3"
+  },
+  "engines": {
+    "node": "6.11.3"
+  },
+  "bugs": {
+    "url": "https://github.com/cacostam6398/SyllabusFrontEndApp/issues"
+  },
+  "homepage": "https://github.com/cacostam6398/SyllabusFrontEndApp#readme",
+  "devDependencies": {}
+}
