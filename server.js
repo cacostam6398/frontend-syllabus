@@ -7,10 +7,10 @@ var express = require('express'),
     ejs = require('ejs'),
     path = require('path'),
     favicon = require('serve-favicon');
-
+    const cool = require('cool-ascii-faces')
 //WebServer setup
 var ip = undefined;
-var port = process.env.PORT || 8080;
+var port = process.env.PORT || 5000;
 var app = express();
 var rootPath = path.normalize(__dirname);
 
