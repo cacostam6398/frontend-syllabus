@@ -1,70 +1,23 @@
-'use strict';
-//Dependencies
-var express = require('express'),
-    morgan = require('morgan'),
-    bodyParser = require('body-parser'),
-    methodOverride = require('method-override'),
-    ejs = require('ejs'),
-    path = require('path'),
-    favicon = require('serve-favicon');
-    const cool = require('cool-ascii-faces')
-//WebServer setup
-var ip = undefined;
-var port = process.env.PORT || 8080;
-var app = express();
-var rootPath = path.normalize(__dirname);
+//server.js
 
-app.set('views', rootPath + '\\web');
-app.use(express.static(path.join(rootPath, 'web')));
-//app.engine('html', require('ejs').renderFile);
-app.set('view engine', 'html');
-app.use(morgan('dev'));
-app.use(methodOverride());
-app.use(bodyParser.urlencoded({
-    extended: true,
-    limit: '5mb'
-}));
-//app.use(bodyParser.json({limit: '5mb'}));
-app.use(favicon(path.join(__dirname, 'favicon.ico')));
+var express 	= require('express');
+var app 		= express();
 
-//app.use(function noCache(req, res, next) {
- //   if (req.url.indexOf('.js') > 0) {
-   //     res.header('Cache-Control', 'no-cache, no-store, must-revalidate');
-     //   res.header('Pragma', 'no-cache');
-       // res.header('Expires', 0);
-    //}
-  //  next();
-//});
 
-//app.use(function (req, res, next) {
-  //  res.header("Access-Control-Allow-Origin", "*");
-    //res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
 
-    //next();
-//});
-
-//Routes
-// app.route('/*/*').get(function (req, res) {
-//     var stripped = req.url.split('.')[0];
-//     var requestedView = path.join('./', stripped);
-//     res.render(requestedView, function (err, html) {
-//         if (err) {
-//            console.log("Error rendering partial '" + requestedView + "'\n", err);
-//            res.status(404).end();
-//         } else {
-//             res.send(html);
-//         }
-//     });
-// });
-
-app.route('/').get(function (req, res) {
-   res.render('index');
+// Configuración
+app.configure(function() {
+	// Localización de los ficheros estÃ¡ticos
+	app.use(express.static(__dirname + '/web'));
+	// Muestra un log de todos los request en la consola		
+	app.use(express.logger('dev'));	
+	// Permite cambiar el HTML con el método POST					
+	app.use(express.bodyParser());
+	// Simula DELETE y PUT						
+	app.use(express.methodOverride());					
 });
 
-// Start server
-app.listen(port, ip, function () {
-    console.log('Express server listening on %s:%d, in %s mode', ip, port, app.get('env'));
+// Escucha en el puerto 8080 y corre el server
+app.listen(8080, function() {
+	console.log('App listening on port 8080');
 });
-
-// Expose app
-exports = module.exports = app;
