@@ -14,14 +14,20 @@
   "author": "David Acosta",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.3"
+    "express": "^4.16.3",
+    "path": "^0.12.7"
   },
   "engines": {
-    "node": "6.11.3"
+    "node": "6.11.3",
+    "npm": "3.10.10"
   },
   "bugs": {
     "url": "https://github.com/cacostam6398/SyllabusFrontEndApp/issues"
   },
   "homepage": "https://github.com/cacostam6398/SyllabusFrontEndApp#readme",
-  "devDependencies": {}
+  "devDependencies": {
+    "@angular/cli": "^1.7.4",
+    "@angular/compiler-cli": "^5.2.10"
+  },
+  "postinstall": "ng build --aot -prod"
 }
