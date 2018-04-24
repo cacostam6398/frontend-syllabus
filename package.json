@@ -1,8 +1,8 @@
 {
-  "name": "SyllabusFrontEndApp",
+  "name": "syllabusapp",
   "version": "1.0.0",
   "description": "This example is so cool.",
-  "main": "js/app.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -12,9 +12,18 @@
   ],
   "author": "jane-doe",
   "license": "MIT",
-    
-    "engines": {
-        "node": "8.10.0"
-    }
+  "engines": {
+    "node": "8.10.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cacostam6398/SyllabusFrontEndApp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/cacostam6398/SyllabusFrontEndApp/issues"
+  },
+  "homepage": "https://github.com/cacostam6398/SyllabusFrontEndApp#readme"  ,
+  "scripts": {
+		"start": "app.js"
+	}
 }
-
