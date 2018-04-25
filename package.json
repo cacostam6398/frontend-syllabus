@@ -32,5 +32,5 @@
     "dependencies": {       
         "express": "^4.16.3"
     },
-    "engines" : { "npm" : "8.10.0" } 
+    "engines" : { "node" : "8.10.0" } 
 }
