@@ -6393,7 +6393,7 @@ div.facebook .pp_description {padding-bottom: 0;}
     float: left;
     padding: 60px;
     position: relative;
-    width: 50%;
+    /* width: 50%; */
     z-index: 1;
 }
 .login-form:before{

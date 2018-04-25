@@ -5,3 +5,17 @@ btn-compra {
     background-color: #f50;
     border-color: #f50;
 }
+
+
+@media only screen and (min-width: 991px) {
+    .login_mod {
+        width: 66%;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .login_mod {
+        width: 100%;
+    }
+}
+
