@@ -4,208 +4,61 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>Identiline</title>
-    <link rel="icon" type="image/x-icon" href="website/assets/images/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="https://universidadean.edu.co/sites/all/themes/subtheme/favicon.ico" />
 
-
-</head>
-<body class="home page themerex_body fullscreen top_panel_above" ng-controller="MainController as MainCtrl" ng-cloak>
-
-    <link href="assets/css/bootstrap-3.3.6-dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="assets/css/materialize.min.css" rel="stylesheet" />
-    <link href="assets/css/color.css" rel="stylesheet" />
-    <link href="assets/js/vendor/prettyphoto/css/prettyPhoto.css" rel="stylesheet" />
-    <link href="assets/js/vendor/magnific-popup/magnific-popup.css" rel="stylesheet" />
-    <link rel='stylesheet' href='assets/js/vendor/essential-grid/public/assets/css/settings.css' type='text/css' media='all' />
-    <link rel='stylesheet' href='assets/js/vendor/revslider/public/assets/css/settings.css' type='text/css' media='all' />
-    <link rel='stylesheet' href='assets/css/fontello/css/fontello.css' type='text/css' media='all' />
-    <link rel='stylesheet' href='assets/css/fontello/css/animation.css' type='text/css' media='all' />
-    <link rel='stylesheet' href='assets/css/style.css' type='text/css' media='all' />
-    <link rel='stylesheet' href='assets/css/shortcodes.css' type='text/css' media='all' />
-    <link rel='stylesheet' href='assets/css/animation.css' type='text/css' media='all' />
-    <link rel='stylesheet' href='assets/css/default.css' type='text/css' media='all' />
-    <link rel='stylesheet' href='assets/css/responsive.css' type='text/css' media='all' />
-    <link rel='stylesheet' href='assets/css/default-responsive.css' type='text/css' media='all' />
-    <style id='theme-skin-inline-css' type='text/css'></style>
-    <link rel='stylesheet' href='assets/custom_tools/css/_customizer.css' type='text/css' media='all' />
-    <link href="assets/js/vendor/magnific-popup/magnific-popup.css" rel="stylesheet" />
+    <!-- Custom CSS -->
+    <link href="assets/dist/css/style.css" rel="stylesheet" type="text/css">    
     <link href="js/sweetalert/sweetalert-Master.css" rel="stylesheet" />
-    <link href="assets/css/Site.css" rel="stylesheet" />
 
+    
+</head>
+<body class="" ng-controller="MainController as MainCtrl" ng-cloak>
 
-   
-
-    <header class="noFixMenu menu_right with_user_menu">
-        <div class="topWrapFixed"></div>
-        <div class="topWrap">
-            <div class="usermenu_area">
-                <div class="main">
-
-
-                    <div class="" ng-if="!user.UsuaId">
-                        <ul id="usermenu" class="usermenu_list">
-                            <li class=" sc_button sc_button_style_global    global medium">
-                                <a data-toggle="modal" data-target="#myModal" class=""> Iniciar Sesion</a>
-                            </li>
-                        </ul>
+    <!--Preloader-->
+    <div class="preloader-it">
+        <div class="la-anim-1"></div>
+    </div>
+    <!--/Preloader-->
+    <div class="wrapper pa-0">
+            <header class="sp-header">
+                    <div class="sp-logo-wrap pull-left">
+                        <a href="index-2.html">
+                            <img class="brand-img mr-10" src="https://universidadean.edu.co/sites/default/files/ean_t_0.png" alt="brand"/>
+                            <!-- <span class="brand-text">Goofy</span>  -->
+                        </a>
                     </div>
-
-                    <div class="" ng-if="user.UsuaId">
-                        <ul id="usermenu" class="usermenu_list">
-                            <li class="usermenu_login sc_button sc_button_style_global filled sc_button_size_medium filledButton global medium">
-                                <a ng-click=" MainCtrl.cerrarSesion()" class="user-popup-link"> Cerrar Sesión</a>
-                            </li>
-                        </ul>
+                    <div class="form-group mb-0 pull-right">
+                        <span class="inline-block pr-10">Don't have an account?</span>
+                        <a class="inline-block btn btn-primary  btn-rounded btn-outline" href="signup.html">Sign Up</a>
                     </div>
+                    <div class="clearfix"></div>
+                </header>
+                
+            <div ng-view></div>
+    
+    </div>
+    <!-- /#wrapper -->
 
 
 
-                    <img src="assets/images/logo_home1.jpg" width='120' height='120' class="logo_main" alt="">
-                    <div class="menu_user_left">
-                        <!-- <div class="menuUsItem menuItemLeft text1_left_side">
-                            Identico&nbsp; -->
-                    </div>
-                    <!-- <div class="menuUsItem menuItemLeft text2_left_side">
-                        <a href="#">Herramienta</a>&nbsp; -->
-                </div>
-            </div>
-            <div class="menu_user_right">
-                <!-- <div class="menuUsItem menuItemRight text2_right_side">
-                    <a href="#">Get a free quote.</a>&nbsp; -->
-            </div>
-            <!-- <div class="menuUsItem menuItemRight text1_right_side">
-                Want an approximate price?&nbsp; -->
-        </div>
 
 
 
-    </header>
-
-    <div class="main_content" ng-if="user.UsuaId">
-        <div class="boxedWrap">
-
-            <header class="noFixMenu menu_right with_user_menu">
-                <div class="topWrapFixed"></div>
-                <div class="topWrap">
-
-                    <div class="mainmenu_area">
-                        <div class="main">
-                            <div class="logo logo_left">
-
-                            </div>
-                            <!-- <div class="search" title="Open/close search form">
-                                <div class="searchForm">
-                                    <form method="get" class="search-form" action="#">
-                                        <button type="submit" class="searchSubmit" title="Start search">
-                                            <span class="icoSearch"></span>
-                                        </button>
-                                        <input type="text" class="searchField" placeholder="Search &hellip;" value="" name="s" title="Search for:" />
-                                    </form>
-                                </div>
-                                <div class="ajaxSearchResults"></div>
-                            </div> -->
-                            <div class="responsiveMenu">
-                                <a href="#" class="openResponsiveMenu">Menu</a>
-                            </div>
-
-                            <nav class="menuTopWrap topMenuStyleLine">
-                                <ul id="mainmenu" class="">
-                                    <li class="sc_button sc_button_style_global global medium appointment-btn_menu menu-item">
-                                        <a href="/#/listaProductos">Lista de Productos</a>
-                                    </li>
-                                    <li class="menu-item menu-item-has-children">
-                                            <a href="index-2.html">Inicio</a>
-                                             <ul class="sub-menu">
-                                                <li class="menu-item">
-                                                    <a href="index-2.html">Homepage Default</a>
-                                                </li>
-                                                <li class="menu-item">
-                                                    <a href="index2.html">Homepage Optional</a>
-                                                </li>
-                                                <li class="menu-item">
-                                                    <a href="index3.html">Homepage E-Commerce</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                    <li class="menu-item menu-item-has-children current-menu-ancestor">
-                                        <a title="Tools and Pages" href="/#/Pedidos">
-                                            <span class="menu_icon icon-params"></span>
-                                            Pedidos
-                                        </a>
-                                    </li>
-
-
-                                    <li class="menu-item">
-
-
-                                        <a href="/#/CarritoCompras">
-                                            <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
-                                            <span class="badge">{{numProductosCarrito}}</span>
-                                        </a>
-
-                                    </li>
-                                    <li class="menu-item menu-item-has-children columns custom_view_item">
-                                        <a href="#">Administrar</a>
-                                        <ul class="menu-panel columns">
-                                            <li>
-                                                <ul class="custom-menu-style columns sub-menu">
-                                                    <li class="menu-item menu-item-has-children">
-                                                        <a href="#">Service #1</a>
-                                                        <ul class="sub-menu">
-                                                            <li class="menu-item">
-                                                                <a href="services.html">Crear Usuario</a>
-                                                            </li>
-                                                            <li class="menu-item">
-                                                                <a href="services.html">Modificar Usuario</a>
-                                                            </li>
-                                                            <li class="menu-item">
-                                                                <a href="services.html">Borrar Usuario</a>
-                                                            </li>
-                                                        </ul>
-
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-                             
-
-                                </ul>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
-            </header>
-            <div id="topOfPage" class="topTabsWrap">
-                <div class="main">
-                    <!-- <div class="speedBar">
-                        <a class="home" href="#">Home</a><span class="breadcrumbs_delimiter"> / </span><a class="all" href="#">All Posts</a><span class="breadcrumbs_delimiter"> / </span><span class="current">Usuario "Tatata"</span>
-                    </div> -->
-                    <h3 class="pageTitle h3">Usuario <b>{{user.UsuaNoCo}} </b></h3>
-                </div>
-            </div>
 
 
 
-            <!-- /.footerContentWrap -->
 
-        </div><!-- ./boxedWrap -->
-    </div><!-- ./main_content -->
-
-    <div ng-view></div>
-
-
-
-    <script type='text/javascript' src='assets/js/vendor/jquery-1.12.3.min.js'></script>
+    <script type='text/javascript' src='assets/vendors/jquery-3.3.1.min.js'></script>
     <!-- Scripts -->
 
-    <script src="assets/js/bootstrap.js"></script>
-    <script src="assets/js/modernizr.js"></script>
+    <script src="assets/vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>		
 
     <!-- Javascript -->
     <!-- librerias del framework -->
     <script src="js/angular/angular.min.js"></script>
     <script src="js/angular/angular-route.min.js"></script>
     <script src="js/angular/angular-ui-tree.min.js"></script>
-    <script src="js/angular/angular-animate.js"></script>
+    <script src="js/angular/angular-animate.min.js"></script>
 
     <!-- librerias esenciales de JQueryUi -->
 
@@ -230,6 +83,7 @@
     <script src="app.js"></script>
 
     <!-- --------------------------->
+    <!-- --------------------------->
     <!-- Servicios A Consumir -->
     <script src="js/services/communications-service.js"></script>
     <script src="js/services/login-services.js"></script>
@@ -244,25 +98,15 @@
     <script src="js/controllers/cotizacion-controller.js"></script>
 
 
+    <!-- Js funcioanlidad pagina web -->
+    
 
-
-    <script type='text/javascript' src='assets/js/vendor/jquery-migrate.min.js'></script>
-    <script type='text/javascript' src='assets/js/vendor/essential-grid/public/assets/js/jquery.themepunch.tools.min.js'></script>
-    <script type='text/javascript' src='assets/js/vendor/essential-grid/public/assets/js/jquery.themepunch.essential.min.js'></script>
-    <script type='text/javascript' src='assets/js/vendor/revslider/public/assets/js/jquery.themepunch.revolution.min.js'></script>
-    <script type="text/javascript" src="assets/js/vendor/revslider/public/assets/js/extensions/revolution.extension.slideanims.min.js"></script>
-    <script type="text/javascript" src="assets/js/vendor/revslider/public/assets/js/extensions/revolution.extension.layeranimation.min.js"></script>
-    <script type="text/javascript" src="assets/js/vendor/revslider/public/assets/js/extensions/revolution.extension.navigation.min.js"></script>
-
-
-    <script type='text/javascript' src='assets/js/custom/_main.min.js'></script>
-    <script type='text/javascript' src='assets/js/custom/shortcodes_init.min.js'></script>
-    <script type='text/javascript' src='assets/js/custom/_utils.min.js'></script>
-    <script type='text/javascript' src='assets/js/custom/_front.min.js'></script>
-    <script type='text/javascript' src='assets/js/custom/_form_contact.js'></script>
-    <script src="assets/custom_tools/js/_customizer.js"></script>
-
-    <script src="assets/js/vendor/__packed.js"></script>
+		<!-- Bootstrap Core JavaScript -->
+	
+		<!-- Slimscroll JavaScript -->
+		<script src="assets/dist/js/jquery.slimscroll.js"></script>		
+		<!-- Init JavaScript -->
+		<script src="assets/dist/js/init.js"></script>
 
 
 

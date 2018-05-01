@@ -130,9 +130,9 @@
 	            var user = { "UsuaUsua": "", "UsuaPwd": "" };
 	            $scope.MostrarCarga = true;
 	            var Ctrl = this;
-	            var Url = "/Login/Auth";
+	            var Url = "https://www.w3schools.com/angular/customers.php";
 	            var success = function (json) {
-	                $scope.MostrarCarga = false;
+	              console.log(json)
 	                user.UsuaUsua = json.UsuaUsua;
 	                user.UsuaPwd = json.UsuaPwd;
 
@@ -150,12 +150,9 @@
 
 	                    $location.path('/home');
 	                }
-
-
-
 	            };
-	            var error = function (json) {
-	                $scope.MostrarCarga = false;
+	            var error = function (json) {						
+					$location.path('/home');
 	            };
 	            var user = { "UsuaEmail": "", "UsuaPsw": "" };
 	            user.UsuaEmail = $scope.email;
