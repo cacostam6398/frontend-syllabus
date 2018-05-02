@@ -68,3 +68,26 @@ IdentiApp.factory('Enviar', ['$http', '$rootScope',
         }
     }
 ]);
+
+IdentiApp.factory('Recibir', ['$http', '$rootScope',
+    function ($http, $rootScope) {
+        return {
+            elemento: function (Ctrl, Url, success, error) {
+
+                var tries = 0;
+                var load = function () {
+                    setTimeout(function () {
+                        var envio = {};
+
+
+                        envio = $http({ method: "GET", url: Url });
+                        envio.then(success,   function () {                               
+                            error();
+                            }) ; 
+                    }, 100);
+                }
+                load();
+            }
+        }
+    }
+]);

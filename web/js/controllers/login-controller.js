@@ -1,5 +1,5 @@
-﻿IdentiApp.controller("LoginController", ['$scope', '$location', '$rootScope', '$modal', 'Enviar',
-	function ($scope, $location, $rootScope, $modal, Enviar) {
+﻿IdentiApp.controller("LoginController", ['$scope', '$location', '$rootScope', '$modal', 'Enviar','Recibir',
+	function ($scope, $location, $rootScope, $modal, Enviar, Recibir) {
 	 
 	 
 	    $scope.formR1 = true;
@@ -108,58 +108,63 @@
 
 	    $scope.login = function (forma) {
 
-	        jQuery('#myform').validate({ // initialize the plugin
-	            rules: {
-	                'email': {
-	                    required: true,
+	        // jQuery('#myform').validate({ // initialize the plugin
+	        //     rules: {
+	        //         'email': {
+	        //             required: true,
 	             
-	                },
-	                'pass': {
-	                    required: true,
-	                    minlength: 2
-	                }
+	        //         },
+	        //         'pass': {
+	        //             required: true,
+	        //             minlength: 2
+	        //         }
 
-	            },
-	            submitHandler: function (form) { // for demo
+	        //     },
+	        //     submitHandler: function (form) { // for demo
 	           
-	                return false; // for demo
-	            }
-	        });
+	        //         return false; // for demo
+	        //     }
+	        // });
 
-	        if (jQuery('#myform').valid()) {
+	        // if (jQuery('#myform').valid()) {
 	            var user = { "UsuaUsua": "", "UsuaPwd": "" };
 	            $scope.MostrarCarga = true;
 	            var Ctrl = this;
-	            var Url = "https://www.w3schools.com/angular/customers.php";
-	            var success = function (json) {
-	              console.log(json)
-	                user.UsuaUsua = json.UsuaUsua;
-	                user.UsuaPwd = json.UsuaPwd;
+	            var Url = "http://localhost/restapi-syllabusean/public/api/robots";
+	            // var success = function (json) {
+	            //   console.log(json)
+	                // user.UsuaUsua = json.UsuaUsua;
+	                // user.UsuaPwd = json.UsuaPwd;
 
-	                if (json.UsuaEsta != 1) {
-	                    $scope.message = 'Usuario o Contraseña incorrectos';
-	                    swal("Error", $scope.message, "info");
-	                } else {
-	                    json.success = true;
-	                    sessionStorage.user = JSON.stringify(json);
-	                    $rootScope.user = json;
-	                    console.log($rootScope.user);
-	                    $rootScope.numProductosCarrito = 0;
-	                    $rootScope.productosCotizar = [];
-	                    jQuery('.modal-backdrop').remove();
+	                // if (json.UsuaEsta != 1) {
+	                //     $scope.message = 'Usuario o Contraseña incorrectos';
+	                //     swal("Error", $scope.message, "info");
+	                // } else {
+	                //     json.success = true;
+	                //     sessionStorage.user = JSON.stringify(json);
+	                //     $rootScope.user = json;
+	                //     console.log($rootScope.user);
+	                //     $rootScope.numProductosCarrito = 0;
+	                //     $rootScope.productosCotizar = [];
+	                //     jQuery('.modal-backdrop').remove();
+					
+					json2 = {}
+					json2.UsuaId = 1
+					$rootScope.user = json2;
 
-	                    $location.path('/home');
-	                }
-	            };
-	            var error = function (json) {						
-					$location.path('/home');
-	            };
-	            var user = { "UsuaEmail": "", "UsuaPsw": "" };
-	            user.UsuaEmail = $scope.email;
-	            user.UsuaPsw = $scope.password;
-	            var Data = { "user": user }
-	            Enviar.elemento(Ctrl, Url, success, error, Data);
-	        }
+					sessionStorage.user = JSON.stringify(json2);
+	                     $location.path('/home');
+	                // }
+	            // };
+	            // var error = function (json) {						
+				// 	$location.path('/home');
+	            // };
+	            // var user = { "UsuaEmail": "", "UsuaPsw": "" };
+	            // user.UsuaEmail = $scope.email;
+	            // user.UsuaPsw = $scope.password;
+	            // var Data = { "user": user }
+	            // Recibir.elemento(Ctrl, Url, success, error, Data);
+	        // }
 	    };
 
 
