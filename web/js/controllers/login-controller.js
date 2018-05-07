@@ -107,65 +107,72 @@
         
 
 	    $scope.login = function (forma) {
-
-	        // jQuery('#myform').validate({ // initialize the plugin
-	        //     rules: {
-	        //         'email': {
-	        //             required: true,
+			
+	        jQuery('#myform').validate({ // initialize the plugin
+	            rules: {
+	                'email': {
+	                    required: true,
 	             
-	        //         },
-	        //         'pass': {
-	        //             required: true,
-	        //             minlength: 2
-	        //         }
+	                },
+	                'pass': {
+	                    required: true,
+	                    minlength: 2
+	                }
 
-	        //     },
-	        //     submitHandler: function (form) { // for demo
+	            },
+	            submitHandler: function (form) { // for demo
 	           
-	        //         return false; // for demo
-	        //     }
-	        // });
+	                return false; // for demo
+	            }
+	        });
 
-	        // if (jQuery('#myform').valid()) {
-	            var user = { "UsuaUsua": "", "UsuaPwd": "" };
-	            $scope.MostrarCarga = true;
+	        if (jQuery('#myform').valid()) {
+	            var user = { "UsuaUsua": "", "UsuaPwd": "" };	          
 	            var Ctrl = this;
-	            var Url = "http://localhost/restapi-syllabusean/public/api/robots";
+	            var Url = "http://localhost/restapi-syllabusean/public/api/usuarios";
 	            // var success = function (json) {
-	            //   console.log(json)
-	                // user.UsuaUsua = json.UsuaUsua;
-	                // user.UsuaPwd = json.UsuaPwd;
+					var json = {"data":{"status":"OK","data":{"id_usuario":"1","nombre":"prueba","apellido":"administrador","id_rol":"1","correo":"criosmon2345@universidadean.edu.co","telefono":"1234567","celular":"3143508058","cedula":"1022389689","contrasenia":"prueba"}}}
+				  console.log(json)
+				  
+	                user.UsuaUsua = json.data.data.correo;
+	                user.UsuaPwd = json.data.data.contrasenia;;
 
-	                // if (json.UsuaEsta != 1) {
-	                //     $scope.message = 'Usuario o Contraseña incorrectos';
-	                //     swal("Error", $scope.message, "info");
-	                // } else {
-	                //     json.success = true;
-	                //     sessionStorage.user = JSON.stringify(json);
-	                //     $rootScope.user = json;
-	                //     console.log($rootScope.user);
-	                //     $rootScope.numProductosCarrito = 0;
-	                //     $rootScope.productosCotizar = [];
-	                //     jQuery('.modal-backdrop').remove();
-					
-					json2 = {}
-					json2.UsuaId = 1
-					$rootScope.user = json2;
-
-					sessionStorage.user = JSON.stringify(json2);
-	                     $location.path('/home');
-	                // }
+	                if (json.data.status != "OK") {
+	                    $scope.message = 'Usuario o Contraseña incorrectos';
+	                    swal("Error", $scope.message, "info");
+	                } else {	                
+	                    sessionStorage.user = JSON.stringify(json.data.data);
+	                    $rootScope.user = json.data.data;
+	                    console.log($rootScope.user);	            
+	                    jQuery('.modal-backdrop').remove();		
+	                    $location.path('/home');
+	                }
 	            // };
-	            // var error = function (json) {						
-				// 	$location.path('/home');
-	            // };
+	            var error = function (json) {	
+					swal("Error","Usuario o Contraseña incorrectos", "info");	
+	            };
 	            // var user = { "UsuaEmail": "", "UsuaPsw": "" };
 	            // user.UsuaEmail = $scope.email;
 	            // user.UsuaPsw = $scope.password;
-	            // var Data = { "user": user }
-	            // Recibir.elemento(Ctrl, Url, success, error, Data);
-	        // }
-	    };
+	            var Data = { "correo": forma.email }
+			    // Enviar.elemento(Ctrl, Url, success, error, Data);
+	        }
+		};
+		
+		$rootScope.LogOut = function(){
+
+			sessionStorage.removeItem('user');
+			$rootScope.user = {};
+			$location.path('/login');
+		}		
+		
+		$rootScope.GoHome = function(){		
+			$location.path('/home');
+		}
+
+		$rootScope.GoCreacionSyllabus = function(){		
+			$location.path('/CreacionSyllabus');
+		}
 
 
 	    //$scope.setCredentials = function (username, password) {

@@ -6170,7 +6170,7 @@ a.compose-mail {
       bottom: 4px; }
 .profile-box .social-info {
   border-top: 1px solid rgba(33, 33, 33, 0.05);
-  padding: 30px 15px;
+  padding: 3px 15px;
   color: #212121; }
   .profile-box .social-info .counts {
     font-size: 21px; }
@@ -7019,7 +7019,7 @@ ul.inbox-nav li a:hover, ul.inbox-nav li.active a, ul.inbox-nav li a:focus {
       opacity: 0; }
 
   .page-wrapper {
-    margin-left: 44px; }
+    margin-left: 0px; }
 
   .navbar.navbar-inverse.navbar-fixed-top .nav-header {
     width: 44px; }

@@ -1,5 +1,5 @@
 ﻿ 		<!-- Left Sidebar Menu -->
-         <div class="fixed-sidebar-left">
+         <!-- <div class="fixed-sidebar-left">
 			<ul class="nav navbar-nav side-nav nicescroll-bar">
 				<li class="navigation-header">
 					<span>Main</span> 
@@ -27,7 +27,7 @@
 					</ul>
 				</li>
 			</ul>
-		</div>
+		</div> -->
 		<!-- /Left Sidebar Menu -->
  
  <!-- Main Content -->
@@ -50,31 +50,20 @@
                                 </div>
                                 <div class="profile-info text-center">
                                     <div class="profile-img-wrap">
-                                        <img class="inline-block mb-10" src="img/chigui.jpg" alt="user"/>
+                                        <img class="inline-block mb-10" src="img/user_icon.png" alt="user"/>
                                         <div class="fileupload btn btn-default">
                                             <span class="btn-text">edit</span>
                                             <input class="upload" type="file">
                                         </div>
                                     </div>	
-                                    <h5 class="block mt-10 mb-5 weight-500 capitalize-font txt-primary">Madalyn Rascon</h5>
-                                    <h6 class="block capitalize-font pb-20">Developer Geek</h6>
+                                    <h5 class="block mt-10 mb-5 weight-500 capitalize-font txt-primary">{{ user.nombre + ' ' + user.apellido }}</h5>
+                                    <h6 class="block capitalize-font pb-20">Profesor</h6>
                                 </div>	
                                 <div class="social-info">
-                                    <div class="row">
-                                        <div class="col-xs-4 text-center">
-                                            <span class="counts block head-font"><span class="counter-anim">345</span></span>
-                                            <span class="counts-text block">post</span>
-                                        </div>
-                                        <div class="col-xs-4 text-center">
-                                            <span class="counts block head-font"><span class="counter-anim">246</span></span>
-                                            <span class="counts-text block">followers</span>
-                                        </div>
-                                        <div class="col-xs-4 text-center">
-                                            <span class="counts block head-font"><span class="counter-anim">898</span></span>
-                                            <span class="counts-text block">tweets</span>
-                                        </div>
-                                    </div>
-                                    <button class="btn btn-primary btn-block btn-rounded  btn-anim mt-30" data-toggle="modal" data-target="#myModal"><i class="fa fa-pencil"></i><span class="btn-text">edit profile</span></button>
+                                 
+                                        <button class="btn btn-success btn-block btn-rounded  btn-anim mt-30" ng-click="GoCreacionSyllabus()" ><i class="fa fa-plus"></i><span class="btn-text">Crear syllabus</span></button>
+                                 
+                                        <button class="btn btn-primary btn-block btn-rounded  btn-anim mt-30" data-toggle="modal" data-target="#myModal"><i class="fa fa-pencil"></i><span class="btn-text">edit profile</span></button>
                                     <div id="myModal" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
@@ -181,8 +170,8 @@
                         <div  class="panel-body pb-0">
                             <div  class="tab-struct custom-tab-1">
                                 <ul role="tablist" class="nav nav-tabs nav-tabs-responsive" id="myTabs_8">
-                                    <li class="active" role="presentation"><a  data-toggle="tab" id="profile_tab_8" role="tab" href="#profile_8" aria-expanded="false" target="_self"><span>Perfil</span></a></li>
-                                    <li  role="presentation" class="next"><a aria-expanded="true"  data-toggle="tab" role="tab" id="follo_tab_8" href="#follo_8"  target="_self"><span>Tus Syllabus<span class="inline-block">(246)</span></span></a></li>
+                                  
+                                    <li class="active" role="presentation" class="next"><a aria-expanded="true"  data-toggle="tab" role="tab" id="follo_tab_8" href="#follo_8"  target="_self"><span>Tus Syllabus<span class="inline-block">(6)</span></span></a></li>
                                     <li role="presentation" class=""><a  data-toggle="tab" id="photos_tab_8" role="tab" href="#photos_8" aria-expanded="false" target="_self"><span>Pendiente aprobacion</span></a></li>
                                     <li role="presentation" class=""><a  data-toggle="tab" id="earning_tab_8" role="tab" href="#earnings_8" aria-expanded="false" target="_self"><span>Borradores</span></a></li>
                                     <li role="presentation" class=""><a  data-toggle="tab" id="settings_tab_8" role="tab" href="#settings_8" aria-expanded="false" target="_self"><span>settings</span></a></li>
@@ -196,207 +185,192 @@
                                         </ul>
                                     </li> -->
                                 </ul>
-                                <div class="tab-content" id="myTabContent_8">
-                                    <div  id="profile_8" class="tab-pane fade active in" role="tabpanel">
-                                        <div class="col-md-12">
-                                            <div class="pt-20">
-                                                <div class="streamline user-activity">
-                                                    <div class="sl-item">
-                                                        <a href="javascript:void(0)">
-                                                            <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                                <img class="img-responsive img-circle" src="img/user.png" alt="avatar"/>
-                                                            </div>
-                                                            <div class="sl-content">
-                                                                <p class="inline-block"><span class="capitalize-font txt-primary mr-5 weight-500">Clay Masse</span><span>invited to join the meeting in the conference room at 9.45 am</span></p>
-                                                                <span class="block txt-grey font-12 capitalize-font">3 Min</span>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-
-                                                    <div class="sl-item">
-                                                        <a href="javascript:void(0)">
-                                                            <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                                <img class="img-responsive img-circle" src="img/user1.png" alt="avatar"/>
-                                                            </div>
-                                                            <div class="sl-content">
-                                                                <p class="inline-block"><span class="capitalize-font txt-primary mr-5 weight-500">Evie Ono</span><span>added three new photos in the library</span></p>
-                                                                <div class="activity-thumbnail">
-                                                                    <img src="img/thumb-1.jpg" alt="thumbnail"/>
-                                                                    <img src="img/thumb-2.jpg" alt="thumbnail"/>
-                                                                    <img src="img/thumb-3.jpg" alt="thumbnail"/>
-                                                                </div>
-                                                                <span class="block txt-grey font-12 capitalize-font">8 Min</span>
-                                                            </div>
-                                                        </a>	
-                                                    </div>
-
-                                                    <div class="sl-item">
-                                                        <a href="javascript:void(0)">
-                                                            <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                                <img class="img-responsive img-circle" src="img/user2.png" alt="avatar"/>
-                                                            </div>
-                                                            <div class="sl-content">
-                                                                <p class="inline-block"><span class="capitalize-font txt-primary mr-5 weight-500">madalyn rascon</span><span>assigned a new task</span></p>
-                                                                <span class="block txt-grey font-12 capitalize-font">28 Min</span>
-                                                            </div>
-                                                        </a>	
-                                                    </div>
-
-                                                    <div class="sl-item">
-                                                        <a href="javascript:void(0)">
-                                                            <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                                <img class="img-responsive img-circle" src="img/user3.png" alt="avatar"/>
-                                                            </div>
-                                                            <div class="sl-content">
-                                                                <p class="inline-block"><span class="capitalize-font txt-primary mr-5 weight-500">Ezequiel Merideth</span><span>completed project wireframes</span></p>
-                                                                <span class="block txt-grey font-12 capitalize-font">yesterday</span>
-                                                            </div>
-                                                        </a>	
-                                                    </div>
-                                                    
-                                                    <div class="sl-item">
-                                                        <a href="javascript:void(0)">
-                                                            <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                                <img class="img-responsive img-circle" src="img/user4.png" alt="avatar"/>
-                                                            </div>
-                                                            <div class="sl-content">
-                                                                <p class="inline-block"><span class="capitalize-font txt-primary mr-5 weight-500">jonnie metoyer</span><span>created a group 'Hencework' in the discussion forum</span></p>
-                                                                <span class="block txt-grey font-12 capitalize-font">18 feb</span>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div class="tab-content" id="myTabContent_8">                          
                                     
-                                    <div  id="follo_8" class="tab-pane fade" role="tabpanel">
-                                        <div class="row">
-                                            <div class="col-lg-12">
-                                                <div class="followers-wrap">
-                                                    <ul class="followers-list-wrap">
-                                                        <li class="follow-list">
-                                                            <div class="follo-body">
-                                                                <div class="follo-data">
-                                                                    <img class="user-img img-circle"  src="img/user.png" alt="user"/>
-                                                                    <div class="user-data">
-                                                                        <span class="name block capitalize-font">Clay Masse</span>
-                                                                        <span class="time block truncate txt-grey">No one saves us but ourselves.</span>
-                                                                    </div>
-                                                                    <button class="btn btn-primary pull-right btn-xs fixed-btn">Follow</button>
-                                                                    <div class="clearfix"></div>
+                                    <div  id="follo_8" class="tab-pane fade active in" role="tabpanel" >
+                                            <div class="panel-wrapper collapse in">
+                                                
+                                                    <div class="panel-body">
+                                                        <div class="panel-group accordion-struct accordion-style-1" id="accordion_2" role="tablist" aria-multiselectable="true">
+                                                            <div class="panel panel-default">
+                                                                <div class="panel-heading activestate" role="tab" id="heading_10">
+                                                                    <a role="button" data-toggle="collapse" data-parent="#accordion_2" target="_self"  href="#collapse_10" aria-expanded="true" ><div class="icon-ac-wrap pr-20"><span class="plus-ac"><i class="ti-plus"></i></span><span class="minus-ac"><i class="ti-minus"></i></span></div>PREG. EN INGENIERIA DE SISTEMAS</a> 
                                                                 </div>
-                                                                <div class="follo-data">
-                                                                    <img class="user-img img-circle"  src="img/user1.png" alt="user"/>
-                                                                    <div class="user-data">
-                                                                        <span class="name block capitalize-font">Evie Ono</span>
-                                                                        <span class="time block truncate txt-grey">Unity is strength</span>
-                                                                    </div>
-                                                                    <button class="btn btn-primary btn-outline pull-right btn-xs fixed-btn">following</button>
-                                                                    <div class="clearfix"></div>
-                                                                </div>
-                                                                <div class="follo-data">
-                                                                    <img class="user-img img-circle"  src="img/user2.png" alt="user"/>
-                                                                    <div class="user-data">
-                                                                        <span class="name block capitalize-font">Madalyn Rascon</span>
-                                                                        <span class="time block truncate txt-grey">Respect yourself if you would have others respect you.</span>
-                                                                    </div>
-                                                                    <button class="btn btn-primary btn-outline pull-right btn-xs fixed-btn">following</button>
-                                                                    <div class="clearfix"></div>
-                                                                </div>
-                                                                <div class="follo-data">
-                                                                    <img class="user-img img-circle"  src="img/user3.png" alt="user"/>
-                                                                    <div class="user-data">
-                                                                        <span class="name block capitalize-font">Mitsuko Heid</span>
-                                                                        <span class="time block truncate txt-grey">I’m thankful.</span>
-                                                                    </div>
-                                                                    <button class="btn btn-primary pull-right btn-xs fixed-btn">Follow</button>
-                                                                    <div class="clearfix"></div>
-                                                                </div>
-                                                                <div class="follo-data">
-                                                                    <img class="user-img img-circle"  src="img/user.png" alt="user"/>
-                                                                    <div class="user-data">
-                                                                        <span class="name block capitalize-font">Ezequiel Merideth</span>
-                                                                        <span class="time block truncate txt-grey">Patience is bitter.</span>
-                                                                    </div>
-                                                                    <button class="btn btn-primary pull-right btn-xs fixed-btn">Follow</button>
-                                                                    <div class="clearfix"></div>
-                                                                </div>
-                                                                <div class="follo-data">
-                                                                    <img class="user-img img-circle"  src="img/user1.png" alt="user"/>
-                                                                    <div class="user-data">
-                                                                        <span class="name block capitalize-font">Jonnie Metoyer</span>
-                                                                        <span class="time block truncate txt-grey">Genius is eternal patience.</span>
-                                                                    </div>
-                                                                    <button class="btn btn-primary btn-outline pull-right btn-xs fixed-btn">following</button>
-                                                                    <div class="clearfix"></div>
+                                                                <div id="collapse_10" class="panel-collapse collapse in" role="tabpanel">
+                                                                        <div class="row" style="padding-left: 5%;">
+                                                                                <div class="col-lg-12">
+                                                                                    <div class="followers-wrap">
+                                                                                        <ul class="followers-list-wrap">
+                                                                                            <li class="follow-list">
+                                                                                                <div class="follo-body">
+                                                                                                    <div class="follo-data">
+                                                                                                        <!-- <img class="user-img img-circle"  src="img/user.png" alt="user"/> -->
+                                                                                                        <i class="user-img img-circle fas fa-file-alt fa-2x"></i>
+                                                                                                        <div class="user-data">
+                                                                                                            <span class="name block capitalize-font">Electiva: Aplicativo de bases de datos PL/SQL</span>
+                                                                                                            <span class="time block truncate txt-grey">Lorem Ipsum es simplemente el texto de relleno .</span>
+                                                                                                        </div>
+                                                                                                        <a class="btn btn-primary pull-right btn-xs"  ng-href="#!/detalleSyllabus" >Inspeccionar</a>
+                                                                                                        <div class="clearfix"></div>
+                                                                                                    </div>
+                                                                                                    <div class="follo-data">
+                                                                                                        <i class="user-img img-circle fas fa-file-alt fa-2x"></i>
+                                                                                                        <div class="user-data">
+                                                                                                            <span class="name block capitalize-font">Sistemas Operativos</span>
+                                                                                                            <span class="time block truncate txt-grey">Lorem Ipsum es simplemente el texto de relleno .</span>
+                                                                                                        </div>
+                                                                                                        <a class="btn btn-primary pull-right btn-xs" ng-href="#!/detalleSyllabus">Inspeccionar</a>
+                                                                                                        <div class="clearfix"></div>
+                                                                                                    </div>
+                                                                                                    <div class="follo-data">
+                                                                                                        <i class="user-img img-circle fas fa-file-alt fa-2x"></i>
+                                                                                                        <div class="user-data">
+                                                                                                            <span class="name block capitalize-font">Desarrollo de sistemas de informacion</span>
+                                                                                                            <span class="time block truncate txt-grey">Lorem Ipsum es simplemente el texto de relleno ..</span>
+                                                                                                        </div>
+                                                                                                        <a class="btn btn-primary pull-right btn-xs" ng-href="#!/detalleSyllabus">Inspeccionar</a>
+                                                                                                        <div class="clearfix"></div>
+                                                                                                    </div>
+                                                                                                                                                                                             
+                                                                                                </div>
+                                                                                            </li>
+                                                                                        </ul>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
                                                                 </div>
                                                             </div>
-                                                        </li>
-                                                    </ul>
+
+
+                                                            <div class="panel panel-default">
+                                                                <div class="panel-heading" role="tab" id="heading_11">
+                                                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion_2" target="_self"  href="#collapse_11" aria-expanded="false"  ><div class="icon-ac-wrap pr-20"><span class="plus-ac"><i class="ti-plus"></i></span><span class="minus-ac"><i class="ti-minus"></i></span></div>ESP. EN GERENCIA DE TECNOLOGIA </a>
+                                                                </div>
+                                                                <div id="collapse_11" class="panel-collapse collapse" role="tabpanel">
+
+                                                                        <div class="row" style="padding-left: 5%;">
+                                                                                <div class="col-lg-12">
+                                                                                        <div class="followers-wrap">
+                                                                                            <ul class="followers-list-wrap">
+                                                                                                <li class="follow-list">
+                                                                                                    <div class="follo-body">
+                                                                                                        <div class="follo-data">
+                                                                                                                <i class="user-img img-circle fas fa-file-alt fa-2x"></i>
+                                                                                                                <div class="user-data">
+                                                                                                                    <span class="name block capitalize-font">Gerencia de proyectos informaticos</span>
+                                                                                                                    <span class="time block truncate txt-grey">Lorem Ipsum es simplemente el texto de relleno .</span>
+                                                                                                                </div>
+                                                                                                                <a class="btn btn-primary pull-right btn-xs" ng-href="#!/detalleSyllabus">Inspeccionar</a>
+                                                                                                                <div class="clearfix"></div>
+                                                                                                            </div>     
+                                                                                                            <div class="follo-data">
+                                                                                                                <i class="user-img img-circle fas fa-file-alt fa-2x"></i>
+                                                                                                                <div class="user-data">
+                                                                                                                    <span class="name block capitalize-font">Gestion de redes y comunicaciones</span>
+                                                                                                                    <span class="time block truncate txt-grey">Lorem Ipsum es simplemente el texto de relleno .</span>
+                                                                                                                </div>
+                                                                                                                <a class="btn btn-primary pull-right btn-xs" ng-href="#!/detalleSyllabus">Inspeccionar</a>
+                                                                                                                <div class="clearfix"></div>
+                                                                                                            </div>
+                                                                                                            <div class="follo-data">
+                                                                                                                <i class="user-img img-circle fas fa-file-alt fa-2x"></i>
+                                                                                                                <div class="user-data">
+                                                                                                                    <span class="name block capitalize-font">Programacion</span>
+                                                                                                                    <span class="time block truncate txt-grey">Lorem Ipsum es simplemente el texto de relleno .</span>
+                                                                                                                </div>
+                                                                                                                <a class="btn btn-primary pull-right btn-xs" ng-href="#!/detalleSyllabus">Inspeccionar</a>
+                                                                                                                <div class="clearfix"></div>
+                                                                                                            </div>  
+                                                                                                    </div>
+                                                                                                </li>
+                                                                                            </ul>
+                                                                                        </div>
+                                                                                    </div>
+                                                                        </div>
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="panel panel-default">
+                                                                <div class="panel-heading" role="tab" id="heading_12">
+                                                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion_2" target="_self"  href="#collapse_12" aria-expanded="false" ><div class="icon-ac-wrap pr-20"><span class="plus-ac"><i class="ti-plus"></i></span><span class="minus-ac"><i class="ti-minus"></i></span></div> ESP. EN GERENCIA DE PROYECTOS </a>
+                                                                </div>
+                                                                <div id="collapse_12" class="panel-collapse collapse" role="tabpanel">
+                                                                    <div class="panel-body pa-15"> Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, inable VHS. </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="panel panel-default">
+                                                                <div class="panel-heading" role="tab" id="heading_13">
+                                                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion_2" target="_self"  href="#collapse_13" aria-expanded="false" ><div class="icon-ac-wrap pr-20"><span class="plus-ac"><i class="ti-plus"></i></span><span class="minus-ac"><i class="ti-minus"></i></span></div> MAEST. EN GESTION DE PROYECTOS</a>
+                                                                </div>
+                                                                <div id="collapse_13" class="panel-collapse collapse" role="tabpanel">
+                                                                    <div class="panel-body pa-15"> Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, inable VHS. </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                    </div>
+
+
+                                    <div  id="photos_8" class="tab-pane fade" role="tabpanel">
+
+                                        <div class="panel-wrapper collapse in">                                                
+                                                <div class="panel-body">
+                                                    <div class="panel-group accordion-struct accordion-style-1" id="accordion_2" role="tablist" aria-multiselectable="true">
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading" role="tab" id="heading_11">
+                                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion_2" target="_self"  href="#collapse_111" aria-expanded="false"  ><div class="icon-ac-wrap pr-20"><span class="plus-ac"><i class="ti-plus"></i></span><span class="minus-ac"><i class="ti-minus"></i></span></div>ESP. EN GERENCIA DE TECNOLOGIA </a>
+                                                </div>
+                                                <div id="collapse_111" class="panel-collapse collapse" role="tabpanel">
+                                                    <div class="row" style="padding-left: 5%;">
+                                                            <div class="col-lg-12">
+                                                                    <div class="followers-wrap">
+                                                                        <ul class="followers-list-wrap">
+                                                                            <li class="follow-list">
+                                                                                <div class="follo-body">
+                                                                                    <div class="follo-data">
+                                                                                            <i class="user-img img-circle fas fa-file-alt fa-2x"></i>
+                                                                                            <div class="user-data">
+                                                                                                <span class="name block capitalize-font">Gerencia de proyectos informaticos</span>
+                                                                                                <span class="time block truncate txt-grey">Lorem Ipsum es simplemente el texto de relleno .</span>
+                                                                                            </div>
+                                                                                            <a class="btn btn-primary pull-right btn-xs" ng-href="#!/detalleSyllabus">Inspeccionar</a>
+                                                                                            <div class="clearfix"></div>
+                                                                                        </div>     
+                                                                                        <div class="follo-data">
+                                                                                            <i class="user-img img-circle fas fa-file-alt fa-2x"></i>
+                                                                                            <div class="user-data">
+                                                                                                <span class="name block capitalize-font">Gestion de redes y comunicaciones</span>
+                                                                                                <span class="time block truncate txt-grey">Lorem Ipsum es simplemente el texto de relleno .</span>
+                                                                                            </div>
+                                                                                            <a class="btn btn-primary pull-right btn-xs" ng-href="#!/detalleSyllabus">Inspeccionar</a>
+                                                                                            <div class="clearfix"></div>
+                                                                                        </div>
+                                                                                        <div class="follo-data">
+                                                                                            <i class="user-img img-circle fas fa-file-alt fa-2x"></i>
+                                                                                            <div class="user-data">
+                                                                                                <span class="name block capitalize-font">Programacion</span>
+                                                                                                <span class="time block truncate txt-grey">Lorem Ipsum es simplemente el texto de relleno .</span>
+                                                                                            </div>
+                                                                                            <a class="btn btn-primary pull-right btn-xs" ng-href="#!/detalleSyllabus">Inspeccionar</a>
+                                                                                            <div class="clearfix"></div>
+                                                                                        </div>  
+                                                                                </div>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div> 
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div  id="photos_8" class="tab-pane fade" role="tabpanel">
-                                        <div class="col-md-12 pb-20">
-                                            <div class="gallery-wrap">
-                                                <div class="portfolio-wrap project-gallery">
-                                                    <ul id="portfolio_1" class="portf auto-construct  project-gallery" data-col="4">
-                                                        <li  class="item"   data-src="img/gallery/equal-size/mock1.jpg" data-sub-html="<h6>Bagwati</h6><p>Classic view from Rigwood Jetty on Coniston Water an old archive shot similar to an old post but a little later on.</p>" >
-                                                            <a href="#">
-                                                            <img class="img-responsive" src="img/gallery/equal-size/mock1.jpg"  alt="Image description" />
-                                                            <span class="hover-cap">Bagwati</span>
-                                                            </a>
-                                                        </li>
-                                                        <li class="item" data-src="img/gallery/equal-size/mock2.jpg"   data-sub-html="<h6>Not a Keyboard</h6><p>Classic view from Rigwood Jetty on Coniston Water an old archive shot similar to an old post but a little later on.</p>">
-                                                            <a href="#">
-                                                            <img class="img-responsive" src="img/gallery/equal-size/mock2.jpg"  alt="Image description" />
-                                                            <span class="hover-cap">Not a Keyboard</span>
-                                                            </a>
-                                                        </li>
-                                                        <li class="item" data-src="img/gallery/equal-size/mock3.jpg" data-sub-html="<h6>Into the Woods</h6><p>Classic view from Rigwood Jetty on Coniston Water an old archive shot similar to an old post but a little later on.</p>">
-                                                            <a href="#">
-                                                            <img class="img-responsive" src="img/gallery/equal-size/mock3.jpg"  alt="Image description" />
-                                                            <span class="hover-cap">Into the Woods</span>
-                                                            </a>
-                                                        </li>
-                                                        <li class="item" data-src="img/gallery/equal-size/mock4.jpg"  data-sub-html="<h6>Ultra Saffire</h6><p>Classic view from Rigwood Jetty on Coniston Water an old archive shot similar to an old post but a little later on.</p>">
-                                                            <a href="#">
-                                                            <img class="img-responsive" src="img/gallery/equal-size/mock4.jpg"  alt="Image description" />
-                                                            <span class="hover-cap"> Ultra Saffire</span>
-                                                            </a>
-                                                        </li>
-                                                        
-                                                        <li class="item" data-src="img/gallery/equal-size/mock5.jpg" data-sub-html="<h6>Happy Puppy</h6><p>Classic view from Rigwood Jetty on Coniston Water an old archive shot similar to an old post but a little later on.</p>">
-                                                            <a href="#">
-                                                            <img class="img-responsive" src="img/gallery/equal-size/mock5.jpg"  alt="Image description" />	
-                                                            <span class="hover-cap">Happy Puppy</span>
-                                                            </a>
-                                                        </li>
-                                                        <li class="item" data-src="img/gallery/equal-size/mock6.jpg"  data-sub-html="<h6>Wooden Closet</h6><p>Classic view from Rigwood Jetty on Coniston Water an old archive shot similar to an old post but a little later on.</p>">
-                                                            <a href="#">
-                                                            <img class="img-responsive" src="img/gallery/equal-size/mock6.jpg"  alt="Image description" />
-                                                            <span class="hover-cap">Wooden Closet</span>
-                                                            </a>
-                                                        </li>
-                                                        <li class="item" data-src="img/gallery/equal-size/mock7.jpg" data-sub-html="<h6>Happy Puppy</h6><p>Classic view from Rigwood Jetty on Coniston Water an old archive shot similar to an old post but a little later on.</p>">
-                                                            <a href="#">
-                                                            <img class="img-responsive" src="img/gallery/equal-size/mock7.jpg"  alt="Image description" />	
-                                                            <span class="hover-cap">Happy Puppy</span>
-                                                            </a>
-                                                        </li>
-                                                        <li class="item" data-src="img/gallery/equal-size/mock8.jpg"  data-sub-html="<h6>Wooden Closet</h6><p>Classic view from Rigwood Jetty on Coniston Water an old archive shot similar to an old post but a little later on.</p>">
-                                                            <a href="#">
-                                                            <img class="img-responsive" src="img/gallery/equal-size/mock8.jpg"  alt="Image description" />
-                                                            <span class="hover-cap">Wooden Closet</span>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>	
-                                    </div>
+
+
+
                                     <div  id="earnings_8" class="tab-pane fade" role="tabpanel">
                                         <!-- Row -->
                                         <div class="row">
@@ -932,15 +906,7 @@
         <!-- /Row -->
     
     </div>
-    <!-- Footer -->
-    <footer class="footer container-fluid pl-30 pr-30">
-        <div class="row">
-            <div class="col-sm-12">
-                <p>2018 &copy; Goofy. Pampered by Hencework</p>
-            </div>
-        </div>
-    </footer>
-    <!-- /Footer -->
+
     
 </div>
 <!-- /Main Content -->
