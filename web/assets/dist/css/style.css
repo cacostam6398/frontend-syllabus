@@ -7443,7 +7443,7 @@ ul.inbox-nav li a:hover, ul.inbox-nav li.active a, ul.inbox-nav li a:focus {
   background: #fff;
 }
 
-  .wizard .nav-tabs {
+  .wizard .nav2 {
       position: relative;
       margin: 40px auto;
       margin-bottom: 0;
@@ -7466,7 +7466,7 @@ ul.inbox-nav li a:hover, ul.inbox-nav li.active a, ul.inbox-nav li a:focus {
   z-index: 1;
 }
 
-.wizard .nav-tabs > li.active > a, .wizard .nav-tabs > li.active > a:hover, .wizard .nav-tabs > li.active > a:focus {
+.wizard .nav2 > li.active > a, .wizard .nav2> li.active > a:hover, .wizard .nav2 > li.active > a:focus {
   color: #555555;
   cursor: default;
   border: 0;
@@ -7504,7 +7504,7 @@ span.round-tab:hover {
   border: 2px solid #333;
 }
 
-.wizard .nav-tabs > li {
+.wizard .nav2 > li {
   width: 23%;
 }
 
@@ -7531,7 +7531,7 @@ span.round-tab:hover {
   border-bottom-color: #5bc0de;
 }
 
-.wizard .nav-tabs > li a {
+.wizard .nav2 > li a {
   width: 70px;
   height: 70px;
   margin: 20px auto;
@@ -7539,7 +7539,7 @@ span.round-tab:hover {
   padding: 0;
 }
 
-  .wizard .nav-tabs > li a:hover {
+  .wizard .nav2 > li a:hover {
       background: transparent;
   }
 
@@ -7566,7 +7566,7 @@ span.round-tab:hover {
       line-height: 50px;
   }
 
-  .wizard .nav-tabs > li a {
+  .wizard .nav2 > li a {
       width: 50px;
       height: 50px;
       line-height: 50px;
