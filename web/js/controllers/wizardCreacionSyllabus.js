@@ -1,4 +1,41 @@
-﻿
+﻿$(function() {
+    $('body').on('click','.btn-checkbox',function(e) {
+        e.stopPropagation();
+        e.preventDefault();
+        var $checkbox = $(this).find(':input[type=checkbox]');
+        if ($checkbox.length) {
+            var $icon = $(this).find('[data-icon-on]');
+            if ($checkbox.is(':checked')) {
+                unchecked($checkbox);
+            } else {
+                checked($checkbox);
+            }
+            return;
+        }
+  
+    });
+});
+
+function checked($input) {
+    var $button = $input.closest('.btn');
+    var $icon = $button.find('[data-icon-on]');
+    $button.addClass('active');
+    $input.prop('checked', true);
+    $icon.css('width',$icon.width());
+    $icon.removeAttr('class').addClass($icon.data('icon-on'));
+    $input.trigger('change');
+}
+
+function unchecked($input) {
+    var $button = $input.closest('.btn');
+    var $icon = $button.find('[data-icon-on]');
+    $button.removeClass('active');
+    $input.prop('checked', false);
+    $icon.css('width',$icon.width());
+    $icon.removeAttr('class').addClass($icon.data('icon-off'));
+    $input.trigger('change');
+}
+
 IdentiApp.controller("WizardCreacionSyllabus", ['Enviar', 'Cargar', '$location', '$route', '$scope', '$rootScope', '$modal', '$filter',
        function (Enviar, Cargar, $location, $route, $scope, $rootScope, $modal, $filter) {
    
