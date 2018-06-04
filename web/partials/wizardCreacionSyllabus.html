@@ -27,6 +27,14 @@
     /* Move the check mark back when checked */
 	text-indent: 0;
 }
+.active2{
+    background:#adadad!important;
+}
+
+.active1{
+    backgroun:white!important;
+}
+
 </style>
 <!-- Main Content -->
 <div class="page-wrapper">
@@ -140,22 +148,27 @@
                                                                                                 </div>
                                                                                                 <div class="col-md-2">
                                                                                                     <div class="form-group">
-                                                                                                        <label class="control-label mb-10">Tipo</label>
-                                                                                                        <select class="form-control">
-                                                                                                            <option value="">Nuclear</option>
-                                                                                                            <option value="">Transversal</option>
-                                                                                                            <option value="">Electiva</option>
-                                                                                                            <option value="">Electiva Carrera</option>
-                                                                                                        </select>
+                                                                                                        <label class="control-label mb-10">Programas</label>
+                                                                                                        <select  class="form-control" name="repeatSelect" id="repeatSelect" ng-model="dataSyllabus.cabecera.programa" ng-change="WizCtrl.ObtProgramasByPrograma(dataSyllabus.cabecera.programa)">
+                                                                                                            <option value="">---Seleccionar---</option> <!-- not selected / blank option -->
+                                                                                                            <option ng-repeat="option in WizCtrl.ListMatProgramas" value="{{option.programa.id_programa}}">{{option.programa.nombre}}</option>
+                                                                                                        </select>  
                                                                                                         <span class="help-block"> Seleccione Tipo de
-                                                                                                            materia </span>
+                                                                                                            Progrma </span>
                                                                                                     </div>
                                                                                                 </div>
 
-                                                                                                <div class="col-md-8">
+                                                                                                <div class="col-md-3">
                                                                                                     <div class="form-group">
-                                                                                                        <label class="control-label mb-10">Unidad de Estudio</label>
-                                                                                                        <input type="text" id="lastName" class="form-control" placeholder="Ingrese nombre de la unidad">
+                                                                                                        <label class="control-label mb-10">Materias</label>
+                                                                                                        <select  class="form-control" name="repeatSelect2" id="repeatSelect2" ng-model="dataSyllabus.cabecera.materia">
+                                                                                                                <option value="">---Seleccionar---</option> <!-- not selected / blank option -->
+                                                                                                                <option ng-repeat="option2 in WizCtrl.ListMatSelect[0].materias" value="{{option2.id_materia}}">{{ option2.nombre }}</option>
+                                                                                                            </select>  
+                                                                                                                                                                                                                      
+                                                                                                            <span class="help-block"> Seleccione Tipo de
+                                                                                                                materia </span>
+                                                                                                        
                                                                                                     </div>
                                                                                                 </div>
 
@@ -828,13 +841,13 @@
                                                                                                                         <li class="todo-item">
                                                                                                                             <div class="row">
                                                                                                                                 <div class="col-md-2">                                                                                                                                    
-                                                                                                                                    <label class="btn btn-default btn-checkbox">
-                                                                                                                                            <input name="checkbox" type="checkbox" value="ant" style="display: none" autocomplete="false"/> Ant
+                                                                                                                                            <label class="btn btn-default btn-checkbox" style="background: white;">
+                                                                                                                                            <input name="checkbox" type="checkbox" value="ant" style="display: none; " autocomplete="false"/> <i style="margin-left: -11px;">AN</i>
                                                                                                                                     </label>
                                                                                                                                 </div>
                                                                                                                                 <div class="col-md-2">
-                                                                                                                                    <label class="btn btn-default btn-checkbox">                 
-                                                                                                                                            <input name="radio" type="checkbox" value="bat" style="display: none" autocomplete="false"/> Bat
+                                                                                                                                    <label class="btn btn-default btn-checkbox"  style="background: white;">                 
+                                                                                                                                            <input name="radio" type="checkbox" value="bat" style="display: none" autocomplete="false"/> <i style="margin-left: -6px;" >B</i>
                                                                                                                                     </label>
                                                                                                                                 </div>
 

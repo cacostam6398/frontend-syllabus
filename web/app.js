@@ -20,7 +20,8 @@ IdentiApp.run(function ($rootScope, $location, $http, CONFIG, ROLES) {
     try {
         if (sessionStorage.getItem('user')) {
             if ($rootScope.user == null || typeof $rootScope.user == 'undefined') {
-                $rootScope.user = JSON.parse(sessionStorage.user)
+                $rootScope.user = JSON.parse(sessionStorage.user);
+                $rootScope.token =  sessionStorage.token;
             } else {
                 $location.url("/login");
             }
@@ -31,22 +32,22 @@ IdentiApp.run(function ($rootScope, $location, $http, CONFIG, ROLES) {
         storage = {};
     }
 
-    $rootScope.$on('$routeChangeStart', function (event, next) 
-    {
-                    console.log(next.$$route.originalPath)
-                if (next.data !== undefined) 
-                {
+    // $rootScope.$on('$routeChangeStart', function (event, next) 
+    // {
+    //                 console.log(next.$$route.originalPath)
+    //             if (next.data !== undefined) 
+    //             {
                     
-                    next.data.authorized.forEach(function (elemento, indice, array) {
-                        console.log(elemento, indice);
-                    });
+    //                 next.data.authorized.forEach(function (elemento, indice, array) {
+    //                     console.log(elemento, indice);
+    //                 });
 
-                    // if(next.data.authorized.indexOf(CONFIG.ROL_CURRENT_USER) !== -1)
-                    //     {
-                    //     console.log("entra");
-                    //     }  
-                }
-    });
+    //                 // if(next.data.authorized.indexOf(CONFIG.ROL_CURRENT_USER) !== -1)
+    //                 //     {
+    //                 //     console.log("entra");
+    //                 //     }  
+    //             }
+    // });
 
     $rootScope.$on('$routeChangeSuccess', function () {
 
@@ -54,6 +55,7 @@ IdentiApp.run(function ($rootScope, $location, $http, CONFIG, ROLES) {
             if (sessionStorage.getItem('user')) {
                 if ($rootScope.user != null || typeof $rootScope.user != 'undefined') {
                     $rootScope.user = JSON.parse(sessionStorage.user)
+                    $rootScope.token = sessionStorage.token;
                 } else {
                     $location.url("/login");
                 }

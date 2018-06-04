@@ -129,33 +129,30 @@
 	        if (jQuery('#myform').valid()) {
 	            var user = { "UsuaUsua": "", "UsuaPwd": "" };	          
 	            var Ctrl = this;
-	            var Url = "http://localhost/restapi-syllabusean/public/api/usuarios";
-	            // var success = function (json) {
-					var json = {"data":{"status":"OK","data":{"id_usuario":"1","nombre":"prueba","apellido":"administrador","id_rol":"1","correo":"criosmon2345@universidadean.edu.co","telefono":"1234567","celular":"3143508058","cedula":"1022389689","contrasenia":"prueba"}}}
-				  console.log(json)
-				  
-	                user.UsuaUsua = json.data.data.correo;
-	                user.UsuaPwd = json.data.data.contrasenia;;
+	            var Url = "http://localhost:90/restapi-syllabusean/public/api/index/aut";
+	             var success = function (json) {	
 
 	                if (json.data.status != "OK") {
 	                    $scope.message = 'Usuario o Contraseña incorrectos';
 	                    swal("Error", $scope.message, "info");
 	                } else {	                
-	                    sessionStorage.user = JSON.stringify(json.data.data);
-	                    $rootScope.user = json.data.data;
+						sessionStorage.user = JSON.stringify(json.data.data);
+						sessionStorage.token =  json.data.token;
+						$rootScope.user = json.data.data;
+						$rootScope.token = json.data.token;
 	                    console.log($rootScope.user);	            
 	                    jQuery('.modal-backdrop').remove();		
 	                    $location.path('/home');
 	                }
-	            // };
-	            var error = function (json) {	
+	             };
+				var error = function (json) {	
 					swal("Error","Usuario o Contraseña incorrectos", "info");	
-	            };
+				};
 	            // var user = { "UsuaEmail": "", "UsuaPsw": "" };
 	            // user.UsuaEmail = $scope.email;
 	            // user.UsuaPsw = $scope.password;
 	            var Data = { "correo": forma.email }
-			    // Enviar.elemento(Ctrl, Url, success, error, Data);
+			    Enviar.elemento(Ctrl, Url, success, error, Data);
 	        }
 		};
 		
@@ -163,6 +160,7 @@
 
 			sessionStorage.removeItem('user');
 			$rootScope.user = {};
+			$rootScope.token = '';
 			$location.path('/login');
 		}		
 		
