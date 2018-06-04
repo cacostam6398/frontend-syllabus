@@ -146,7 +146,7 @@
                                                                                                         <input type="text" id="firstName" class="form-control" placeholder="" ng-disabled="true" ng-model="WizCtrl.currentYear">
                                                                                                     </div>
                                                                                                 </div>
-                                                                                                <div class="col-md-2">
+                                                                                                <div class="col-md-3">
                                                                                                     <div class="form-group">
                                                                                                         <label class="control-label mb-10">Programas</label>
                                                                                                         <select  class="form-control" name="repeatSelect" id="repeatSelect" ng-model="dataSyllabus.cabecera.programa" ng-change="WizCtrl.ObtProgramasByPrograma(dataSyllabus.cabecera.programa)">
@@ -161,7 +161,7 @@
                                                                                                 <div class="col-md-3">
                                                                                                     <div class="form-group">
                                                                                                         <label class="control-label mb-10">Materias</label>
-                                                                                                        <select  class="form-control" name="repeatSelect2" id="repeatSelect2" ng-model="dataSyllabus.cabecera.materia">
+                                                                                                        <select  class="form-control" name="repeatSelect2" id="repeatSelect2" ng-model="dataSyllabus.cabecera.materia" ng-change="WizCtrl.llenarCamposCabecera(dataSyllabus.cabecera.materia)" >
                                                                                                                 <option value="">---Seleccionar---</option> <!-- not selected / blank option -->
                                                                                                                 <option ng-repeat="option2 in WizCtrl.ListMatSelect[0].materias" value="{{option2.id_materia}}">{{ option2.nombre }}</option>
                                                                                                             </select>  
@@ -174,106 +174,41 @@
 
                                                                                             </div>
                                                                                             <div class="row">
-
-                                                                                                <div class="col-md-2">
+                                                                                                <div class="col-md-3">
                                                                                                     <div class="form-group">
-                                                                                                        <label class="control-label mb-10">Modalidad</label>
-                                                                                                        <select class="form-control">
-                                                                                                            <option value="">Presencial</option>
-                                                                                                            <option value="">Virtual</option>
-
-                                                                                                        </select>
-                                                                                                        <span class="help-block"> Seleccione Modalidad
-                                                                                                            de la materia
-                                                                                                            </span>
+                                                                                                        <label class="control-label mb-10">Codigo Materia</label>
+                                                                                                        <input type="text" class="form-control" placeholder="" ng-disabled="true" ng-model="dataSyllabus.cabecera.codigoMateria">
                                                                                                     </div>
                                                                                                 </div>
-                                                                                                <div class="col-md-2">
+                                                                                                <div class="col-md-3">
                                                                                                     <div class="form-group">
-                                                                                                        <label class="control-label mb-10">Creditos</label>
-                                                                                                        <select class="form-control">
-                                                                                                            <option value="1">1</option>
-                                                                                                            <option value="2">2</option>
-                                                                                                            <option value="3">3</option>
-                                                                                                            <option value="4">4</option>
-                                                                                                            <option value="5">5</option>
-                                                                                                            <option value="6">6</option>
-                                                                                                            <option value="7">7</option>
-                                                                                                            <option value="8">8</option>
+                                                                                                        <label class="control-label mb-10">Facultad</label>
+                                                                                                        <input type="text" class="form-control" placeholder="" ng-disabled="true" ng-model="dataSyllabus.cabecera.facultad">
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="col-md-3">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="control-label mb-10">Creditos</label>                                                                                                      
+                                                                                                        <input type="text" class="form-control" placeholder="" ng-disabled="true" ng-model="dataSyllabus.cabecera.creditos">
+                                                                                                    </div>
+                                                                                                </div>
 
-                                                                                                        </select>
-                                                                                                        <span class="help-block"> Seleccione Modalidad
-                                                                                                            de la materia
-                                                                                                            </span>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                                <div class="col-md-2">
+                                                                                                <div class="col-md-3">
                                                                                                     <div class="form-group">
-                                                                                                        <label class="control-label mb-10">Duracion</label>
-                                                                                                        <select class="form-control">
-                                                                                                            <option value="">Ciclo</option>
-                                                                                                            <option value="">Semestre</option>
-                                                                                                            <option value="">Modulo</option>
-                                                                                                            <option value="">C. Virtual</option>
-                                                                                                            <option value="">S. Virtual</option>
-
-
-                                                                                                        </select>
-                                                                                                        <span class="help-block"> Seleccione Modalidad
-                                                                                                            de la materia
-                                                                                                            </span>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                                <div class="col-md-2">
-                                                                                                    <div class="form-group">
-                                                                                                        <label class="control-label mb-10">HORAS AC. DIRECTO</label>
-                                                                                                        <input type="number" id="firstName" class="form-control" placeholder="Numero">
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                                <div class="col-md-2">
-                                                                                                    <div class="form-group">
-                                                                                                        <label class="control-label mb-10">HORAS T. AUTÓNOMO</label>
-                                                                                                        <input type="number" id="firstName" class="form-control" placeholder="Numero">
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                                <div class="col-md-2">
-                                                                                                    <div class="form-group">
-                                                                                                        <label class="control-label mb-10">HORAS TOTALES</label>
-                                                                                                        <input type="number" id="firstName" class="form-control" placeholder="Numero">
+                                                                                                        <label class="control-label mb-10">Tipo</label>
+                                                                                                        <input type="text" class="form-control" placeholder="" ng-disabled="true" ng-model="dataSyllabus.cabecera.tipo">                                                                                                         
                                                                                                     </div>
                                                                                                 </div>
 
                                                                                             </div>
 
-                                                                                            <div class="row">
-                                                                                                <div class="col-md-6">
+                                                                                            <div class="row">                                                                                                
+                                                                                                <div class="col-md-3">
                                                                                                     <div class="form-group">
-                                                                                                        <label class="control-label mb-10">FACULTAD O INSTITUTO</label>
-                                                                                                        <select class="form-control">
-                                                                                                            <option value="">Administracion,
-                                                                                                                finanzas
-                                                                                                                y ciencias
-                                                                                                                economicas
-                                                                                                                </option>
-                                                                                                            <option value="">Humanidades y
-                                                                                                                ciencias
-                                                                                                                sociales
-                                                                                                                </option>
-                                                                                                            <option value="">Ingenieria</option>
-                                                                                                            <option value="">Estudios en ambientes
-                                                                                                                virtuales</option>
-                                                                                                        </select>
-                                                                                                        <span class="help-block"> Seleccione Tipo de
-                                                                                                            materia </span>
+                                                                                                        <label class="control-label mb-10">Descripcion materia</label>
+                                                                                                        <textarea class="form-control" rows="5" ng-disabled="true">{{dataSyllabus.cabecera.descripcionMateria}}</textarea>                                                                                                                                                                                                              
                                                                                                     </div>
-                                                                                                </div>
-
-                                                                                                <div class="col-md-6">
-                                                                                                    <div class="form-group">
-                                                                                                        <label class="control-label mb-10">Programa</label>
-                                                                                                        <input type="text" id="firstName" class="form-control" placeholder="Nombre programa">
-                                                                                                    </div>
-                                                                                                </div>
+                                                                                                </div>                                                                                                
                                                                                             </div>
 
 
@@ -281,7 +216,6 @@
                                                                                             <!-- /Row -->
 
                                                                                         </div>
-
                                                                                     </form>
                                                                                 </div>
                                                                             </div>
@@ -298,7 +232,10 @@
 
                                                     <ul class="list-inline pull-right">
                                                         <li>
-                                                            <button type="button" class="btn btn-primary next-step">Guardar y continuar</button>
+                                                            <button type="button" ng-click="WizCtrl.CrearCabeceraSyllabus()" class="btn btn-primary">Guardar </button>
+                                                        </li>
+                                                        <li>
+                                                            <button type="button"  class="btn btn-primary next-step" ng-disabled="WizCtrl.contCreate1" >continuar</button>
                                                         </li>
                                                     </ul>
                                                 </div>
