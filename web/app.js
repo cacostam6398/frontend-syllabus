@@ -14,6 +14,8 @@ IdentiApp.constant('CONFIG', {
 
 
 IdentiApp.run(function ($rootScope, $location, $http, CONFIG, ROLES) {
+    console.log('http://',location.host);
+    $rootScope.baseUri = 'http://'+ location.host ;
     console.log('permisos + rol')
     console.log(ROLES)
     var storage;

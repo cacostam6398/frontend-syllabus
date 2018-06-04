@@ -129,7 +129,7 @@
 	        if (jQuery('#myform').valid()) {
 	            var user = { "UsuaUsua": "", "UsuaPwd": "" };	          
 	            var Ctrl = this;
-	            var Url = "http://localhost:90/restapi-syllabusean/public/api/index/aut";
+	            var Url =  $rootScope.baseUri + "/restapi-syllabusean/public/api/index/aut";
 	             var success = function (json) {	
 
 	                if (json.data.status != "OK") {

@@ -92,7 +92,7 @@ IdentiApp.controller("WizardCreacionSyllabus", ['Enviar', 'Cargar', '$location',
     this.cargarCombos = function(){
 
         var jsonEnvio = { 'id_usuario': $rootScope.user.id_usuario, 'token': $rootScope.token }
-        var url = "http://localhost:90/restapi-syllabusean/public/programas/obtmat";
+        var url =  $rootScope.baseUri + "/restapi-syllabusean/public/programas/obtmat";
         var Ctrl = this;
         var success = function (json) {
             Ctrl.ListMatProgramas = json.data.programas;
