@@ -41,8 +41,59 @@ IdentiApp.controller("WizardCreacionSyllabus", ['Enviar', 'Cargar', '$location',
     var Ctrl = this;
     this.currentDate = new Date();
     this.currentYear =  this.currentDate.getFullYear();
+
+    // variavles syllabus creacion
+
     $rootScope.dataSyllabus={}
+    $rootScope.dataSyllabus.detalle = {                
+        bibliografia : "",
+        co_requisito : "",
+        competencia_global : "",
+        duracion : "",
+        evaluacion : "",
+        hrs_autonomas : "",
+        hrs_directas : "",
+        lengua : "",
+        metodologia : "" ,
+        modalidad : "",
+        pr_lengua : "",
+        pre_requisito : "",
+        proposito : "",
+        recursos : "",
+        resumen : ""
+    }
+
+    this.detalleInputs = {                
+        bibliografia : false,
+        co_requisito : false,
+        competencia_global : false,
+        duracion : false,
+        evaluacion : false ,
+        hrs_autonomas : false ,
+        hrs_directas : false ,
+        lengua : false ,
+        metodologia : false ,
+        modalidad : false ,
+        pr_lengua : false ,
+        pre_requisito : false ,
+        proposito : false ,
+        recursos : false ,
+        resumen :false
+    }
+
+
     this.contCreate1 = true;
+    this.BtnGuardar1 = false;
+
+    this.contCreate2 = true;
+    this.BtnGuardar2 = false;
+
+    this.obserbtext = false;
+    this.programaCmb= false;
+    this.materiaCmb= false;
+
+
+   // FINNN variavles syllabus creacion
 
     var e = jQuery.Event("keypress");
     e.which = 13; //choose the one you want
@@ -173,28 +224,151 @@ IdentiApp.controller("WizardCreacionSyllabus", ['Enviar', 'Cargar', '$location',
         if( typeof data != 'undefined' ){
             if(data.materia != "" && data.programa != ""  ){  
             
-                var jsonEnvio =  { 'id_usuario': $rootScope.user.id_usuario, 'token': $rootScope.token, "id_materia":data.materia, "correo": $rootScope.user.correo,"observacion":"P"}
+                var jsonEnvio =  { 'id_usuario': $rootScope.user.id_usuario, 'token': $rootScope.token, "id_materia":data.materia, "correo": $rootScope.user.correo,"observacion":data.obsSyllabusCabecera}
                 var url =  $rootScope.baseUri + "/restapi-syllabusean/public/syllabus/crearsyl";
                 
                 var success = function (json) {
                     swal("info", 'cabecera creada', "success");                  
                     Ctrl.contCreate1 = false;
-                    console.log(json)
+                    Ctrl.BtnGuardar1 = true;
+                    Ctrl.obserbtext = true;
+                    Ctrl.programaCmb= true;
+                    Ctrl.materiaCmb= true;
+                    $rootScope.dataSyllabus.IdSyllabus= json.data.syllabus                   
                 };
-                var error = function (resp) { console.log("Error: " + resp);Ctrl.contCreate1 = true; swal("info", 'Error en el servicio', "info")};        
+                var error = function (resp) { console.log("Error: " + resp);Ctrl.contCreate1 = true; Ctrl.BtnGuardar1 = false; Ctrl.obserbtext = false;swal("info", 'Error en el servicio', "info")};        
                 Enviar.elemento(Ctrl, url, success, error, jsonEnvio);
             }else{
                 Ctrl.contCreate1 = true;
+                Ctrl.BtnGuardar1 = false;
+                Ctrl.obserbtext = false;
+                Ctrl.programaCmb= false;
+                Ctrl.materiaCmb= false;
                 swal("info", 'Completar informacion', "info");
 
             }
         }else{
             Ctrl.contCreate1 = true;
+            Ctrl.BtnGuardar1 = false;
+            Ctrl.obserbtext = false;
+            Ctrl.programaCmb= false;
+            Ctrl.materiaCmb= false;
             swal("info", 'Completar informacion', "info");
 
         }
     }
 
+
+    this.CreardetalleSyllabus = function(objEnv){
+        console.log(objEnv)
+     
+
+        var jsonEnvio = objEnv
+        var url =  $rootScope.baseUri + "/restapi-syllabusean/public/syllabus/creardet";
+        var Ctrl = this;
+        var success = function (json) {
+            console.log(json)
+            swal("info", 'Detalle creado', "success");                  
+            Ctrl.contCreate2 = false;
+            Ctrl.BtnGuardar2 = true;
+            Ctrl.desCamposDetalle(1);
+        };
+        var error = function (resp) { console.log("Error: " + resp); swal("info", 'Error en el servicio', "info") };        
+        Enviar.elemento(Ctrl, url, success, error, jsonEnvio);
+
+
+
+
+
+    }
+
+    
+    this.ValidarCamposDetalleSyllabus = function(){
+
+        var Ctrl = this;
+        let objEnv =  $rootScope.dataSyllabus.detalle ;
+        
+         if (   objEnv.bibliografia == "" ||
+                objEnv.bibliografia == "" ||
+                objEnv.co_requisito == "" ||
+                objEnv.competencia_global == "" ||
+                objEnv.duracion == "" ||
+                objEnv.evaluacion == "" ||
+                objEnv.hrs_autonomas == "" ||
+                objEnv.hrs_directas =="" ||
+                objEnv.lengua == "" ||
+                objEnv.metodologia == "" ||
+                objEnv.modalidad == "" ||
+                objEnv.pr_lengua =="" ||
+                objEnv.pre_requisito == "" ||
+                objEnv.proposito == "" ||
+                objEnv.recursos == "" ||
+                objEnv.resumen == ""        
+        ){
+
+            swal("info", 'Completar informacion', "info");
+            Ctrl.contCreate1 = true;
+            Ctrl.BtnGuardar1 = false;
+
+        }else{
+
+            objEnv.id_syllabus  = $rootScope.dataSyllabus.IdSyllabus
+            objEnv.correo  = $rootScope.user.correo
+            objEnv.token = $rootScope.token
+            objEnv.observacion_version = 'Primera version Syllabus'
+
+            Ctrl.CreardetalleSyllabus(objEnv);
+
+        }        
+
+    }
+
+    this.desCamposDetalle = function(code){
+        var Ctrl = this;
+        if(code == 1){
+
+            Ctrl.detalleInputs = {                
+                bibliografia : true,
+                co_requisito : true,
+                competencia_global : true,
+                duracion : true,
+                evaluacion : true ,
+                hrs_autonomas : true ,
+                hrs_directas : true ,
+                lengua : true ,
+                metodologia : true ,
+                modalidad : true ,
+                pr_lengua : true ,
+                pre_requisito : true ,
+                proposito : true ,
+                recursos : true ,
+                resumen :true
+            }
+
+        }else{
+
+            Ctrl.detalleInputs = {                
+                bibliografia : false,
+                co_requisito : false,
+                competencia_global : false,
+                duracion : false,
+                evaluacion : false ,
+                hrs_autonomas : false ,
+                hrs_directas : false ,
+                lengua : false ,
+                metodologia : false ,
+                modalidad : false ,
+                pr_lengua : false ,
+                pre_requisito : false ,
+                proposito : false ,
+                recursos : false ,
+                resumen :false
+            }        
+
+        }
+
+
+    }
     
 
     this.cargarCombos(); 

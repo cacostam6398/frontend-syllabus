@@ -149,8 +149,8 @@
                                                                                                 <div class="col-md-3">
                                                                                                     <div class="form-group">
                                                                                                         <label class="control-label mb-10">Programas</label>
-                                                                                                        <select  class="form-control" name="repeatSelect" id="repeatSelect" ng-model="dataSyllabus.cabecera.programa" ng-change="WizCtrl.ObtProgramasByPrograma(dataSyllabus.cabecera.programa)">
-                                                                                                            <option value="">---Seleccionar---</option> <!-- not selected / blank option -->
+                                                                                                        <select  class="form-control" name="repeatSelect" id="repeatSelect" ng-model="dataSyllabus.cabecera.programa" ng-change="WizCtrl.ObtProgramasByPrograma(dataSyllabus.cabecera.programa)" ng-disabled="WizCtrl.programaCmb">
+                                                                                                            <option value="" disabled>---Seleccionar---</option> <!-- not selected / blank option -->
                                                                                                             <option ng-repeat="option in WizCtrl.ListMatProgramas" value="{{option.programa.id_programa}}">{{option.programa.nombre}}</option>
                                                                                                         </select>  
                                                                                                         <span class="help-block"> Seleccione Tipo de
@@ -161,8 +161,8 @@
                                                                                                 <div class="col-md-3">
                                                                                                     <div class="form-group">
                                                                                                         <label class="control-label mb-10">Materias</label>
-                                                                                                        <select  class="form-control" name="repeatSelect2" id="repeatSelect2" ng-model="dataSyllabus.cabecera.materia" ng-change="WizCtrl.llenarCamposCabecera(dataSyllabus.cabecera.materia)" >
-                                                                                                                <option value="">---Seleccionar---</option> <!-- not selected / blank option -->
+                                                                                                        <select  class="form-control" name="repeatSelect2" id="repeatSelect2" ng-model="dataSyllabus.cabecera.materia" ng-change="WizCtrl.llenarCamposCabecera(dataSyllabus.cabecera.materia)" ng-disabled="WizCtrl.materiaCmb">
+                                                                                                                <option value="" disabled>---Seleccionar---</option> <!-- not selected / blank option -->
                                                                                                                 <option ng-repeat="option2 in WizCtrl.ListMatSelect[0].materias" value="{{option2.id_materia}}">{{ option2.nombre }}</option>
                                                                                                             </select>  
                                                                                                                                                                                                                       
@@ -208,10 +208,14 @@
                                                                                                         <label class="control-label mb-10">Descripcion materia</label>
                                                                                                         <textarea class="form-control" rows="5" ng-disabled="true">{{dataSyllabus.cabecera.descripcionMateria}}</textarea>                                                                                                                                                                                                              
                                                                                                     </div>
+                                                                                                </div>    
+                                                                                                <div class="col-md-3">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="control-label mb-10">Observación syllabus</label>
+                                                                                                        <textarea class="form-control" rows="5"  ng-disabled="WizCtrl.obserbtext" ng-model="dataSyllabus.cabecera.obsSyllabusCabecera" > </textarea>                                                                                                                                                                                                                                                                                                                
+                                                                                                    </div>
                                                                                                 </div>                                                                                                
                                                                                             </div>
-
-
 
                                                                                             <!-- /Row -->
 
@@ -232,7 +236,7 @@
 
                                                     <ul class="list-inline pull-right">
                                                         <li>
-                                                            <button type="button" ng-click="WizCtrl.CrearCabeceraSyllabus()" class="btn btn-primary">Guardar </button>
+                                                            <button type="button" ng-click="WizCtrl.CrearCabeceraSyllabus()"  class="btn btn-primary" ng-disabled="WizCtrl.BtnGuardar1">Guardar </button>
                                                         </li>
                                                         <li>
                                                             <button type="button"  class="btn btn-primary next-step" ng-disabled="WizCtrl.contCreate1" >continuar</button>
@@ -260,28 +264,79 @@
                                                                                             <div class="row">
                                                                                                 <div class="col-md-3">
                                                                                                     <div class="form-group">
-                                                                                                        <label class="control-label mb-10">proposito del curso</label>
-                                                                                                        <textarea class="form-control" rows="5"></textarea>
+                                                                                                        <label class="control-label mb-10">Modalidad</label>
+                                                                                                        <select class="form-control" ng-model="dataSyllabus.detalle.modalidad" ng-disabled="WizCtrl.detalleInputs.modalidad" >
+                                                                                                                <option value="" disabled>---Seleccionar---</option> <!-- not selected / blank option -->
+                                                                                                                <option value="Presencial">Presencial</option>
+                                                                                                                <option value="Virtual">Virtual</option>                                                                                                               
+                                                                                                        </select>
+                                                                                                        <span class="help-block"> Seleccione Modalidad de la materia </span> 
                                                                                                     </div>
                                                                                                 </div>
 
                                                                                                 <div class="col-md-3">
                                                                                                     <div class="form-group">
+                                                                                                        <label class="control-label mb-10">Duracion</label>
+                                                                                                        <select class="form-control" ng-model="dataSyllabus.detalle.duracion" ng-disabled="WizCtrl.detalleInputs.duracion">
+                                                                                                                <option value="" disabled>---Seleccionar---</option> <!-- not selected / blank option -->
+                                                                                                                <option value="Ciclo">Ciclo</option>
+                                                                                                                <option value="Semestre">Semestre</option>
+                                                                                                                <!-- <option value="">Modulo</option>
+                                                                                                                <option value="">C. Virtual</option>
+                                                                                                                <option value="">S. Virtual</option> -->
+                                                                                                            </select>
+                                                                                                            <span class="help-block"> Seleccione Duracion de la materia </span> 
+                                                                                                    </div>
+                                                                                                </div> 
+
+                                                                                                <div class="col-md-2">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="control-label mb-10">HORAS AC. DIRECTO</label>
+                                                                                                        <input type="number"  class="form-control" placeholder="Numero" ng-model="dataSyllabus.detalle.hrs_directas"  ng-disabled="WizCtrl.detalleInputs.hrs_directas">                                                                          
+                                                                                                    </div>
+                                                                                                </div>     
+                                                                                                <div class="col-md-2">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="control-label mb-10">HORAS T. AUTÓNOMO</label>
+                                                                                                        <input type="number"  class="form-control" placeholder="Numero" ng-model="dataSyllabus.detalle.hrs_autonomas" ng-disabled="WizCtrl.detalleInputs.hrs_autonomas">                                                                          
+                                                                                                    </div>
+                                                                                                </div>     
+                                                                                                <div class="col-md-2">
+                                                                                                        <div class="form-group">
+                                                                                                            <label class="control-label mb-10">HORAS TOTALES</label>
+                                                                                                            <input type="number"  class="form-control" placeholder="Numero" ng-disabled="true" ng-model="dataSyllabus.detalle.hrs_tota" ng-value="dataSyllabus.detalle.hrs_autonomas + dataSyllabus.detalle.hrs_directas " >                                                                          
+                                                                                                        </div>
+                                                                                                </div>                                                                                                                            
+                    
+
+                                                                                            </div>    
+
+
+                                                                                            <div class="row">
+                                                                                                <div class="col-md-3">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="control-label mb-10">proposito del curso</label>
+                                                                                                        <textarea class="form-control" rows="5" ng-model="dataSyllabus.detalle.proposito" ng-disabled="WizCtrl.detalleInputs.proposito"></textarea>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                
+                                                                                                <div class="col-md-3">
+                                                                                                    <div class="form-group">
                                                                                                         <label class="control-label mb-10">Competencia global</label>
-                                                                                                        <textarea class="form-control" rows="5"></textarea>
+                                                                                                        <textarea class="form-control" rows="5" ng-model="dataSyllabus.detalle.competencia_global" ng-disabled="WizCtrl.detalleInputs.competencia_global"></textarea>
                                                                                                     </div>
                                                                                                 </div>
 
                                                                                                 <div class="col-md-3">
                                                                                                     <div class="form-group">
                                                                                                         <label class="control-label mb-10">METODOLOGÍA</label>
-                                                                                                        <textarea class="form-control" rows="5"></textarea>
+                                                                                                        <textarea class="form-control" rows="5" ng-model="dataSyllabus.detalle.metodologia" ng-disabled="WizCtrl.detalleInputs.metodologia"></textarea>
                                                                                                     </div>
                                                                                                 </div>
                                                                                                 <div class="col-md-3">
                                                                                                     <div class="form-group">
                                                                                                         <label class="control-label mb-10">RESUMEN DE CONTENIDOS </label>
-                                                                                                        <textarea class="form-control" rows="5"></textarea>
+                                                                                                        <textarea class="form-control" rows="5" ng-model="dataSyllabus.detalle.resumen" ng-disabled="WizCtrl.detalleInputs.resumen"></textarea>
                                                                                                     </div>
                                                                                                 </div>
                                                                                             </div> 
@@ -291,54 +346,32 @@
                                                                                                 <div class="col-md-3">
                                                                                                     <div class="form-group">
                                                                                                         <label class="control-label mb-10">EVALUACIÓN</label>
-                                                                                                        <textarea class="form-control" rows="5"></textarea>
+                                                                                                        <textarea class="form-control" rows="5" ng-model="dataSyllabus.detalle.evaluacion" ng-disabled="WizCtrl.detalleInputs.evaluacion"></textarea>
                                                                                                     </div>
                                                                                                 </div>
 
                                                                                                 <div class="col-md-3">
                                                                                                     <div class="form-group">
                                                                                                         <label class="control-label mb-10">RECURSOS TECNOLÓGICOS</label>
-                                                                                                        <textarea class="form-control" rows="5"></textarea>
+                                                                                                        <textarea class="form-control" rows="5" ng-model="dataSyllabus.detalle.recursos" ng-disabled="WizCtrl.detalleInputs.recursos"></textarea>
                                                                                                     </div>
-                                                                                                </div>                                                                                              
+                                                                                                </div>      
+                                                                                                
+                                                                                                <div class="col-md-3">
+                                                                                                        <div class="form-group">
+                                                                                                            <label class="control-label mb-10">UNIDADES DE ESTUDIO PRE-REQUISITO</label>
+                                                                                                            <textarea class="form-control" rows="5" ng-model="dataSyllabus.detalle.pre_requisito" ng-disabled="WizCtrl.detalleInputs.pre_requisito"></textarea>
+                                                                                                        </div>
+                                                                                                    </div>
+    
+                                                                                                    <div class="col-md-3">
+                                                                                                        <div class="form-group">
+                                                                                                            <label class="control-label mb-10">UNIDADES DE ESTUDIO CO-REQUISITO</label>
+                                                                                                            <textarea class="form-control" rows="5" ng-model="dataSyllabus.detalle.co_requisito" ng-disabled="WizCtrl.detalleInputs.co_requisito"></textarea>
+                                                                                                        </div>
+                                                                                                    </div>    
 
-                                                                                                <div class="col-md-4">
-                                                                                                    <div class="form-group">
-                                                                                                        <label class="control-label mb-10">COMPONENTE DE LENGUA EXTRANJERA</label>
-                                                                                                            <div class="row">
-                                                                                                                <div class="col-md-6">
-                                                                                                                    <div class="form-group">
-                                                                                                                        <label class="control-label mb-8">LENGUA EXTRANJERA:</label>
-                                                                                                                        <select class="form-control">
-                                                                                                                                <option value="">N/A </option>  
-                                                                                                                                <option value="">Ingles </option>  
-                                                                                                                                <option value="">Frances </option>  
-                                                                                                                                <option value="">Portugues </option> 
-                                                                                                                        </select>
-                                                                                                                    </div>
-                                                                                                                </div>
-                                                                                                                <div class="col-md-3">
-                                                                                                                        <div class="form-group">
-                                                                                                                                <label class="control-label mb-8">PORCENTAJE</label>
-                                                                                                                                <select class="form-control">
-                                                                                                                                    <option value="">10 </option>      
-                                                                                                                                    <option value="">20 </option>    
-                                                                                                                                    <option value="">30 </option>    
-                                                                                                                                    <option value="">40 </option>    
-                                                                                                                                    <option value="">50 </option>    
-                                                                                                                                    <option value="">60 </option>    
-                                                                                                                                    <option value="">70 </option>    
-                                                                                                                                    <option value="">80 </option>    
-                                                                                                                                    <option value="">90 </option>      
-                                                                                                                                    <option value="">100 </option>   
-                                                                                                                                </select>
-                                                                                                                        </div>
-                                                                                                                    
-                                                                                                                </div>
-                                                                                                            </div>
-                                                                                                      
-                                                                                                    </div>
-                                                                                                </div>
+                                                                                               
                                                                                                
                                                                                             </div> 
 
@@ -346,9 +379,51 @@
                                                                                                 <div class="col-md-6">                                                                                                   
                                                                                                         <div class="form-group">
                                                                                                             <label class="control-label mb-10">BIBLIOGRAFÍA</label>
-                                                                                                            <textarea class="form-control" rows="5"></textarea>
+                                                                                                            <textarea class="form-control" rows="5" ng-model="dataSyllabus.detalle.bibliografia" ng-disabled="WizCtrl.detalleInputs.bibliografia"></textarea>
                                                                                                         </div>                                                                                                    
                                                                                                 </div>
+
+                                                                                                <div class="col-md-4">
+                                                                                                        <div class="form-group">
+                                                                                                            <label class="control-label mb-10">COMPONENTE DE LENGUA EXTRANJERA</label>
+                                                                                                                <div class="row">
+                                                                                                                    <div class="col-md-6">
+                                                                                                                        <div class="form-group">
+                                                                                                                            <label class="control-label mb-8">LENGUA EXTRANJERA:</label>
+                                                                                                                            <select class="form-control" ng-model="dataSyllabus.detalle.lengua" ng-disabled="WizCtrl.detalleInputs.lengua">
+                                                                                                                                    <option value="" disabled>---Seleccionar---</option> <!-- not selected / blank option -->
+                                                                                                                                    <option value="N/A">N/A </option>  
+                                                                                                                                    <option value="Ingles">Ingles </option>  
+                                                                                                                                    <option value="Frances">Frances </option>  
+                                                                                                                                    <option value="Portugues">Portugues </option> 
+                                                                                                                            </select>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                    <div class="col-md-3">
+                                                                                                                            <div class="form-group">
+                                                                                                                                    <label class="control-label mb-8">PORCENTAJE</label>
+                                                                                                                                    <select class="form-control" ng-model="dataSyllabus.detalle.pr_lengua" ng-disabled="WizCtrl.detalleInputs.pr_lengua">
+                                                                                                                                        <option value="" disabled>---Seleccionar---</option> <!-- not selected / blank option -->
+                                                                                                                                        <option value="10">10 </option>      
+                                                                                                                                        <option value="20">20 </option>    
+                                                                                                                                        <option value="30">30 </option>    
+                                                                                                                                        <option value="40">40 </option>    
+                                                                                                                                        <option value="50">50 </option>    
+                                                                                                                                        <option value="60">60 </option>    
+                                                                                                                                        <option value="70">70 </option>    
+                                                                                                                                        <option value="80">80 </option>    
+                                                                                                                                        <option value="90">90 </option>      
+                                                                                                                                        <option value="100">100 </option>   
+                                                                                                                                    </select>
+                                                                                                                            </div>
+                                                                                                                        
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                          
+                                                                                                        </div>
+                                                                                                    </div>
+
+
                                                                                             </div>
                                                                                             <!-- /Row -->
 
@@ -368,7 +443,10 @@
                                                             <button type="button" class="btn btn-default prev-step">Anterior</button>
                                                         </li>
                                                         <li>
-                                                            <button type="button" class="btn btn-primary next-step">Guardar y continuar</button>
+                                                            <button type="button" ng-click="WizCtrl.ValidarCamposDetalleSyllabus()"  class="btn btn-primary" ng-disabled="WizCtrl.BtnGuardar2">Guardar </button>
+                                                        </li>
+                                                        <li>
+                                                            <button type="button"  class="btn btn-primary next-step" ng-disabled="WizCtrl.contCreate2" >continuar</button>
                                                         </li>
                                                     </ul>
                                                 </div>
