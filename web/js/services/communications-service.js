@@ -31,9 +31,9 @@ IdentiApp.factory('Enviar', ['$http', '$rootScope',
                         if (Data) {
                             envio = $http({ method: "POST", url: Url, data: Data });
                         }
-                        else
-                            envio = $http({ method: "POST", url: Url, data: Data });
-                            
+                        else{
+                            envio = $http({ method: "POST", url: Url });
+                        }
 
                         envio.then(success,error )                
                 }

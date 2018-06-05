@@ -82,18 +82,26 @@ IdentiApp.controller("WizardCreacionSyllabus", ['Enviar', 'Cargar', '$location',
     }
 
 
-    this.contCreate1 = true;
+    this.contCreate1 = false;
     this.BtnGuardar1 = false;
 
-    this.contCreate2 = true;
+    this.contCreate2 = false;
     this.BtnGuardar2 = false;
 
     this.obserbtext = false;
-    this.programaCmb= false;
-    this.materiaCmb= false;
+    this.programaCmb = false;
+    this.materiaCmb = false;
 
 
    // FINNN variavles syllabus creacion
+
+   this.jsonComboEM = []
+   this.jsonComboSH = []
+   this.jsonComboIN = []
+   this.jsonComboCO = []
+   this.jsonComboTE = []
+
+
 
     var e = jQuery.Event("keypress");
     e.which = 13; //choose the one you want
@@ -232,8 +240,8 @@ IdentiApp.controller("WizardCreacionSyllabus", ['Enviar', 'Cargar', '$location',
                     Ctrl.contCreate1 = false;
                     Ctrl.BtnGuardar1 = true;
                     Ctrl.obserbtext = true;
-                    Ctrl.programaCmb= true;
-                    Ctrl.materiaCmb= true;
+                    Ctrl.programaCmb = true;
+                    Ctrl.materiaCmb = true;
                     $rootScope.dataSyllabus.IdSyllabus= json.data.syllabus                   
                 };
                 var error = function (resp) { console.log("Error: " + resp);Ctrl.contCreate1 = true; Ctrl.BtnGuardar1 = false; Ctrl.obserbtext = false;swal("info", 'Error en el servicio', "info")};        
@@ -247,15 +255,14 @@ IdentiApp.controller("WizardCreacionSyllabus", ['Enviar', 'Cargar', '$location',
                 swal("info", 'Completar informacion', "info");
 
             }
-        }else{
-            Ctrl.contCreate1 = true;
-            Ctrl.BtnGuardar1 = false;
-            Ctrl.obserbtext = false;
-            Ctrl.programaCmb= false;
-            Ctrl.materiaCmb= false;
-            swal("info", 'Completar informacion', "info");
-
-        }
+            }else{
+                Ctrl.contCreate1 = true;
+                Ctrl.BtnGuardar1 = false;
+                Ctrl.obserbtext = false;
+                Ctrl.programaCmb = false;
+                Ctrl.materiaCmb = false;
+                swal("info", 'Completar informacion', "info");
+            }
     }
 
 
@@ -371,8 +378,74 @@ IdentiApp.controller("WizardCreacionSyllabus", ['Enviar', 'Cargar', '$location',
     }
     
 
+    ////////////////////// Creacion competencias ///////////////////////
+
+    function checkEM(mat) {
+        if(mat.clave == "EM" ){                
+            return true; 
+        }else{               
+            return false;
+        }
+    }
+
+    function checkSH(mat) {
+        if(mat.clave == "SH" ){                
+            return true; 
+        }else{               
+            return false;
+        }
+    }
+
+    function checkIN(mat) {
+        if(mat.clave == "IN" ){                
+            return true; 
+        }else{               
+            return false;
+        }
+    }
+
+    function checkCO(mat) {
+        if(mat.clave == "CO" ){                
+            return true; 
+        }else{               
+            return false;
+        }
+    }
+
+    function checkTE(mat) {
+        if(mat.clave == "TE" ){                
+            return true; 
+        }else{               
+            return false;
+        }
+    }
+
+    $scope.cargarCompetenciasTransversales = function(){
+
+        var jsonEnvio = { 'id_usuario': $rootScope.user.id_usuario, 'token': $rootScope.token }
+        var url =  $rootScope.baseUri + "/restapi-syllabusean/public/syllabus/obtcompt";
+        var Ctrl = this.WizCtrl;
+        var success = function (json) {           
+            
+             Ctrl.jsonComboEM = json.data.syllabus.filter(checkEM);
+             Ctrl.jsonComboSH = json.data.syllabus.filter(checkSH);
+             Ctrl.jsonComboIN = json.data.syllabus.filter(checkIN);
+             Ctrl.jsonComboCO = json.data.syllabus.filter(checkCO);
+             Ctrl.jsonComboTE = json.data.syllabus.filter(checkTE);
+
+        };
+        var error = function (resp) { console.log("Error: " + resp); jQuery(".progress").hide(); };        
+        Enviar.elemento(Ctrl, url, success, error, jsonEnvio);
+
+    }
+
+
+    setTimeout(function(){       
+        $scope.cargarCompetenciasTransversales();
+    },500)   
     this.cargarCombos(); 
     funcionalidadWiz();
+    
    
 
 }]);
