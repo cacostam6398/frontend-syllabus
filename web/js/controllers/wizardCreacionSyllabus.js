@@ -172,6 +172,8 @@ IdentiApp.controller("WizardCreacionSyllabus", ['Enviar', 'Cargar', '$location',
             });
     }
              
+ 
+
 
     function nextTab(elem) {
         $(elem).next().find('a[data-toggle="tab"]').click();
@@ -582,6 +584,64 @@ IdentiApp.controller("WizardCreacionSyllabus", ['Enviar', 'Cargar', '$location',
 
 
     }
+
+
+    this.contadorSesiones = 0
+
+    this.aperturaSesion = "<div class='col-lg-6 col-md-6 col-sm-6 col-xs-12'> 	<div class='panel panel-inverse panel-dropdown card-view'>"
+    this.headerSesion =  "<div class='panel-heading'>	<div class='pull-left'>		<h6 class='panel-title txt-dark'>Sesion 1</h6>	</div>	<div class='pull-right'><div class='tab-struct custom-tab-1'>	<ul role='tablist' class='nav nav-tabs' id='myTabs_9'>	<li role='presentation'>	<a	target='_self' data-toggle='tab' role='tab'	id='profile_tab_9'	href='#profile_9' aria-expanded='false'>Act.aprendisaje</a>	</li>	<li role='presentation' class='active'>	<a	target='_self'	data-toggle='tab'	role='tab'	id='home_tab_9'	href='#home_9' aria-expanded='true'>Contenidos</a></li>	</ul></div>	</div><div class='clearfix'></div></div>"
+    this.titulosCompetencias = "<div class='panel-wrapper collapse in'>	<div class='panel-body'>	<div class='tab-content' id='myTabContent_9'><div id='home_9' class='tab-pane fade active in' style='padding-top: 0px!important;' role='tabpanel'><div class='todo-box-wrap'><ul class='todo-list todo-box-nicescroll-bar'>	<div class='row' style='margin-left: 0PX;'>	<div class='col-md-2'><h6 class='panel-title txt-dark'>C.T.</h6></div><div class='col-md-2'><h6 class='panel-title txt-dark'>C.E.</h6></div></div><li class='todo-item'>"
+    // this.competenciasSesion = "<div class='row'><div class='col-md-6'>	<div class='row' style='margin-bottom: 1%' ><div class='col-md-6'> <label class='btn btn-default btn-checkbox' style='background: white;'><input name='checkbox' type='checkbox' value='ant' style='display: none; ' autocomplete='false'/> <i style='margin-left: -11px;'>AN</i></label></div> <div class='col-md-6'><label class='btn btn-default btn-checkbox' style='background: white;'><input name='checkbox' type='checkbox' value='CO' style='display: none; ' autocomplete='false'/> <i style='margin-left: -11px;'>CO</i>	</label></div> </div></div>	<div class='col-md-6'><div class='row'><div class='col-md-12'><textarea class='form-control' rows='4' > fdgdfgdfg </textarea></div></div></div></div>			"
+    this.competenciasSesion = "";    
+    this.cierreCompetenciasSesion = "</li><li><hr class='light-grey-hr' /></li> </ul></div></div>   "
+    this.actividadesSesion = "<div id='profile_9' class='tab-pane fade' role='tabpanel' style='padding-top: 0px!important;'><label class='control-label mb-10'>Digite	contenido</label><textarea class='form-control' rows='5'> </textarea></div>"
+    this.cierreSesion = "</div></div></div></div></div>"
+
+   
+   
+  
+
+    this.armarCompetenciasHtml = function(){
+        var Ctrl = this;
+        Ctrl.competenciasSesion = "<div class='row'><div class='col-md-6'> "        
+
+        let jsonCompTrans = $rootScope.dataSyllabus.competenciasTra;
+        let jsonCompEspe  = $rootScope.dataSyllabus.competenciasEsp;
+        let cont = 0
+        
+        for (let Z in jsonCompEspe) {
+
+            for (let i in jsonCompTrans) { 
+
+                let un = jsonCompTrans[cont]
+                Ctrl.competenciasSesion =  Ctrl.competenciasSesion + "<div class='row' style='margin-bottom: 1%' ><div class='col-md-6'> <label class='btn btn-default btn-checkbox' style='background: white;'><input name='checkbox' type='checkbox' value='"+   jsonCompTrans[i] +"' style='display: none; ' autocomplete='false'/> <i style='margin-left: -11px;'>"+  i   +"</i></label></div> <div class='col-md-6'><label class='btn btn-default btn-checkbox' style='background: white;'><input name='checkbox' type='checkbox' value='"+ jsonCompTrans[Z]   +"' style='display: none; ' autocomplete='false'/> <i style='margin-left: -11px;'>"+ Z +"</i>	</label></div> </div>"
+               
+                cont+=1;
+                break;
+            }
+            // jsonComp.push({"clave": i , "contenido": $rootScope.dataSyllabus.competenciasEsp[i]})
+
+        }
+
+
+        Ctrl.competenciasSesion = Ctrl.competenciasSesion  +  " </div>	<div class='col-md-6'><div class='row'><div class='col-md-12'><textarea class='form-control' rows='4' > fdgdfgdfg </textarea></div></div></div></div>"
+
+        Ctrl.crearHtmlSesiones()
+    }
+  
+
+
+    this.crearHtmlSesiones = function(){
+        var Ctrl = this;
+
+        $scope.htmlBind = Ctrl.aperturaSesion +  Ctrl.headerSesion +  Ctrl.titulosCompetencias + Ctrl.competenciasSesion + Ctrl.cierreCompetenciasSesion + Ctrl.actividadesSesion +  Ctrl.cierreSesion 
+
+        $("#sesionesSyl").append($scope.htmlBind); 
+
+    }
+
+
+
 
     setTimeout(function(){       
         $scope.cargarCompetenciasTransversales();
