@@ -526,35 +526,35 @@
                                                                                                                         <li class="todo-item">
                                                                                                                             <div class="">
                                                                                                                                 <label for="checkbox001" style="font-size: medium;font-weight: bold;margin-right: 3%;">A.</label>
-                                                                                                                                <textarea class="form-control" rows="3" > </textarea>                                                                                                                                            
+                                                                                                                                <textarea class="form-control" rows="3" ng-model="dataSyllabus.competenciasEsp.A" ng-disabled="WizCtrl.CompetenciasInputs.A"> </textarea>                                                                                                                                                                                                                                                                     
                                                                                                                             </div>
                                                                                                                         </li>
                                                                                                                         
                                                                                                                         <li class="todo-item">
                                                                                                                             <div class="">
                                                                                                                                 <label for="checkbox001" style="font-size: medium;font-weight: bold;margin-right: 3%;">B.</label>
-                                                                                                                                <textarea class="form-control" rows="3" >  </textarea>
+                                                                                                                                <textarea class="form-control" rows="3" ng-model="dataSyllabus.competenciasEsp.B" ng-disabled="WizCtrl.CompetenciasInputs.B">  </textarea>
                                                                                                                             </div>
                                                                                                                         </li>
                                                                                                                       
                                                                                                                         <li class="todo-item">
                                                                                                                             <div class="">
                                                                                                                                 <label for="checkbox001" style="font-size: medium;font-weight: bold;margin-right: 3%;">C.</label>
-                                                                                                                                <textarea class="form-control" rows="3" >  </textarea>
+                                                                                                                                <textarea class="form-control" rows="3" ng-model="dataSyllabus.competenciasEsp.C" ng-disabled="WizCtrl.CompetenciasInputs.C">  </textarea>
                                                                                                                             </div>
                                                                                                                         </li>
                                                                                                                        
                                                                                                                         <li class="todo-item">
                                                                                                                             <div class="">
                                                                                                                                 <label for="checkbox001" style="font-size: medium;font-weight: bold;margin-right: 3%;">D.</label>
-                                                                                                                                <textarea class="form-control" rows="3" >  </textarea>
+                                                                                                                                <textarea class="form-control" rows="3" ng-model="dataSyllabus.competenciasEsp.D" ng-disabled="WizCtrl.CompetenciasInputs.D">  </textarea>
                                                                                                                             </div>
                                                                                                                         </li>
                                                                                                                       
                                                                                                                         <li class="todo-item">
                                                                                                                             <div class="">
                                                                                                                                 <label for="checkbox001" style="font-size: medium;font-weight: bold;margin-right: 3%;">E.</label>
-                                                                                                                                <textarea class="form-control" rows="3" >  </textarea>
+                                                                                                                                <textarea class="form-control" rows="3" ng-model="dataSyllabus.competenciasEsp.E" ng-disabled="WizCtrl.CompetenciasInputs.E">  </textarea>
                                                                                                                             </div>
                                                                                                                         </li>
 
@@ -587,11 +587,11 @@
                                                                                                                             <div class="form-inline">
                                                                                                                                 
                                                                                                                                 <label for="checkbox001" style="font-size: medium;font-weight: bold;margin-right: 3%;">EM</label>
-                                                                                                                                <select class="form-control" ng-model="dataSyllabus.competencias.compEM" >
+                                                                                                                                <select class="form-control" ng-model="dataSyllabus.competenciasTra.EM" ng-disabled="WizCtrl.CompetenciasInputs.EM" >
                                                                                                                                         <option value="" disabled>---Seleccionar---</option> <!-- not selected / blank option -->
                                                                                                                                         <option ng-repeat="option in WizCtrl.jsonComboEM" value="{{option.id_competencia}}">{{option.contenido}}</option>
                                                                                                                                 </select>
-                                                                                                                                {{ dataSyllabus.competencias.compEM}}
+                                                                                                                                {{ dataSyllabus.competenciasTra.EM}}
                                                                                                                             </div>
                                                                                                                         </li>
                                                                                                                         <li>
@@ -600,11 +600,11 @@
                                                                                                                         <li class="todo-item">
                                                                                                                             <div class="form-inline">
                                                                                                                                 <label for="checkbox001" style="font-size: medium;font-weight: bold;margin-right: 3%;">SH</label>
-                                                                                                                                <select class="form-control"  ng-model="dataSyllabus.competencias.compSH">
+                                                                                                                                <select class="form-control"  ng-model="dataSyllabus.competenciasTra.SH" ng-disabled="WizCtrl.CompetenciasInputs.SH">
                                                                                                                                         <option value="" disabled>---Seleccionar---</option> <!-- not selected / blank option -->
                                                                                                                                         <option ng-repeat="option in WizCtrl.jsonComboSH" value="{{option.id_competencia}}">{{option.contenido}}</option>
                                                                                                                                 </select>
-                                                                                                                                {{ dataSyllabus.competencias.compSH}}
+                                                                                                                                {{ dataSyllabus.competenciasTra.SH }}
                                                                                                                             </div>
                                                                                                                         </li>
                                                                                                                         <li>
@@ -613,7 +613,7 @@
                                                                                                                         <li class="todo-item">
                                                                                                                             <div class="form-inline">
                                                                                                                                 <label for="checkbox001" style="font-size: medium;font-weight: bold;margin-right: 3%;">IN</label>
-                                                                                                                                <select class="form-control"  ng-model="dataSyllabus.competencias.compIN">
+                                                                                                                                <select class="form-control"  ng-model="dataSyllabus.competenciasTra.IN" ng-disabled="WizCtrl.CompetenciasInputs.IN">
                                                                                                                                         <option value="" disabled>---Seleccionar---</option> <!-- not selected / blank option -->
                                                                                                                                         <option ng-repeat="option in WizCtrl.jsonComboIN" value="{{option.id_competencia}}">{{option.contenido}}</option>
                                                                                                                                 </select>
@@ -625,7 +625,7 @@
                                                                                                                         <li class="todo-item">
                                                                                                                             <div class="form-inline">
                                                                                                                                 <label for="checkbox001" style="font-size: medium;font-weight: bold;margin-right: 3%;">CO</label>
-                                                                                                                                <select class="form-control"  ng-model="dataSyllabus.competencias.compCO">
+                                                                                                                                <select class="form-control"  ng-model="dataSyllabus.competenciasTra.CO" ng-disabled="WizCtrl.CompetenciasInputs.CO">
                                                                                                                                         <option value="" disabled>---Seleccionar---</option> <!-- not selected / blank option -->
                                                                                                                                         <option ng-repeat="option in WizCtrl.jsonComboCO" value="{{option.id_competencia}}">{{option.contenido}}</option>
                                                                                                                                 </select>
@@ -634,7 +634,7 @@
                                                                                                                         <li class="todo-item">
                                                                                                                                 <div class="form-inline">
                                                                                                                                     <label for="checkbox001" style="font-size: medium;font-weight: bold;margin-right: 3%;">TE</label>
-                                                                                                                                    <select class="form-control"  ng-model="dataSyllabus.competencias.compTE">
+                                                                                                                                    <select class="form-control"  ng-model="dataSyllabus.competenciasTra.TE" ng-disabled="WizCtrl.CompetenciasInputs.TE">
                                                                                                                                             <option value="" disabled>---Seleccionar---</option> <!-- not selected / blank option -->
                                                                                                                                             <option ng-repeat="option in WizCtrl.jsonComboTE" value="{{option.id_competencia}}">{{option.contenido}}</option>
                                                                                                                                     </select>
@@ -678,10 +678,15 @@
                                                     <ul class="list-inline pull-right">
                                                         <li>
                                                             <button type="button" class="btn btn-default prev-step">Anterior</button>
+                                                        </li>                                                      
+                                                        <li>
+                                                            <button type="button" ng-click="WizCtrl.ValidarCamposCompeSyllabus()"  class="btn btn-primary" ng-disabled="WizCtrl.BtnGuardar3">Guardar </button>
                                                         </li>
                                                         <li>
-                                                            <button type="button" class="btn btn-primary next-step">Guardar y continuar</button>
+                                                            <button type="button"  class="btn btn-primary next-step" ng-disabled="WizCtrl.contCreate3" >continuar</button>
                                                         </li>
+
+
                                                     </ul>
                                                 </div>                                               
 
@@ -718,434 +723,102 @@
                                                                                                             <div class="pull-left">
                                                                                                                 <h6 class="panel-title txt-dark">Sesion 1</h6>
                                                                                                             </div>
-
                                                                                                             <div class="pull-right">
-                                                                                                                <div class="dropdown  pull-left">
-                                                                                                                    <a class="dropdown-toggle weight-500" id="examplePanelDropdown" data-toggle="dropdown" target="_self" href="#" aria-expanded="false"
-                                                                                                                        role="button">
-                                                                                                                        <i class="zmdi zmdi-edit inline-block mr-5"></i>
-                                                                                                                        <span>Dropdown</span>
-                                                                                                                        <i class="zmdi zmdi-chevron-down caret-down"></i>
-                                                                                                                    </a>
-                                                                                                                    <ul class="dropdown-menu bullet dropdown-menu-right" role="menu">
-
-                                                                                                                        <li role="presentation">
-                                                                                                                            <a
-                                                                                                                                href="javascript:void(0)"
-                                                                                                                                role="menuitem">
-                                                                                                                                <i
-                                                                                                                                    class="icon wb-share"
-                                                                                                                                    aria-hidden="true"></i>
-                                                                                                                                Desactivar</a>
-                                                                                                                        </li>
-                                                                                                                        <li role="presentation">
-                                                                                                                            <a
-                                                                                                                                href="javascript:void(0)"
-                                                                                                                                role="menuitem">
-                                                                                                                                <i
-                                                                                                                                    class="icon wb-trash"
-                                                                                                                                    aria-hidden="true"></i>
-                                                                                                                                Eliminar</a>
-                                                                                                                        </li>
-
-                                                                                                                    </ul>
+                                                                                                                    <div class="tab-struct custom-tab-1">
+                                                                                                                        <ul role="tablist" class="nav nav-tabs" id="myTabs_9">
+                                                                                                                            <li role="presentation">
+                                                                                                                                <a
+                                                                                                                                    target="_self"
+                                                                                                                                    data-toggle="tab"
+                                                                                                                                    role="tab"
+                                                                                                                                    id="profile_tab_9"
+                                                                                                                                    href="#profile_9"
+                                                                                                                                    aria-expanded="false">Act.
+                                                                                                                                    aprendisaje</a>
+                                                                                                                            </li>
+                                                                                                                            <li role="presentation" class="active">
+                                                                                                                                <a
+                                                                                                                                    target="_self"
+                                                                                                                                    data-toggle="tab"
+                                                                                                                                    role="tab"
+                                                                                                                                    id="home_tab_9"
+                                                                                                                                    href="#home_9"
+                                                                                                                                    aria-expanded="true">Contenidos</a>
+                                                                                                                            </li>
+    
+    
+                                                                                                                        </ul>
+                                                                                                                    </div>
                                                                                                                 </div>
-                                                                                                            </div>
+                                                                                                         
                                                                                                             <div class="clearfix"></div>
                                                                                                         </div>
                                                                                                         <div class="panel-wrapper collapse in">
                                                                                                             <div class="panel-body">
-                                                                                                                <div class="todo-box-wrap">
-                                                                                                                    <!-- Todo-List -->
-                                                                                                                    <ul class="todo-list todo-box-nicescroll-bar">
-                                                                                                                        <div class="row" style="margin-left: 0PX;">
-                                                                                                                            <div class="col-md-2">
-                                                                                                                                <h6 class="panel-title txt-dark">C.T.</h6>
+                                                                                                                    <div class="tab-content" id="myTabContent_9">
+                                                                                                                            <div id="home_9" class="tab-pane fade active in" style="padding-top: 0px!important;" role="tabpanel">
+                                                                                                                                <div class="todo-box-wrap">
+                                                                                                                                    <!-- Todo-List -->
+                                                                                                                                    <ul class="todo-list todo-box-nicescroll-bar">
+                                                                                                                                        <div class="row" style="margin-left: 0PX;">
+                                                                                                                                            <div class="col-md-2">
+                                                                                                                                                <h6 class="panel-title txt-dark">C.T.</h6>
 
-                                                                                                                            </div>
-                                                                                                                            <div class="col-md-2">
-                                                                                                                                <h6 class="panel-title txt-dark">C.E.</h6>
-                                                                                                                            </div>
+                                                                                                                                            </div>
+                                                                                                                                            <div class="col-md-2">
+                                                                                                                                                <h6 class="panel-title txt-dark">C.E.</h6>
+                                                                                                                                            </div>
+                                                                                                                                        </div>
+                                                                                                                                        <li class="todo-item">
+                                                                                                                                            <div class="row">
+                                                                                                                                                <div class="col-md-2">                                                                                                                                    
+                                                                                                                                                            <label class="btn btn-default btn-checkbox" style="background: white;">
+                                                                                                                                                            <input name="checkbox" type="checkbox" value="ant" style="display: none; " autocomplete="false"/> <i style="margin-left: -11px;">AN</i>
+                                                                                                                                                    </label>
+                                                                                                                                                </div>  
+                                                                                                                                                <div class="col-md-2">                                                                                                                                    
+                                                                                                                                                        <label class="btn btn-default btn-checkbox" style="background: white;">
+                                                                                                                                                        <input name="checkbox" type="checkbox" value="CO" style="display: none; " autocomplete="false"/> <i style="margin-left: -11px;">CO</i>
+                                                                                                                                                    </label>
+                                                                                                                                                </div> 
+                                                                                                                                                <div class="col-md-8">
+                                                                                                                                                        <textarea class="form-control" rows="4" > fdgdfgdfg </textarea>
+                                                                                                                                                </div>
+                                                                                                                                                
+
+                                                                                                                                            </div>
+                                                                                                                                            </li>
+                                                                                                                                            <li>
+                                                                                                                                                <hr class="light-grey-hr" />
+                                                                                                                                            </li>                                                                                                                                                                                                                                                
+
+                                                                                                                                    </ul>
+                                                                                                                                    <!-- /Todo-List -->
+                                                                                                                                    
+                                                                                                                                </div>
+
                                                                                                                         </div>
-                                                                                                                        <li class="todo-item">
-                                                                                                                            <div class="row">
-                                                                                                                                <div class="col-md-2">                                                                                                                                    
-                                                                                                                                            <label class="btn btn-default btn-checkbox" style="background: white;">
-                                                                                                                                            <input name="checkbox" type="checkbox" value="ant" style="display: none; " autocomplete="false"/> <i style="margin-left: -11px;">AN</i>
-                                                                                                                                    </label>
-                                                                                                                                </div>
-                                                                                                                                <div class="col-md-2">
-                                                                                                                                    <label class="btn btn-default btn-checkbox"  style="background: white;">                 
-                                                                                                                                            <input name="radio" type="checkbox" value="bat" style="display: none" autocomplete="false"/> <i style="margin-left: -6px;" >B</i>
-                                                                                                                                    </label>
-                                                                                                                                </div>
+                                                                                                                   
 
-                                                                                                                                <div class="col-md-8">
-                                                                                                                                    <p class="text-muted" style=" font-size: 11px;"> PROGRAMACIÓN
-                                                                                                                                        LINEAL.</p>
-                                                                                                                                </div>
-                                                                                                                            </div>
-                                                                                                                        </li>
-                                                                                                                        <li>
-                                                                                                                            <hr class="light-grey-hr" />
-                                                                                                                        </li>
-                                                                                                                        <li class="todo-item">
-                                                                                                                            <div class="row">
-                                                                                                                                <div class="col-md-2">
-                                                                                                                                    <label class="radio-inline">
-                                                                                                                                        <input type="radio" name="optradio2">
-                                                                                                                                    </label>
+                                                                                                                    <!--otro tabbbbb-->
 
-                                                                                                                                </div>
-                                                                                                                                <div class="col-md-2">
-                                                                                                                                    <label class="radio-inline">
-                                                                                                                                        <input type="radio" name="optradio2">
-                                                                                                                                    </label>
-                                                                                                                                </div>
-                                                                                                                                <div class="col-md-8">
-                                                                                                                                    <p class="text-muted" style=" font-size: 11px;"> Presentación
-                                                                                                                                        de
-                                                                                                                                        la
-                                                                                                                                        unidad
-                                                                                                                                        de
-                                                                                                                                        estudio,
-                                                                                                                                        presentación
-                                                                                                                                        de
-                                                                                                                                        syllabus
-                                                                                                                                        y
-                                                                                                                                        fijación
-                                                                                                                                        de
-                                                                                                                                        reglas
-                                                                                                                                        de
-                                                                                                                                        juego.</p>
-                                                                                                                                </div>
-                                                                                                                            </div>
-                                                                                                                        </li>
-
-                                                                                                                        <li>
-                                                                                                                            <hr class="light-grey-hr" />
-                                                                                                                        </li>
-
-                                                                                                                        <li class="todo-item">
-                                                                                                                            <div class="row">
-                                                                                                                                <div class="col-md-2">
-                                                                                                                                    <label class="radio-inline">
-                                                                                                                                        <input type="radio" name="optradio3">
-                                                                                                                                    </label>
-
-                                                                                                                                </div>
-                                                                                                                                <div class="col-md-2">
-                                                                                                                                    <label class="radio-inline">
-                                                                                                                                        <input type="radio" name="optradio3">
-                                                                                                                                    </label>
-                                                                                                                                </div>
-                                                                                                                                <div class="col-md-8">
-                                                                                                                                    <p class="text-muted" style=" font-size: 11px;"> Método
-                                                                                                                                        Húngaro.</p>
-                                                                                                                                </div>
-                                                                                                                            </div>
-                                                                                                                        </li>
-
-                                                                                                                    </ul>
-                                                                                                                    <!-- /Todo-List -->
-
-                                                                                                                    <!-- New Todo -->
-                                                                                                                    <div class="new-todo">
-                                                                                                                        <div class="input-group">
-                                                                                                                            <input type="text" id="add_todo" name="example-input2-group2" class="form-control" placeholder="Agregar Competencia">
-                                                                                                                            <span class="input-group-btn">
-                                                                                                                                <button type="button" class="btn btn-primary" id="theInputToTest">
-                                                                                                                                    <i
-                                                                                                                                        class="zmdi zmdi-plus txt-success"></i>
-                                                                                                                                </button>
-                                                                                                                            </span>
-                                                                                                                        </div>
-                                                                                                                    </div>
-                                                                                                                    <!-- /New Todo -->
-                                                                                                                </div>
-                                                                                                            </div>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                </div>
-
-                                                                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                                                                                    <div class="panel panel-inverse panel-dropdown card-view">
-                                                                                                        <div class="panel-heading">
-                                                                                                            <div class="pull-left">
-                                                                                                                <h6 class="panel-title txt-dark">Sesion 2</h6>
-                                                                                                            </div>
-                                                                                                            <div class="pull-right">
-                                                                                                                <div class="dropdown  pull-left">
-                                                                                                                    <a class="dropdown-toggle weight-500" id="examplePanelDropdown" data-toggle="dropdown" target="_self" href="#" aria-expanded="false"
-                                                                                                                        role="button">
-                                                                                                                        <i class="zmdi zmdi-edit inline-block mr-5"></i>
-                                                                                                                        <span>Dropdown</span>
-                                                                                                                        <i class="zmdi zmdi-chevron-down caret-down"></i>
-                                                                                                                    </a>
-                                                                                                                    <ul class="dropdown-menu bullet dropdown-menu-right" role="menu">
-
-                                                                                                                        <li role="presentation">
-                                                                                                                            <a
-                                                                                                                                href="javascript:void(0)"
-                                                                                                                                role="menuitem">
-                                                                                                                                <i
-                                                                                                                                    class="icon wb-share"
-                                                                                                                                    aria-hidden="true"></i>
-                                                                                                                                Desactivar</a>
-                                                                                                                        </li>
-                                                                                                                        <li role="presentation">
-                                                                                                                            <a
-                                                                                                                                href="javascript:void(0)"
-                                                                                                                                role="menuitem">
-                                                                                                                                <i
-                                                                                                                                    class="icon wb-trash"
-                                                                                                                                    aria-hidden="true"></i>
-                                                                                                                                Eliminar</a>
-                                                                                                                        </li>
-
-                                                                                                                    </ul>
-                                                                                                                </div>
-                                                                                                            </div>
-                                                                                                            <div class="clearfix"></div>
-                                                                                                        </div>
-                                                                                                        <div class="panel-wrapper collapse in">
-                                                                                                            <div class="panel-body">
-                                                                                                                <div class="todo-box-wrap">
-                                                                                                                    <!-- Todo-List -->
-                                                                                                                    <ul class="todo-list todo-box-nicescroll-bar">
-                                                                                                                        <div class="row" style="margin-left: 0PX;">
-                                                                                                                            <div class="col-md-2">
-                                                                                                                                <h6 class="panel-title txt-dark">C.T.</h6>
-
-                                                                                                                            </div>
-                                                                                                                            <div class="col-md-2">
-                                                                                                                                <h6 class="panel-title txt-dark">C.E.</h6>
-                                                                                                                            </div>
-                                                                                                                        </div>
-                                                                                                                        <li class="todo-item">
-                                                                                                                            <div class="row">
-                                                                                                                                <div class="col-md-2">
-
-
-                                                                                                                                    <label class="radio-inline">
-                                                                                                                                        <input type="radio" name="optradio4">
-                                                                                                                                    </label>
-
-                                                                                                                                </div>
-                                                                                                                                <div class="col-md-2">
-                                                                                                                                    <label class="radio-inline">
-                                                                                                                                        <input type="radio" name="optradio4">
-                                                                                                                                    </label>
-                                                                                                                                </div>
-
-                                                                                                                                <div class="col-md-8">
-                                                                                                                                    <p class="text-muted" style=" font-size: 11px;">Problema
-                                                                                                                                        del
-                                                                                                                                        árbol
-                                                                                                                                        de
-                                                                                                                                        expansión
-                                                                                                                                        mínima.</p>
-                                                                                                                                </div>
-                                                                                                                            </div>
-                                                                                                                        </li>
-                                                                                                                        <li>
-                                                                                                                            <hr class="light-grey-hr" />
-                                                                                                                        </li>
-                                                                                                                        <li class="todo-item">
-                                                                                                                            <div class="row">
-                                                                                                                                <div class="col-md-2">
-                                                                                                                                    <label class="radio-inline">
-                                                                                                                                        <input type="radio" name="optradio5">
-                                                                                                                                    </label>
-
-                                                                                                                                </div>
-                                                                                                                                <div class="col-md-2">
-                                                                                                                                    <label class="radio-inline">
-                                                                                                                                        <input type="radio" name="optradio5">
-                                                                                                                                    </label>
-                                                                                                                                </div>
-                                                                                                                                <div class="col-md-8">
-                                                                                                                                    <p class="text-muted" style=" font-size: 11px;"> Problema
-                                                                                                                                        de
-                                                                                                                                        la
-                                                                                                                                        ruta
-                                                                                                                                        más
-                                                                                                                                        corta.</p>
-                                                                                                                                </div>
-                                                                                                                            </div>
-                                                                                                                        </li>
-
-                                                                                                                        <li>
-                                                                                                                            <hr class="light-grey-hr" />
-                                                                                                                        </li>
-
-
-                                                                                                                    </ul>
-                                                                                                                    <!-- /Todo-List -->
-
-                                                                                                                    <!-- New Todo -->
-                                                                                                                    <div class="new-todo">
-                                                                                                                        <div class="input-group">
-                                                                                                                            <input type="text" id="add_todo" name="example-input2-group2" class="form-control" placeholder="Agregar Competencia">
-                                                                                                                            <span class="input-group-btn">
-                                                                                                                                <button type="button" class="btn btn-primary" id="theInputToTest">
-                                                                                                                                    <i
-                                                                                                                                        class="zmdi zmdi-plus txt-success"></i>
-                                                                                                                                </button>
-                                                                                                                            </span>
-                                                                                                                        </div>
-                                                                                                                    </div>
-                                                                                                                    <!-- /New Todo -->
-                                                                                                                </div>
-                                                                                                            </div>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                </div>
-
-                                                                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                                                                                    <div class="panel panel-inverse panel-tabs card-view">
-                                                                                                        <div class="panel-heading" style=" padding-bottom: 0%!important;">
-                                                                                                            <div class="pull-left">
-                                                                                                                <h6 class="panel-title txt-dark">Sesion 3</h6>
-                                                                                                            </div>
-                                                                                                            <div class="pull-right">
-                                                                                                                <div class="tab-struct custom-tab-1">
-                                                                                                                    <ul role="tablist" class="nav nav-tabs" id="myTabs_9">
-                                                                                                                        <li role="presentation">
-                                                                                                                            <a
-                                                                                                                                target="_self"
-                                                                                                                                data-toggle="tab"
-                                                                                                                                role="tab"
-                                                                                                                                id="profile_tab_9"
-                                                                                                                                href="#profile_9"
-                                                                                                                                aria-expanded="false">Contenidos</a>
-                                                                                                                        </li>
-                                                                                                                        <li role="presentation" class="active">
-                                                                                                                            <a
-                                                                                                                                target="_self"
-                                                                                                                                data-toggle="tab"
-                                                                                                                                role="tab"
-                                                                                                                                id="home_tab_9"
-                                                                                                                                href="#home_9"
-                                                                                                                                aria-expanded="true">Act.
-                                                                                                                                aprendisaje</a>
-                                                                                                                        </li>
-
-
-                                                                                                                    </ul>
-                                                                                                                </div>
-                                                                                                            </div>
-
-                                                                                                            <div class="clearfix"></div>
-                                                                                                        </div>
-                                                                                                        <div class="panel-wrapper collapse in">
-                                                                                                            <div class="panel-body">
-                                                                                                                <div class="tab-content" id="myTabContent_9">
-                                                                                                                    <div id="home_9" class="tab-pane fade active in" style="padding-top: 0px!important;" role="tabpanel">
-                                                                                                                        <div class="todo-box-wrap">
-                                                                                                                            <!-- Todo-List -->
-                                                                                                                            <ul class="todo-list todo-box-nicescroll-bar">
-                                                                                                                                <div class="row" style="margin-left: 0PX;">
-                                                                                                                                    <div class="col-md-2">
-                                                                                                                                        <h6 class="panel-title txt-dark">C.T.</h6>
-
-                                                                                                                                    </div>
-                                                                                                                                    <div class="col-md-2">
-                                                                                                                                        <h6 class="panel-title txt-dark">C.E.</h6>
-                                                                                                                                    </div>
-                                                                                                                                </div>
-                                                                                                                                <li class="todo-item">
-                                                                                                                                    <div class="row">
-                                                                                                                                        <div class="col-md-2">
-
-
-                                                                                                                                            <label class="radio-inline">
-                                                                                                                                                <input type="radio" name="optradio4">
-                                                                                                                                            </label>
-
-                                                                                                                                        </div>
-                                                                                                                                        <div class="col-md-2">
-                                                                                                                                            <label class="radio-inline">
-                                                                                                                                                <input type="radio" name="optradio4">
-                                                                                                                                            </label>
-                                                                                                                                        </div>
-
-                                                                                                                                        <div class="col-md-8">
-                                                                                                                                            <p class="text-muted" style=" font-size: 11px;">Problema
-                                                                                                                                                del
-                                                                                                                                                árbol
-                                                                                                                                                de
-                                                                                                                                                expansión
-                                                                                                                                                mínima.</p>
-                                                                                                                                        </div>
-                                                                                                                                    </div>
-                                                                                                                                </li>
-                                                                                                                                <li>
-                                                                                                                                    <hr class="light-grey-hr" />
-                                                                                                                                </li>
-                                                                                                                                <li class="todo-item">
-                                                                                                                                    <div class="row">
-                                                                                                                                        <div class="col-md-2">
-                                                                                                                                            <label class="radio-inline">
-                                                                                                                                                <input type="radio" name="optradio5">
-                                                                                                                                            </label>
-
-                                                                                                                                        </div>
-                                                                                                                                        <div class="col-md-2">
-                                                                                                                                            <label class="radio-inline">
-                                                                                                                                                <input type="radio" name="optradio5">
-                                                                                                                                            </label>
-                                                                                                                                        </div>
-                                                                                                                                        <div class="col-md-8">
-                                                                                                                                            <p class="text-muted" style=" font-size: 11px;"> Problema
-                                                                                                                                                de
-                                                                                                                                                la
-                                                                                                                                                ruta
-                                                                                                                                                más
-                                                                                                                                                corta.</p>
-                                                                                                                                        </div>
-                                                                                                                                    </div>
-                                                                                                                                </li>
-
-                                                                                                                                <li>
-                                                                                                                                    <hr class="light-grey-hr" />
-                                                                                                                                </li>
-
-
-                                                                                                                            </ul>
-                                                                                                                            <!-- /Todo-List -->
-
-                                                                                                                            <!-- New Todo -->
-                                                                                                                            <div class="new-todo">
-                                                                                                                                <div class="input-group">
-                                                                                                                                    <input type="text" id="add_todo" name="example-input2-group2" class="form-control" placeholder="Agregar Competencia">
-                                                                                                                                    <span class="input-group-btn">
-                                                                                                                                        <button type="button" class="btn btn-primary" id="theInputToTest">
-                                                                                                                                            <i
-                                                                                                                                                class="zmdi zmdi-plus txt-success"></i>
-                                                                                                                                        </button>
-                                                                                                                                    </span>
-                                                                                                                                </div>
-                                                                                                                            </div>
-                                                                                                                            <!-- /New Todo -->
-                                                                                                                        </div>
-                                                                                                                    </div>
                                                                                                                     <div id="profile_9" class="tab-pane fade" role="tabpanel" style="padding-top: 0px!important;">
-                                                                                                                        <label class="control-label mb-10">Digite
-                                                                                                                            contenido</label>
-                                                                                                                        <textarea class="form-control" rows="5">Trabajo en Aula,  Talleres, Lecturas,  re-alimentación de evaluaciones.
-                                                                                                                                                                                Análisis de casos, Talleres  individuales o en grupo</textarea>
+                                                                                                                            <label class="control-label mb-10">Digite
+                                                                                                                                contenido</label>
+                                                                                                                            <textarea class="form-control" rows="5">Trabajo en Aula,  Talleres, Lecturas,  re-alimentación de evaluaciones.
+                                                                                                                                                                                    Análisis de casos, Talleres  individuales o en grupo</textarea>
+    
+                                                                                                                        </div>
 
-                                                                                                                    </div>
                                                                                                                 </div>
                                                                                                             </div>
                                                                                                         </div>
                                                                                                     </div>
                                                                                                 </div>
+
+                                                                                                
                                                                                             </div>
-
                                                                                             <!-- /Row -->
-
                                                                                         </div>
 
                                                                                     </form>

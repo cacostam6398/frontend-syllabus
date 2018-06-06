@@ -81,12 +81,44 @@ IdentiApp.controller("WizardCreacionSyllabus", ['Enviar', 'Cargar', '$location',
         resumen :false
     }
 
+    $rootScope.dataSyllabus.competenciasEsp = {                
+        A: "",
+        B: "",
+        C: "",
+        D: "",
+        E: ""
+     }
+
+     $rootScope.dataSyllabus.competenciasTra = {                
+        EM: "",
+        SH: "",
+        IN: "",
+        CO: "",
+        TE: ""
+     }
+
+     this.CompetenciasInputs = {                
+        A : false,
+        B : false,
+        C : false,
+        D : false,
+        E : false ,
+        EM : false ,
+        SH : false ,
+        IN : false ,
+        CO : false ,
+        TE : false        
+    }
+
 
     this.contCreate1 = false;
     this.BtnGuardar1 = false;
 
     this.contCreate2 = false;
     this.BtnGuardar2 = false;
+
+    this.contCreate3 = false;
+    this.BtnGuardar3 = false;
 
     this.obserbtext = false;
     this.programaCmb = false;
@@ -314,8 +346,8 @@ IdentiApp.controller("WizardCreacionSyllabus", ['Enviar', 'Cargar', '$location',
         ){
 
             swal("info", 'Completar informacion', "info");
-            Ctrl.contCreate1 = true;
-            Ctrl.BtnGuardar1 = false;
+            Ctrl.contCreate2 = true;
+            Ctrl.BtnGuardar2 = false;
 
         }else{
 
@@ -439,6 +471,117 @@ IdentiApp.controller("WizardCreacionSyllabus", ['Enviar', 'Cargar', '$location',
 
     }
 
+    this.ValidarCamposCompeSyllabus = function(){
+
+        var Ctrl = this;
+        let objEnv =  $rootScope.dataSyllabus.competenciasEsp ;
+        let objEnv2 =  $rootScope.dataSyllabus.competenciasTra ;
+        let jsonEnvio = {};
+        let jsonComp = []
+       
+        
+
+     
+        if (    objEnv.A  == "" ||                
+                objEnv2.EM == ""||
+                objEnv2.SH == ""
+                // objEnv2.IN == ""||
+                // objEnv2.CO == ""||
+                // objEnv2.TE == ""
+            ){
+
+                swal("info", 'Completar informacion', "info");
+                Ctrl.contCreate3 = true;
+                Ctrl.BtnGuardar3 = false;
+
+            }else{
+
+            if (objEnv.B == "")
+                delete $rootScope.dataSyllabus.competenciasEsp["B"];
+    
+            if (objEnv.C == "")
+                delete $rootScope.dataSyllabus.competenciasEsp["C"];
+    
+            if (objEnv.D == "")
+                delete $rootScope.dataSyllabus.competenciasEsp["D"];
+    
+            if (objEnv.E == "")
+                delete $rootScope.dataSyllabus.competenciasEsp["E"];
+
+            
+            
+
+                for (let i in  $rootScope.dataSyllabus.competenciasEsp) {
+                
+                    jsonComp.push({"clave": i , "contenido": $rootScope.dataSyllabus.competenciasEsp[i]})
+
+                }
+                      
+                 jsonEnvio.correo = $rootScope.user.correo;
+                 jsonEnvio.competencias =  jsonComp
+                 jsonEnvio.token = $rootScope.token
+    
+                 Ctrl.CrearCompetenciasSyllabus(jsonEnvio);
+
+            }
+
+        
+
+
+    }
+
+    this.CrearCompetenciasSyllabus = function(data){     
+     
+
+        var jsonEnvio = data
+        var url =  $rootScope.baseUri + "/restapi-syllabusean/public/syllabus/crearcomp";
+        var Ctrl = this;
+        var success = function (json) {
+            console.log(json)
+            swal("info", 'Competencias creadas', "success");                  
+            Ctrl.contCreate3 = false;
+            Ctrl.BtnGuardar3 = true;
+            Ctrl.desCamposCompetencias(1);
+        };
+        var error = function (resp) { console.log("Error: " + resp); swal("info", 'Error en el servicio', "info") };        
+        Enviar.elemento(Ctrl, url, success, error, jsonEnvio);
+
+    }
+
+    this.desCamposCompetencias = function(code){
+        var Ctrl = this;
+        if(code == 1){
+
+            Ctrl.CompetenciasInputs = {                
+                A : true,
+                B : true,
+                C : true,
+                D : true,
+                E : true ,
+                EM : true ,
+                SH : true ,
+                IN : true ,
+                CO : true ,
+                TE : true        
+            }
+        }else{
+            Ctrl.CompetenciasInputs = {                
+                A : false,
+                B : false,
+                C : false,
+                D : false,
+                E : false ,
+                EM : false ,
+                SH : false ,
+                IN : false ,
+                CO : false ,
+                TE : false        
+            }
+
+        }
+
+
+    }
 
     setTimeout(function(){       
         $scope.cargarCompetenciasTransversales();
