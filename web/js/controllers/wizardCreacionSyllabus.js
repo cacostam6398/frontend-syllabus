@@ -111,13 +111,13 @@ IdentiApp.controller("WizardCreacionSyllabus", ['Enviar', 'Cargar', '$location',
     }
 
 
-    this.contCreate1 = false;
+    this.contCreate1 = true;
     this.BtnGuardar1 = false;
 
-    this.contCreate2 = false;
+    this.contCreate2 = true;
     this.BtnGuardar2 = false;
 
-    this.contCreate3 = false;
+    this.contCreate3 = true;
     this.BtnGuardar3 = false;
 
     this.obserbtext = false;
@@ -498,17 +498,17 @@ IdentiApp.controller("WizardCreacionSyllabus", ['Enviar', 'Cargar', '$location',
 
             }else{
 
-            if (objEnv.B == "")
-                delete $rootScope.dataSyllabus.competenciasEsp["B"];
+            // if (objEnv.B == "")
+            //     delete $rootScope.dataSyllabus.competenciasEsp["B"];
     
-            if (objEnv.C == "")
-                delete $rootScope.dataSyllabus.competenciasEsp["C"];
+            // if (objEnv.C == "")
+            //     delete $rootScope.dataSyllabus.competenciasEsp["C"];
     
-            if (objEnv.D == "")
-                delete $rootScope.dataSyllabus.competenciasEsp["D"];
+            // if (objEnv.D == "")
+            //     delete $rootScope.dataSyllabus.competenciasEsp["D"];
     
-            if (objEnv.E == "")
-                delete $rootScope.dataSyllabus.competenciasEsp["E"];
+            // if (objEnv.E == "")
+            //     delete $rootScope.dataSyllabus.competenciasEsp["E"];
 
             
             
@@ -540,6 +540,7 @@ IdentiApp.controller("WizardCreacionSyllabus", ['Enviar', 'Cargar', '$location',
         var Ctrl = this;
         var success = function (json) {
             console.log(json)
+            $rootScope.dataSyllabus.competenciasEsp = json.data.competencias
             swal("info", 'Competencias creadas', "success");                  
             Ctrl.contCreate3 = false;
             Ctrl.BtnGuardar3 = true;
@@ -606,27 +607,34 @@ IdentiApp.controller("WizardCreacionSyllabus", ['Enviar', 'Cargar', '$location',
         Ctrl.competenciasSesion = "<div class='row'><div class='col-md-6'> "        
 
         let jsonCompTrans = $rootScope.dataSyllabus.competenciasTra;
-        let jsonCompEspe  = $rootScope.dataSyllabus.competenciasEsp;
+      
         let cont = 0
         
-        for (let Z in jsonCompEspe) {
 
             for (let i in jsonCompTrans) { 
 
-                let un = jsonCompTrans[cont]
-                Ctrl.competenciasSesion =  Ctrl.competenciasSesion + "<div class='row' style='margin-bottom: 1%' ><div class='col-md-6'> <label class='btn btn-default btn-checkbox' style='background: white;'><input name='checkbox' type='checkbox' value='"+   jsonCompTrans[i] +"' style='display: none; ' autocomplete='false'/> <i style='margin-left: -11px;'>"+  i   +"</i></label></div> <div class='col-md-6'><label class='btn btn-default btn-checkbox' style='background: white;'><input name='checkbox' type='checkbox' value='"+ jsonCompTrans[Z]   +"' style='display: none; ' autocomplete='false'/> <i style='margin-left: -11px;'>"+ Z +"</i>	</label></div> </div>"
-               
-                cont+=1;
-                break;
-            }
+                let resp = buscarEspecifica(cont);
+                Ctrl.competenciasSesion =  Ctrl.competenciasSesion + "<div class='row' style='margin-bottom: 1%' ><div class='col-md-6'> <label class='btn btn-default btn-checkbox' style='background: white;'><input name='checkbox' type='checkbox' value='"+   jsonCompTrans[i] +"' style='display: none; ' autocomplete='false'/> <i style='margin-left: -11px;'>"+  i   +"</i></label></div> <div class='col-md-6'><label class='btn btn-default btn-checkbox' style='background: white;'><input name='checkbox' type='checkbox' value='"+ resp.valor   +"' style='display: none; ' autocomplete='false'/> <i style='margin-left: -11px;'>"+ resp.clave  +"</i>	</label></div> </div>"
+                cont+=1
             // jsonComp.push({"clave": i , "contenido": $rootScope.dataSyllabus.competenciasEsp[i]})
 
-        }
+            }
 
 
         Ctrl.competenciasSesion = Ctrl.competenciasSesion  +  " </div>	<div class='col-md-6'><div class='row'><div class='col-md-12'><textarea class='form-control' rows='4' > fdgdfgdfg </textarea></div></div></div></div>"
 
         Ctrl.crearHtmlSesiones()
+    }
+
+    function buscarEspecifica(numCiclo){
+
+        let jsonCompEspe  = $rootScope.dataSyllabus.competenciasEsp;
+        var envio = {}
+        envio = {clave:jsonCompEspe[numCiclo].clave  , valor: jsonCompEspe[numCiclo].id_competencia}
+              
+
+        return envio
+
     }
   
 
