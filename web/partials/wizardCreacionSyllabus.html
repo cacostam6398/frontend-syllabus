@@ -1,4 +1,6 @@
 ﻿<style>
+
+
     .badgebox
 {
     opacity: 0;
@@ -35,7 +37,23 @@
     backgroun:white!important;
 }
 
+
+	
+		.page-break {
+			page-break-after: always;
+			page-break-inside: avoid;
+			clear:both;
+		}
+		.page-break-before {
+			page-break-before: always;
+			page-break-inside: avoid;
+			clear:both;
+		}
+
 </style>
+
+
+
 <!-- Main Content -->
 <div class="page-wrapper">
     <div class="container-fluid">
@@ -59,6 +77,9 @@
             </div>
             <!-- /Breadcrumb -->
         </div>
+
+     
+
 
         <!-- /Title -->
         <!-- Row -->
@@ -259,7 +280,7 @@
                                                                                     <form action="#">
                                                                                         <div class="form-body">
                                                                                             <h6 class="txt-dark capitalize-font">
-                                                                                                <i class="fas fa-file-alt"></i> &nbsp;   Cabecera Syllabus</h6>
+                                                                                                <i class="fas fa-file-alt"></i> &nbsp;   Detalle Syllabus</h6>
                                                                                             <hr class="light-grey-hr" />
                                                                                             <div class="row">
                                                                                                 <div class="col-md-3">
@@ -709,7 +730,7 @@
                                                                                             <hr class="light-grey-hr" />
                                                                                             <div class="row">
                                                                                                 <div class="col-md-2">
-                                                                                                    <button type="button" target='_self' class="btn btn-primary btn-rounded btn-icon left-icon" ng-click="WizCtrl.armarCompetenciasHtml();" >
+                                                                                                    <button type="button" target='_self' class="btn btn-primary btn-rounded btn-icon left-icon" ng-click="WizCtrl.armarCompetenciasHtml();" ng-disabled="WizCtrl.addSession" >
                                                                                                         <i class="fas fa-plus"></i>
                                                                                                         <span>Agregar sesion</span>
                                                                                                     </button>
@@ -717,9 +738,6 @@
                                                                                             </div>
                                                                                            
                                                                                             <div class="row" id="sesionesSyl"  style="padding-top: 1%" >
-
-
-                                                                                                
 
 
                                                                                             </div>
@@ -745,7 +763,7 @@
                                                         </li>
                                                         <!-- <li><button type="button" class="btn btn-default next-step">Skip</button></li> -->
                                                         <li>
-                                                            <button type="button" class="btn btn-primary btn-info-full next-step">Guardar y continuar</button>
+                                                            <button type="button" class="btn btn-primary btn-info-full next-step" ng-disabled="WizCtrl.BtnGuardar4">Guardar y continuar</button>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -773,3 +791,5 @@
     </div>
 </div>
 <!-- /Main Content -->
+
+
