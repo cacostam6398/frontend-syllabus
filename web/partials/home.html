@@ -173,34 +173,18 @@
                                                                                         <ul class="followers-list-wrap">
                                                                                             <li class="follow-list">
                                                                                                 <div class="follo-body">
-                                                                                                    <div class="follo-data">
+                                                                                                    <div class="follo-data" ng-repeat="option in HmeCtrl.ListSyllabus">
                                                                                                         <!-- <img class="user-img img-circle"  src="img/user.png" alt="user"/> -->
                                                                                                         <i class="user-img img-circle fas fa-file-alt fa-2x"></i>
                                                                                                         <div class="user-data">
-                                                                                                            <span class="name block capitalize-font">Electiva: Aplicativo de bases de datos PL/SQL</span>
-                                                                                                            <span class="time block truncate txt-grey">Lorem Ipsum es simplemente el texto de relleno .</span>
+                                                                                                            <span class="name block capitalize-font">{{ option.observacion }}</span>
+                                                                                                            <span class="time block truncate txt-grey">{{option.fec_creacion}}</span>
                                                                                                         </div>
-                                                                                                        <a class="btn btn-primary pull-right btn-xs"  ng-href="#!/detalleSyllabus" >Inspeccionar</a>
+                                                                                                        <a class="btn btn-primary pull-right btn-xs"  ng-click='HmeCtrl.enviarInspeccionar(option.id_syllabus)' >Inspeccionar</a>
                                                                                                         <div class="clearfix"></div>
                                                                                                     </div>
-                                                                                                    <div class="follo-data">
-                                                                                                        <i class="user-img img-circle fas fa-file-alt fa-2x"></i>
-                                                                                                        <div class="user-data">
-                                                                                                            <span class="name block capitalize-font">Sistemas Operativos</span>
-                                                                                                            <span class="time block truncate txt-grey">Lorem Ipsum es simplemente el texto de relleno .</span>
-                                                                                                        </div>
-                                                                                                        <a class="btn btn-primary pull-right btn-xs" ng-href="#!/detalleSyllabus">Inspeccionar</a>
-                                                                                                        <div class="clearfix"></div>
-                                                                                                    </div>
-                                                                                                    <div class="follo-data">
-                                                                                                        <i class="user-img img-circle fas fa-file-alt fa-2x"></i>
-                                                                                                        <div class="user-data">
-                                                                                                            <span class="name block capitalize-font">Desarrollo de sistemas de informacion</span>
-                                                                                                            <span class="time block truncate txt-grey">Lorem Ipsum es simplemente el texto de relleno ..</span>
-                                                                                                        </div>
-                                                                                                        <a class="btn btn-primary pull-right btn-xs" ng-href="#!/detalleSyllabus">Inspeccionar</a>
-                                                                                                        <div class="clearfix"></div>
-                                                                                                    </div>
+                                                                                                   
+                                                                                                   
                                                                                                                                                                                              
                                                                                                 </div>
                                                                                             </li>

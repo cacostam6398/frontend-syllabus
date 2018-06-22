@@ -393,6 +393,8 @@ IdentiApp.controller("WizardCreacionSyllabus", ['Enviar', 'Cargar', '$location',
                 Ctrl.contCreate2 = false;
                 Ctrl.BtnGuardar2 = true;
                 Ctrl.desCamposDetalle(1);
+
+
             };
             var error = function (resp) {
                 console.log("Error: " + resp);
@@ -635,6 +637,7 @@ IdentiApp.controller("WizardCreacionSyllabus", ['Enviar', 'Cargar', '$location',
                 Ctrl.contCreate3 = false;
                 Ctrl.BtnGuardar3 = true;
                 Ctrl.desCamposCompetencias(1);
+                Ctrl.crearSessionVacia();
             };
             var error = function (resp) {
                 console.log("Error: " + resp);
@@ -741,7 +744,7 @@ IdentiApp.controller("WizardCreacionSyllabus", ['Enviar', 'Cargar', '$location',
 
             document.getElementById("comp" + idDiv).onclick = function () {
 
-                alert("comp" + idDiv);
+                
                 if (idDiv == 1) {
                     Ctrl.BtnGuardar4 = false
                 }
@@ -769,6 +772,43 @@ IdentiApp.controller("WizardCreacionSyllabus", ['Enviar', 'Cargar', '$location',
 
         }
 
+        this.crearSessionVacia = function (){
+            var Ctrl = this;
+            var jsonEnvio = {}
+            jsonEnvio.correo = $rootScope.user.correo;
+            jsonEnvio.token = $rootScope.token;
+            jsonEnvio.contenidos = "";
+            jsonEnvio.act_aprendizaje = "";
+            jsonEnvio.numero = 0;
+            jsonEnvio.id_detalle = $rootScope.dataSyllabus.detalle.id_detalle;
+            jsonEnvio.competencias = []
+
+            $.each($rootScope.dataSyllabus.competenciasEsp2, function( index, value ) {
+                jsonEnvio.competencias.push({
+                    id_competencia: value.id_competencia
+                })
+              });
+
+              for (let i in $rootScope.dataSyllabus.competenciasTra) {
+                jsonEnvio.competencias.push({
+                    id_competencia:  $rootScope.dataSyllabus.competenciasTra[i]
+                })
+              }
+              
+         
+            var url = $rootScope.baseUri + "/restapi-syllabusean/public/syllabus/crearses";
+            var Ctrl = this;
+            var success = function (json) {                
+                console.log('session 0 creada');          
+            };
+            var error = function (resp) {
+                console.log("Error: " + resp);
+                swal("info", 'Error en el servicio', "info")
+            };
+            Enviar.elemento(Ctrl, url, success, error, jsonEnvio);
+
+                    
+        }
 
         this.CrearSesionSyllabus = function (data) {
 
