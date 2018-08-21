@@ -2,7 +2,9 @@
 <html lang="en" ng-app="Identi">
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
+	<meta name="viewport" content="width=device-width" />
+	<meta name="google-signin-client_id" content="906425621026-4prvnpfkud00feliqoc44fuh7i928soj.apps.googleusercontent.com">
+	<script src="https://apis.google.com/js/platform.js" async defer></script>
     <title>Syllabus-EAN</title>
     <link rel="icon" type="image/x-icon" href="https://universidadean.edu.co/sites/all/themes/subtheme/favicon.ico" />
 
@@ -11,7 +13,7 @@
 
 
 
-	<!--.......................  css de la apgina como tal   .........................-->
+	<!--.......................  css de la pagina como tal   .........................-->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
 	<!-- Morris Charts CSS -->
     <link href="assets/vendors/bower_components/morris.js/morris.css" rel="stylesheet" type="text/css"/>	
@@ -20,13 +22,11 @@
 	<!-- Calendar CSS -->
 	<link href="assets/vendors/bower_components/fullcalendar/dist/fullcalendar.css" rel="stylesheet" type="text/css"/>		
 	<!-- Data table CSS -->
-	<link href="assets/vendors/bower_components/datatables/media/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
-    	
+	<link href="assets/vendors/bower_components/datatables/media/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>    	
 	<!-- Custom CSS -->
 	<link href="assets/dist/css/style.css" rel="stylesheet" type="text/css">   
-
-    
 </head>
+
 <body class="" ng-controller="MainController as MainCtrl" ng-cloak>
 
     <!--Preloader-->
@@ -35,9 +35,9 @@
     </div>
     <!--/Preloader-->
     <div class="wrapper pa-0">
+			
 
-
-            <header class="sp-header" ng-if="!user.id_usuario">
+            <header class="sp-header" ng-if="!user.U3">
                     <div class="sp-logo-wrap pull-left">
                         <a href="index-2.html">
                             <img class="brand-img mr-10" src="https://universidadean.edu.co/sites/default/files/ean_t_0.png" style="height: 60px;" alt="brand"/>                         
@@ -52,7 +52,7 @@
             
 
                 	<!-- Top Menu Items -->
-		<nav class="navbar navbar-inverse navbar-fixed-top" ng-if="user.id_usuario">
+		<nav class="navbar navbar-inverse navbar-fixed-top" ng-if="user.U3">
 			<div class="mobile-only-brand pull-left">
 				<div class=" pull-left" style=" margin-left: 5%;">
 						<!-- nav-header -->
@@ -330,8 +330,8 @@
 						
 					
 							<li class="divider"></li>
-							<li ng-click="LogOut()">
-								<a  target="_self" href="#" ng-click="LogOut()"><i class="zmdi zmdi-power"></i><span>Log Out</span></a>
+							<li ng-click="LogOutGoogle()">
+								<a  target="_self" href="#" ng-click="LogOutGoogle()"><i class="zmdi zmdi-power"></i><span>Log Out</span></a>
 							</li>
 						</ul>
 					</li>
@@ -351,7 +351,7 @@
 		<!-- /#wrapper -->
 
 
-
+		
 		<!-- Footer -->
 		<!-- <footer class="footer container-fluid pl-30 pr-30">
 				<div class="row">
@@ -381,7 +381,11 @@
     <script src="js/angular/angular.min.js"></script>
     <script src="js/angular/angular-route.min.js"></script>
     <script src="js/angular/angular-ui-tree.min.js"></script>
-    <script src="js/angular/angular-animate.min.js"></script>
+	<script src="js/angular/angular-animate.min.js"></script>
+	
+	
+
+
 
     <!-- librerias esenciales de JQueryUi -->
 

@@ -1,4 +1,13 @@
-﻿IdentiApp.controller("LoginController", ['$scope', '$location', '$rootScope', '$modal', 'Enviar','Recibir',
+﻿var profile= {}
+function onSignIn(googleUser){
+
+	 profile = googleUser.getBasicProfile();
+	angular.element(document.getElementById('loginIdTotal')).scope().loginGoogle(profile)
+
+}
+
+
+IdentiApp.controller("LoginController", ['$scope', '$location', '$rootScope', '$modal', 'Enviar','Recibir',
 	function ($scope, $location, $rootScope, $modal, Enviar, Recibir) {
 	 
 	 
@@ -7,6 +16,10 @@
 	    $scope.esta = false;
 	    $scope.registro = {};
 	    $scope.MostrarCargaReg = false;
+
+
+
+	
 
 
 	    jQuery('#myform2').validate({ // initialize the plugin
@@ -104,7 +117,41 @@
 	            size: 'sm'
 	        });
 	    };
-        
+		
+		$scope.validarCorreo = function(correo){
+
+			var array1 = correo.split('@');
+			var Dominio = array1[1].split('.')[0]
+
+			if(Dominio.toUpperCase() == 'UNIVERSIDADEAN'){
+						return true;
+			}else{
+
+						return false
+
+			}
+
+		}
+		
+		$scope.loginGoogle = function(objUser){
+
+			
+			console.log(objUser)
+			var resp = $scope.validarCorreo(objUser.U3)
+
+			if(resp == true){
+					
+					sessionStorage.user = JSON.stringify(objUser);
+					sessionStorage.token =  0;
+					$rootScope.user = objUser;
+					$rootScope.token = 0;						
+					$rootScope.GoHome(); 
+					$scope.$apply();					
+					
+			}else{
+						$rootScope.LogOutGoogle();
+			}
+		}
 
 	    $scope.login = function (forma) {
 			
@@ -163,6 +210,16 @@
 			$rootScope.token = '';
 			$location.path('/login');
 		}		
+
+		$rootScope.LogOutGoogle = function(){	
+			sessionStorage.removeItem('user');
+			$rootScope.user = null;
+			$rootScope.token = '';		
+			var auth2 = gapi.auth2.getAuthInstance();
+			auth2.signOut().then(function () {
+				$location.path('/login');
+			});			
+		}	
 		
 		$rootScope.GoHome = function(){		
 			$location.path('/home');

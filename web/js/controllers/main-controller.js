@@ -10,22 +10,7 @@
         $location.url("/login");
     }
 
-    this.estadoSesion = function () {
-
-       
-        if (sessionStorage.user) {
-            $rootScope.numProductosCarrito = 0;
-            $rootScope.productosCotizar = [];
-            $rootScope.user = JSON.parse(sessionStorage.user);  
-
-            console.log($rootScope.user)
-        } else {
-
-            $location.url("/login");
-        }
-
-    }
-    
+ 
 
     this.IdleConfiguracion = function () {
         $scope.started = false;
@@ -76,6 +61,6 @@
     };
 
 
-    this.estadoSesion();
+ 
 
 }]);

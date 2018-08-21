@@ -1,4 +1,6 @@
 ﻿
+
+
 IdentiApp.controller("HomeController", ['Enviar', 'Cargar', '$location', '$route', '$scope', '$rootScope', '$modal', '$filter',
 function (Enviar, Cargar, $location, $route, $scope, $rootScope, $modal, $filter) {
     $rootScope.SyllabusActual = 0	
@@ -29,13 +31,13 @@ function (Enviar, Cargar, $location, $route, $scope, $rootScope, $modal, $filter
 
     this.enviarInspeccionar = function(idSyl){
         
-        $rootScope.SyllabusActual = idSyl
+             $rootScope.SyllabusActual = idSyl
             $location.url("/MostrarSyllabus");
     
         }
     
 
-    this.cargarListaSyllabus();
+    // this.cargarListaSyllabus();
 
 
 }
