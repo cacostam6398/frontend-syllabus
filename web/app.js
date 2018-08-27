@@ -6,7 +6,7 @@ IdentiApp.constant('CONFIG', {
     ROL_CURRENT_USER: 1
    })
 
-.constant('ROLES', {
+   .constant('ROLES', {
     PROFESOR:  ['/home', '/CreacionSyllabus']        
 }
 )
@@ -19,45 +19,55 @@ IdentiApp.run(function ($rootScope, $location, $http, CONFIG, ROLES) {
     // console.log('permisos + rol')
     // console.log(ROLES)
     var storage;
-   
+    try {
+        if (sessionStorage.getItem('user')) {
+            if ($rootScope.user == null || typeof $rootScope.user == 'undefined') {
+                $rootScope.user = JSON.parse(sessionStorage.user);
+                $rootScope.token =  sessionStorage.token;
+            } else {
+                $location.url("/login");
+            }
+        } else {
+            $location.url("/login");
+        }
+    } catch (e) {
+        storage = {};
+    }
 
-    $rootScope.$on('$routeChangeStart', function (event, next) 
-    {
-        try {         
-              if(  $rootScope.user != null){
-                if (typeof $rootScope.user != 'undefined' ) {                  
-                    $rootScope.token =  0;
-                    $location.url("/home");
+    // $rootScope.$on('$routeChangeStart', function (event, next) 
+    // {
+    //                 console.log(next.$$route.originalPath)
+    //             if (next.data !== undefined) 
+    //             {
+                    
+    //                 next.data.authorized.forEach(function (elemento, indice, array) {
+    //                     console.log(elemento, indice);
+    //                 });
+
+    //                 // if(next.data.authorized.indexOf(CONFIG.ROL_CURRENT_USER) !== -1)
+    //                 //     {
+    //                 //     console.log("entra");
+    //                 //     }  
+    //             }
+    // });
+
+    $rootScope.$on('$routeChangeSuccess', function () {
+
+        try {
+            if (sessionStorage.getItem('user')) {
+                if ($rootScope.user != null || typeof $rootScope.user != 'undefined') {
+                    $rootScope.user = JSON.parse(sessionStorage.user)
+                    $rootScope.token = sessionStorage.token;
                 } else {
                     $location.url("/login");
                 }
             } else {
                 $location.url("/login");
             }
-           
         } catch (e) {
             storage = {};
         }
-    });
-
-    // $rootScope.$on('$routeChangeSuccess', function (event, next) {
-    //     console.log(next.$$route.originalPath)
-      
-    //     try {
-    //         if (sessionStorage.getItem('user')) {
-    //             if ($rootScope.user != null || typeof $rootScope.user != 'undefined') {
-    //                 $rootScope.user = JSON.parse(sessionStorage.user)
-    //                 $rootScope.token = sessionStorage.token;
-    //             } else {
-    //                 $location.url("/login");
-    //             }
-    //         } else {
-    //             $location.url("/login");
-    //         }
-    //     } catch (e) {
-    //         storage = {};
-    //     }
-    // })
+    })
 
 
 })

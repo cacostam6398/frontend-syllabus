@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width" />
 	<meta name="google-signin-client_id" content="906425621026-4prvnpfkud00feliqoc44fuh7i928soj.apps.googleusercontent.com">
-	<script src="https://apis.google.com/js/platform.js" async defer></script>
+	<script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
     <title>Syllabus-EAN</title>
     <link rel="icon" type="image/x-icon" href="https://universidadean.edu.co/sites/all/themes/subtheme/favicon.ico" />
 
@@ -35,24 +35,25 @@
     </div>
     <!--/Preloader-->
     <div class="wrapper pa-0">
-			
 
-            <header class="sp-header" ng-if="!user.U3">
+
+            <header class="sp-header" ng-if="!user.id_usuario">
                     <div class="sp-logo-wrap pull-left">
                         <a href="index-2.html">
                             <img class="brand-img mr-10" src="https://universidadean.edu.co/sites/default/files/ean_t_0.png" style="height: 60px;" alt="brand"/>                         
                         </a>
                     </div>
                     <div class="form-group mb-0 pull-right">
-                        <span class="inline-block pr-10">Don't have an account?</span>
-                        <a class="inline-block btn btn-primary  btn-rounded btn-outline" href="signup.html">Sign Up</a>
+                        <!-- <span class="inline-block pr-10">Don't have an account?</span> -->
+						<!-- <a class="inline-block btn btn-primary  btn-rounded btn-outline" href="signup.html">Sign Up</a> -->
+						<!-- <div id="my-signin2" class="g-signin2" data-onsuccess="onSignIn"></div> -->
                     </div>
                     <div class="clearfix"></div>
                 </header>
             
 
                 	<!-- Top Menu Items -->
-		<nav class="navbar navbar-inverse navbar-fixed-top" ng-if="user.U3">
+		<nav class="navbar navbar-inverse navbar-fixed-top" ng-if="user.id_usuario">
 			<div class="mobile-only-brand pull-left">
 				<div class=" pull-left" style=" margin-left: 5%;">
 						<!-- nav-header -->
@@ -317,7 +318,7 @@
 						</ul>
 					</li>
 					<li class="dropdown auth-drp">
-						<a href="#" target="_self" class="dropdown-toggle pr-0" data-toggle="dropdown"><img src="img/user_icon.png" alt="user_auth" class="user-auth-img img-circle"/><span class="user-online-status"></span></a>
+						<a href="#" target="_self" class="dropdown-toggle pr-0" data-toggle="dropdown"><img ng-src="{{user.imgProfile}}" alt="user_auth" class="user-auth-img img-circle"/><span class="user-online-status"></span></a>
 						<ul class="dropdown-menu user-auth-dropdown" data-dropdown-in="flipInX" data-dropdown-out="flipOutX">
 							<li>
 								<a ng-href="#!/home"><i class="zmdi zmdi-account"></i><span>Profile</span></a>
@@ -502,9 +503,54 @@
 		<script src="js/jqueryui/addhtml.js"></script>
 
 
+		<!-- <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+		 -->
 
-		
-
+		 <script>
+            
+				var initClient = function() {
+					gapi.load('auth2', function(){
+						/**
+						 * Retrieve the singleton for the GoogleAuth library and set up the
+						 * client.
+						 */
+						auth2 = gapi.auth2.init({
+							client_id: '906425621026-4prvnpfkud00feliqoc44fuh7i928soj.apps.googleusercontent.com'
+						});
+	
+						// Attach the click handler to the sign-in button
+						auth2.attachClickHandler('my-signin2', {}, onSuccess2, onFailure2);
+					});
+				};
+			
+			/**
+			 * Handle successful sign-ins.
+			 */
+			var onSuccess2 = function(user) {
+				console.log('Signed in as 22222' + user.getBasicProfile().getName());
+				profile = user.getBasicProfile();
+				angular.element(document.getElementById('loginIdTotal')).scope().loginGoogle(profile)
+			};
+	
+			/**
+			 * Handle sign-in failures.
+			 */
+			var onFailure2 = function(error) {
+				var inst = gapi.auth2.getAuthInstance().isSignedIn.get();				
+				if(inst == false){
+					window.location = "http://localhost:90/frontend-syllabus/web/#!/login"
+				}
+				console.log(error);
+			};
+			
+			setTimeout(function(){
+	
+				initClient();
+	
+			},500);
+				
+	
+			</script>
 
 </body>
 </html>

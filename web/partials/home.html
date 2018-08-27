@@ -20,14 +20,18 @@
                                 </div>
                                 <div class="profile-info text-center">
                                     <div class="profile-img-wrap">
-                                        <img class="inline-block mb-10" src="img/user_icon.png" alt="user"/>
+                                        
+                                        <img class="inline-block mb-10" ng-src="{{user.imgProfile}}"   alt="user"/>
                                         <div class="fileupload btn btn-default">
                                             <span class="btn-text">edit</span>
                                             <input class="upload" type="file">
                                         </div>
                                     </div>	
+                                    
                                     <h5 class="block mt-10 mb-5 weight-500 capitalize-font txt-primary">{{ user.nombre + ' ' + user.apellido }}</h5>
-                                    <h6 class="block capitalize-font pb-20">Profesor</h6>
+                                    <h6 class="block capitalize-font pb-20">{{user.nombre_rol}}</h6>
+                                 
+                            
                                 </div>	
                                 <div class="social-info">
                                  
@@ -177,10 +181,11 @@
                                                                                                         <!-- <img class="user-img img-circle"  src="img/user.png" alt="user"/> -->
                                                                                                         <i class="user-img img-circle fas fa-file-alt fa-2x"></i>
                                                                                                         <div class="user-data">
-                                                                                                            <span class="name block capitalize-font">{{ option.observacion }}</span>
+                                                                                                            <span class="name block capitalize-font">{{ option.materia.nombre }} -{{ option.materia.tipo }} <br>{{  option.observacion }}</span>
                                                                                                             <span class="time block truncate txt-grey">{{option.fec_creacion}}</span>
                                                                                                         </div>
-                                                                                                        <a class="btn btn-primary pull-right btn-xs"  ng-click='HmeCtrl.enviarInspeccionar(option.id_syllabus)' >Inspeccionar</a>
+                                                                                                        <a class="btn btn-primary pull-right btn-xs"  ng-click='HmeCtrl.enviarInspeccionar(option.id_syllabus)' > <i class="fas fa-eye"></i>&nbsp; Inspeccionar</a>
+                                                                                                        <a class="btn btn-primary pull-right btn-xs" style="margin-right: 2%;"  ng-click='HmeCtrl.enviarInspeccionar(option.id_syllabus)' > <i class="fas fa-file-pdf"></i> Generar PDF</a>
                                                                                                         <div class="clearfix"></div>
                                                                                                     </div>
                                                                                                    

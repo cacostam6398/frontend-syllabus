@@ -29,10 +29,10 @@ IdentiApp.factory('Enviar', ['$http', '$rootScope',
                         var envio = {};
 
                         if (Data) {
-                            envio = $http({ method: "POST", url: Url, data: Data });
+                            envio = $http({ method: "POST", url: Url,headers: {'Content-Type': 'application/json' } , data: Data });
                         }
                         else{
-                            envio = $http({ method: "POST", url: Url });
+                            envio = $http({ method: "POST",headers: {'Content-Type': 'application/json' }, url: Url });
                         }
 
                         envio.then(success,error )                
