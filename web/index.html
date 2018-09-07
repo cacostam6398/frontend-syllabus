@@ -3,372 +3,36 @@
 <head>
     <meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width" />
-	<meta name="google-signin-client_id" content="906425621026-4prvnpfkud00feliqoc44fuh7i928soj.apps.googleusercontent.com">
-	<script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+
     <title>Syllabus-EAN</title>
     <link rel="icon" type="image/x-icon" href="https://universidadean.edu.co/sites/all/themes/subtheme/favicon.ico" />
 
 
     <link href="js/sweetalert/sweetalert-Master.css" rel="stylesheet" />
-
-
-
 	<!--.......................  css de la pagina como tal   .........................-->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
-	<!-- Morris Charts CSS -->
-    <link href="assets/vendors/bower_components/morris.js/morris.css" rel="stylesheet" type="text/css"/>	
-	<!-- vector map CSS -->
-	<link href="assets/vendors/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet" type="text/css"/>	
-	<!-- Calendar CSS -->
-	<link href="assets/vendors/bower_components/fullcalendar/dist/fullcalendar.css" rel="stylesheet" type="text/css"/>		
-	<!-- Data table CSS -->
-	<link href="assets/vendors/bower_components/datatables/media/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>    	
-	<!-- Custom CSS -->
-	<link href="assets/dist/css/style.css" rel="stylesheet" type="text/css">   
+	
+	  <!-- Icons css -->
+	  <link href="assets/libs/%40mdi/font/css/materialdesignicons.min.css" rel="stylesheet" type="text/css">
+	  <link href="assets/libs/dripicons/webfont/webfont.css" rel="stylesheet" type="text/css">
+	  <link href="assets/libs/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" type="text/css">
+	  <!-- App css -->
+	  <link rel="stylesheet" href="assets/css/app.min.css">
+	
+	
+	
 </head>
 
 <body class="" ng-controller="MainController as MainCtrl" ng-cloak>
 
-    <!--Preloader-->
-    <div class="preloader-it">
-        <div class="la-anim-1"></div>
-    </div>
-    <!--/Preloader-->
-    <div class="wrapper pa-0">
 
 
-            <header class="sp-header" ng-if="!user.id_usuario">
-                    <div class="sp-logo-wrap pull-left">
-                        <a href="index-2.html">
-                            <img class="brand-img mr-10" src="https://universidadean.edu.co/sites/default/files/ean_t_0.png" style="height: 60px;" alt="brand"/>                         
-                        </a>
-                    </div>
-                    <div class="form-group mb-0 pull-right">
-                        <!-- <span class="inline-block pr-10">Don't have an account?</span> -->
-						<!-- <a class="inline-block btn btn-primary  btn-rounded btn-outline" href="signup.html">Sign Up</a> -->
-						<!-- <div id="my-signin2" class="g-signin2" data-onsuccess="onSignIn"></div> -->
-                    </div>
-                    <div class="clearfix"></div>
-                </header>
-            
-
-                	<!-- Top Menu Items -->
-		<nav class="navbar navbar-inverse navbar-fixed-top" ng-if="user.id_usuario">
-			<div class="mobile-only-brand pull-left">
-				<div class=" pull-left" style=" margin-left: 5%;">
-						<!-- nav-header -->
-					<div class="logo-wrap">
-						<a ng-href="#!/home">
-							<img class="brand-img" src="https://universidadean.edu.co/sites/default/files/ean_t_0.png" style="height: 60px;    top: -6px!important;" alt="brand"/>
-				
-						</a>
-					</div>
-				</div>	
-				<!-- <a id="toggle_nav_btn" class="toggle-left-nav-btn inline-block ml-20 pull-left" href="javascript:void(0);"><i class="zmdi zmdi-menu"></i></a> -->
-				<!-- <a id="toggle_mobile_search" data-toggle="collapse" data-target="#search_form" class="mobile-only-view" href="javascript:void(0);"><i class="zmdi zmdi-search"></i></a> -->
-				<a id="toggle_mobile_nav" class="mobile-only-view" href="javascript:void(0);"><i class="zmdi zmdi-more"></i></a>
-				
-			</div>
-			<div id="mobile_only_nav" class="mobile-only-nav pull-right">
-				<ul class="nav navbar-right top-nav pull-right">
-					<li>
-						<a id="open_right_sidebar" href="#"><i class="zmdi zmdi-settings top-nav-icon"></i></a>
-					</li>
-					<li class="dropdown app-drp">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="zmdi zmdi-apps top-nav-icon"></i></a>
-						<ul class="dropdown-menu app-dropdown" data-dropdown-in="slideInRight" data-dropdown-out="flipOutX">
-							<li>
-								<div class="app-nicescroll-bar">
-									<ul class="app-icon-wrap pa-10">
-										<li>
-											<a href="weather.html" class="connection-item">
-											<i class="zmdi zmdi-cloud-outline txt-info"></i>
-											<span class="block">weather</span>
-											</a>
-										</li>
-										<li>
-											<a href="inbox.html" class="connection-item">
-											<i class="zmdi zmdi-email-open txt-success"></i>
-											<span class="block">e-mail</span>
-											</a>
-										</li>
-										<li>
-											<a href="calendar.html" class="connection-item">
-											<i class="zmdi zmdi-calendar-check txt-primary"></i>
-											<span class="block">calendar</span>
-											</a>
-										</li>
-										<li>
-											<a href="vector-map.html" class="connection-item">
-											<i class="zmdi zmdi-map txt-danger"></i>
-											<span class="block">map</span>
-											</a>
-										</li>
-										<li>
-											<a href="chats.html" class="connection-item">
-											<i class="zmdi zmdi-comment-outline txt-warning"></i>
-											<span class="block">chat</span>
-											</a>
-										</li>
-										<li>
-											<a href="contact-card.html" class="connection-item">
-											<i class="zmdi zmdi-assignment-account"></i>
-											<span class="block">contact</span>
-											</a>
-										</li>
-									</ul>
-								</div>	
-							</li>
-							<li>
-								<div class="app-box-bottom-wrap">
-									<hr class="light-grey-hr ma-0"/>
-									<a class="block text-center read-all" href="javascript:void(0)"> more </a>
-								</div>
-							</li>
-						</ul>
-					</li>
-					<li class="dropdown full-width-drp">
-						<a target="_self"  href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="zmdi zmdi-more-vert top-nav-icon"></i></a>
-						<ul class="dropdown-menu mega-menu pa-0" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
-							<li class="product-nicescroll-bar row">
-								<ul class="pa-20">
-									<li class="col-md-3 col-xs-6 col-menu-list">
-										<a  target="_self" href="javascript:void(0);"><div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i><span class="right-nav-text">Dashboard</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
-										<hr class="light-grey-hr ma-0"/>
-										<ul>
-											<li>
-												<a href="index-2.html">Analytical</a>
-											</li>
-											<li>
-												<a href="index2.html">Demographic</a>
-											</li>
-											<li>
-												<a href="index3.html">Project</a>
-											</li>
-											<li>
-												<a href="index4.html">Hospital</a>
-											</li>
-											<li>
-												<a href="index5.html">HRM</a>
-											</li>
-											<li>
-												<a href="index6.html">Real Estate</a>
-											</li>
-											<li>
-												<a href="profile.html">profile</a>
-											</li>
-										</ul>
-									</li>
-									<li class="col-md-3 col-xs-6 col-menu-list">
-										<a target="_self" href="javascript:void(0);">
-											<div class="pull-left">
-												<i class="zmdi zmdi-shopping-basket mr-20"></i><span class="right-nav-text">E-Commerce</span>
-											</div>	
-											<div class="pull-right"><span class="label label-primary">hot</span>
-											</div>
-											<div class="clearfix"></div>
-										</a>
-										<hr class="light-grey-hr ma-0"/>
-										<ul>
-											<li>
-												<a href="e-commerce.html">Dashboard</a>
-											</li>
-											<li>
-												<a href="product.html">Products</a>
-											</li>
-											<li>
-												<a href="product-detail.html">Product Detail</a>
-											</li>
-											<li>
-												<a href="add-products.html">Add Product</a>
-											</li>
-											<li>
-												<a href="product-orders.html">Orders</a>
-											</li>
-											<li>
-												<a href="product-cart.html">Cart</a>
-											</li>
-											<li>
-												<a href="product-checkout.html">Checkout</a>
-											</li>
-										</ul>
-									</li>
-									<li class="col-md-6 col-xs-12 preview-carousel">
-										<a target="_self" href="javascript:void(0);"><div class="pull-left"><span class="right-nav-text">latest products</span></div><div class="clearfix"></div></a>
-										<hr class="light-grey-hr ma-0"/>
-										<div class="product-carousel owl-carousel owl-theme text-center">
-											<a target="_self" href="#">
-												<img src="img/chair.jpg" alt="chair">
-												<span>Circle chair</span>
-											</a>
-											<a target="_self" href="#">
-												<img src="img/chair2.jpg" alt="chair">
-												<span>square chair</span>
-											</a>
-											<a target="_self" href="#">
-												<img src="img/chair3.jpg" alt="chair">
-												<span>semi circle chair</span>
-											</a>
-											<a target="_self" href="#">
-												<img src="img/chair4.jpg" alt="chair">
-												<span>wooden chair</span>
-											</a>
-											<a target="_self" href="#">
-												<img src="img/chair2.jpg" alt="chair">
-												<span>square chair</span>
-											</a>								
-										</div>
-									</li>
-								</ul>
-							</li>	
-						</ul>
-					</li>
-					<li class="dropdown alert-drp">
-						<a target="_self" href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="zmdi zmdi-notifications top-nav-icon"></i><span class="top-nav-icon-badge">5</span></a>
-						<ul  class="dropdown-menu alert-dropdown" data-dropdown-in="bounceIn" data-dropdown-out="bounceOut">
-							<li>
-								<div class="notification-box-head-wrap">
-									<span class="notification-box-head pull-left inline-block">notifications</span>
-									<a class="txt-danger pull-right clear-notifications inline-block" target="_self" href="javascript:void(0)"> clear all </a>
-									<div class="clearfix"></div>
-									<hr class="light-grey-hr ma-0"/>
-								</div>
-							</li>
-							<li>
-								<div class="streamline message-nicescroll-bar">
-									<div class="sl-item">
-										<a target="_self" href="javascript:void(0)">
-											<div class="icon bg-green">
-												<i class="zmdi zmdi-flag"></i>
-											</div>
-											<div class="sl-content">
-												<span class="inline-block capitalize-font  pull-left truncate head-notifications">
-												New subscription created</span>
-												<span class="inline-block font-11  pull-right notifications-time">2pm</span>
-												<div class="clearfix"></div>
-												<p class="truncate">Your customer subscribed for the basic plan. The customer will pay $25 per month.</p>
-											</div>
-										</a>	
-									</div>
-									<hr class="light-grey-hr ma-0"/>
-									<div class="sl-item">
-										<a target="_self" href="javascript:void(0)">
-											<div class="icon bg-yellow">
-												<i class="zmdi zmdi-trending-down"></i>
-											</div>
-											<div class="sl-content">
-												<span class="inline-block capitalize-font  pull-left truncate head-notifications txt-warning">Server #2 not responding</span>
-												<span class="inline-block font-11 pull-right notifications-time">1pm</span>
-												<div class="clearfix"></div>
-												<p class="truncate">Some technical error occurred needs to be resolved.</p>
-											</div>
-										</a>	
-									</div>
-									<hr class="light-grey-hr ma-0"/>
-									<div class="sl-item">
-										<a target="_self" href="javascript:void(0)">
-											<div class="icon bg-blue">
-												<i class="zmdi zmdi-email"></i>
-											</div>
-											<div class="sl-content">
-												<span class="inline-block capitalize-font  pull-left truncate head-notifications">2 new messages</span>
-												<span class="inline-block font-11  pull-right notifications-time">4pm</span>
-												<div class="clearfix"></div>
-												<p class="truncate"> The last payment for your G Suite Basic subscription failed.</p>
-											</div>
-										</a>	
-									</div>
-									<hr class="light-grey-hr ma-0"/>
-									<div class="sl-item">
-										<a target="_self" href="javascript:void(0)">
-											<div class="sl-avatar">
-												<img class="img-responsive" src="img/avatar.jpg" alt="avatar"/>
-											</div>
-											<div class="sl-content">
-												<span class="inline-block capitalize-font  pull-left truncate head-notifications">Sandy Doe</span>
-												<span class="inline-block font-11  pull-right notifications-time">1pm</span>
-												<div class="clearfix"></div>
-												<p class="truncate">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit</p>
-											</div>
-										</a>	
-									</div>
-									<hr class="light-grey-hr ma-0"/>
-									<div class="sl-item">
-										<a target="_self" href="javascript:void(0)">
-											<div class="icon bg-red">
-												<i class="zmdi zmdi-storage"></i>
-											</div>
-											<div class="sl-content">
-												<span class="inline-block capitalize-font  pull-left truncate head-notifications txt-danger">99% server space occupied.</span>
-												<span class="inline-block font-11  pull-right notifications-time">1pm</span>
-												<div class="clearfix"></div>
-												<p class="truncate">consectetur, adipisci velit.</p>
-											</div>
-										</a>	
-									</div>
-								</div>
-							</li>
-							<li>
-								<div class="notification-box-bottom-wrap">
-									<hr class="light-grey-hr ma-0"/>
-									<a class="block text-center read-all" target="_self" href="javascript:void(0)"> read all </a>
-									<div class="clearfix"></div>
-								</div>
-							</li>
-						</ul>
-					</li>
-					<li class="dropdown auth-drp">
-						<a href="#" target="_self" class="dropdown-toggle pr-0" data-toggle="dropdown"><img ng-src="{{user.imgProfile}}" alt="user_auth" class="user-auth-img img-circle"/><span class="user-online-status"></span></a>
-						<ul class="dropdown-menu user-auth-dropdown" data-dropdown-in="flipInX" data-dropdown-out="flipOutX">
-							<li>
-								<a ng-href="#!/home"><i class="zmdi zmdi-account"></i><span>Profile</span></a>
-							</li>
-							
-							<li>
-								<a href="inbox.html"><i class="zmdi zmdi-email"></i><span>Inbox</span></a>
-							</li>
-						
-						
-					
-							<li class="divider"></li>
-							<li ng-click="LogOutGoogle()">
-								<a  target="_self" href="#" ng-click="LogOutGoogle()"><i class="zmdi zmdi-power"></i><span>Log Out</span></a>
-							</li>
-						</ul>
-					</li>
-				</ul>
-			</div>	
-		</nav>
-		<!-- /Top Menu Items -->
-
-
-
-
-        <div class="wrapper theme-1-active pimary-color-blue">	
-			
-				<div ng-view></div>		
-
-		</div>
-		<!-- /#wrapper -->
-
-
-		
-		<!-- Footer -->
-		<!-- <footer class="footer container-fluid pl-30 pr-30">
-				<div class="row">
-					<div class="col-sm-12">
-						<p>2018 &copy; Goofy. Pampered by Hencework</p>
-					</div>
-				</div>
-			</footer> -->
-			<!-- /Footer -->
-
-
-
-
-
-
-
+		   
+			<section>
+				<div ng-view></div>	
+			</section>
+   
+  
 
 
 
@@ -391,7 +55,7 @@
     <!-- librerias esenciales de JQueryUi -->
 
     <script src="js/jqueryui/jquery-ui.js"></script>
-    <script src="js/jqueryui/spanish.js"></script>
+   
     <script src="js/jqueryui/jquery.scrollTo.min.js"></script>
     <script src="js/jqueryui/moment.min.js"></script>
     <script src="js/jqueryui/datetimepicker.js"></script>
@@ -421,136 +85,24 @@
     <script type="text/javascript" src="js/controllers/main-controller.js"></script>
     <script src="js/controllers/login-controller.js"></script>
     <script src="js/controllers/home-controller.js"></script>
-	<script src="js/controllers/historiaSyllabus-controller.js"></script>
-	<script src="js/controllers/wizardCreacionSyllabus.js"></script>
-	<script src="js/controllers/mostrarSyllabus-controller.js"></script>
+
   
 
     <!-- Js funcioanlidad pagina web -->
 	
 	
-			
-
-		<!-- Bootstrap Core JavaScript -->
-	
-		<!-- Slimscroll JavaScript -->
-		<script src="assets/dist/js/jquery.slimscroll.js"></script>		
-		
-        <!-- Vector Maps JavaScript -->
-        <script src="assets/vendors/vectormap/jquery-jvectormap-2.0.2.min.js"></script>
-        <script src="assets/vendors/vectormap/jquery-jvectormap-world-mill-en.js"></script>
-        <script src="assets/dist/js/vectormap-data.js"></script>
-        
-        <!-- Calender JavaScripts -->
-        <script src="assets/vendors/bower_components/moment/min/moment.min.js"></script>
-        <script src="assets/vendors/jquery-ui.min.js"></script>
-        <script src="assets/vendors/bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
-        <script src="assets/dist/js/fullcalendar-data.js"></script>
-        
-        <!-- Counter Animation JavaScript -->
-        <script src="assets/vendors/bower_components/waypoints/lib/jquery.waypoints.min.js"></script>
-        <script src="assets/vendors/bower_components/jquery.counterup/jquery.counterup.min.js"></script>
-        
-        <!-- Data table JavaScript -->
-        <script src="assets/vendors/bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
-        
-        <!-- Slimscroll JavaScript -->
-        <script src="assets/dist/js/jquery.slimscroll.js"></script>
-        
-        <!-- Fancy Dropdown JS -->
-        <script src="assets/dist/js/dropdown-bootstrap-extended.js"></script>
-        
-        <!-- Sparkline JavaScript -->
-        <script src="assets/vendors/jquery.sparkline/dist/jquery.sparkline.min.js"></script>
-        
-        <script src="assets/vendors/bower_components/jquery.easy-pie-chart/dist/jquery.easypiechart.min.js"></script>
-        <script src="assets/dist/js/skills-counter-data.js"></script>
-        
-        <!-- Morris Charts JavaScript -->
-        <script src="assets/vendors/bower_components/raphael/raphael.min.js"></script>
-        <script src="assets/vendors/bower_components/morris.js/morris.min.js"></script>
-        <script src="assets/dist/js/morris-data.js"></script>
-        
-        <!-- Owl JavaScript -->
-        <script src="assets/vendors/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
-        
-        <!-- Switchery JavaScript -->
-        <script src="assets/vendors/bower_components/switchery/dist/switchery.min.js"></script>
-		
-		
-        <!-- Data table JavaScript -->
-        <script src="assets/vendors/bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
-            
-        <!-- Gallery JavaScript -->
-        <script src="assets/dist/js/isotope.js"></script>
-        <script src="assets/dist/js/lightgallery-all.js"></script>
-        <script src="assets/dist/js/froogaloop2.min.js"></script>
-        <script src="assets/dist/js/gallery-data.js"></script>
-        
-        <!-- twitter JavaScript -->
-        <script src="assets/dist/js/twitterFetcher.js"></script>
-        
-        <!-- Spectragram JavaScript -->
-		<script src="assets/dist/js/spectragram.min.js"></script>	
-
-        <!-- Init JavaScript -->
-        <script src="assets/dist/js/init.js"></script>
-		<script src="assets/dist/js/widgets-data.js"></script>
-
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/0.9.0rc1/jspdf.min.js"></script>
-		
-
-		<script src="js/jqueryui/addhtml.js"></script>
+	 <!-- jQuery  -->
+	 <script src="assets/libs/jquery/jquery.min.js"></script>
+	 <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+	 <script src="assets/libs/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+	 <!-- App js -->
+	 <script src="assets/js/jquery.core.js"></script>
+     <script src="assets/js/jquery.app.js"></script>
+     
+ 
+     <script src="js/jqueryui/validate.jquery.js"></script>
 
 
-		<!-- <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
-		 -->
-
-		 <script>
-            
-				var initClient = function() {
-					gapi.load('auth2', function(){
-						/**
-						 * Retrieve the singleton for the GoogleAuth library and set up the
-						 * client.
-						 */
-						auth2 = gapi.auth2.init({
-							client_id: '906425621026-4prvnpfkud00feliqoc44fuh7i928soj.apps.googleusercontent.com'
-						});
-	
-						// Attach the click handler to the sign-in button
-						auth2.attachClickHandler('my-signin2', {}, onSuccess2, onFailure2);
-					});
-				};
-			
-			/**
-			 * Handle successful sign-ins.
-			 */
-			var onSuccess2 = function(user) {
-				console.log('Signed in as 22222' + user.getBasicProfile().getName());
-				profile = user.getBasicProfile();
-				angular.element(document.getElementById('loginIdTotal')).scope().loginGoogle(profile)
-			};
-	
-			/**
-			 * Handle sign-in failures.
-			 */
-			var onFailure2 = function(error) {
-				var inst = gapi.auth2.getAuthInstance().isSignedIn.get();				
-				if(inst == false){
-					window.location = "http://localhost:90/frontend-syllabus/web/#!/login"
-				}
-				console.log(error);
-			};
-			
-			setTimeout(function(){
-	
-				initClient();
-	
-			},500);
-				
-	
-			</script>
 
 </body>
 </html>

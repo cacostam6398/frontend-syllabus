@@ -1,82 +1,56 @@
 ﻿
 
-<!-- Main Content -->
-<div class="page-wrapper pa-0 ma-0 auth-page" id="loginIdTotal"
-        <div class="container-fluid">
-            <!-- Row -->
-            <div class="table-struct full-width full-height">
-                <div class="table-cell vertical-align-middle auth-form-wrap">
-                    <div class="auth-form  ml-auto mr-auto no-float">
-                        <div class="row">
-                            <div class="col-sm-12 col-xs-12">
-                                <div class="mb-30">
-                                    <h3 class="text-center txt-dark mb-10">Iniciar sesión EAN</h3>
-                                    <h6 class="text-center nonecase-font txt-grey">Ingrese sus credenciales a continuación</h6>
-                                </div>	
-                                <div class="form-wrap">
-                                      
-                                    <form id="myform" >
-                                            <!-- ng-submit="login(log)" -->
-                                        <div class="form-group">
-                                            <label class="control-label mb-10" for="exampleInputEmail_2">Correo</label>
-                                            <input type="email" class="form-control" required="" id="exampleInputEmail_2" placeholder="ingrese correo" ng-model='log.email' >
+	<div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="wrapper-page">
+                    <div class="account-pages">
+                        <div class="account-box">
+                            <!-- Logo box-->
+                            <div class="account-logo-box">
+                                <h2 class="text-uppercase text-center"><a href="index.html" class="text-success"><span><img src="assets/images/logo_dark.png" alt="" height="28"></span></a></h2></div>
+                            <div class="account-content">
+                                <form id="myform" ng-submit="login(log)">
+                                    <div class="form-group mb-3">
+                                         
+                                        <label for="emailaddress" class="font-weight-medium">Corre electronico</label>
+                                        <input class="form-control" type="email" id="emailaddress" required="" placeholder="Ingrese su correo"  ng-model='log.email' >
+                                    </div>
+                                    <div class="form-group mb-3"><a href="#" class="text-muted float-right"><small>Olvidaste tu contraseña?</small></a>
+                                        <label for="password" class="font-weight-medium">Contraseña</label>
+                                        <input class="form-control" type="password" required="" id="password" placeholder="Ingrese Contraseña"  ng-model='log.password'>
+                                    </div>
+                                    
+                                    <div class="form-group mb-3">
+                                        <div class="checkbox checkbox-info">
+                                            <input id="remember" type="checkbox">
+                                            <label for="remember">Recordar contraseña</label>
                                         </div>
-                                        <div class="form-group">
-                                            <label class="pull-left control-label mb-10" for="exampleInputpwd_2">Password</label>
-                                            <a class="capitalize-font txt-primary block mb-10 pull-right font-12" href="forgot-password.html">forgot password ?</a>
-                                            <div class="clearfix"></div>
-                                            <input type="password" class="form-control" required="" id="exampleInputpwd_2" placeholder="ingrese Contraseña" ng-model='log.password'>
+                                    </div>
+                                    <div class="form-group row text-center">
+                                        <div class="col-12">
+                                            <button class="btn btn-block btn-success waves-effect waves-light" type="submit">Iniciar sesion</button>
                                         </div>
-                                        
-                                        <div class="form-group">
-                                            <div class="checkbox checkbox-primary pr-10 pull-left">
-                                                <input id="checkbox_2"  type="checkbox">
-                                                <label for="checkbox_2"> Keep me logged in</label>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                        </div>
-                                        <div class="form-group text-center">
-                                        <!-- <button type="submit" class="btn btn-primary  btn-rounded">Iniciar sesion</button>-->
-                                        <div id="my-signin2" class="g-signin2" data-onsuccess="onSignIn"></div>
-                                      
-
-
-                                        </div>
-                                    </form>
+                                    </div>
+                                </form>
+                                <!-- end form -->
+                                <div class="row mt-3">
+                                    <div class="col-12 text-center">
+                                        <p class="text-muted">No tienes una cuenta? <a href="#" class="text-dark m-l-5"><b>Registrarse</b></a></p>
+                                    </div>
                                 </div>
-                            </div>	
+                                <!-- end row-->
+                            </div>
+                            <!-- end account-content -->
                         </div>
+                        <!-- end account-box -->
                     </div>
+                    <!-- end account-page-->
                 </div>
+                <!-- end wrapper-page -->
             </div>
-            <!-- /Row -->	
+            <!-- end col -->
         </div>
-
-       
-        
-          <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
-          
-
-
-        
+        <!-- end row -->
     </div>
-
-
-    
-    <!-- /Main Content -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    <!-- end container -->
