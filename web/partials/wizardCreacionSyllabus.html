@@ -1,0 +1,795 @@
+﻿<style>
+
+
+    .badgebox
+{
+    opacity: 0;
+}
+
+.badgebox + .badge
+{
+    /* Move the check mark away when unchecked */
+    text-indent: -999999px;
+    /* Makes the badge's width stay the same checked and unchecked */
+	width: 27px;
+}
+
+.badgebox:focus + .badge
+{
+    /* Set something to make the badge looks focused */
+    /* This really depends on the application, in my case it was: */
+    
+    /* Adding a light border */
+    box-shadow: inset 0px 0px 5px;
+    /* Taking the difference out of the padding */
+}
+
+.badgebox:checked + .badge
+{
+    /* Move the check mark back when checked */
+	text-indent: 0;
+}
+.active2{
+    background:#adadad!important;
+}
+
+.active1{
+    backgroun:white!important;
+}
+
+
+	
+		.page-break {
+			page-break-after: always;
+			page-break-inside: avoid;
+			clear:both;
+		}
+		.page-break-before {
+			page-break-before: always;
+			page-break-inside: avoid;
+			clear:both;
+		}
+
+</style>
+
+
+
+<!-- Main Content -->
+<div class="page-wrapper">
+    <div class="container-fluid">
+
+        <!-- Title -->
+        <div class="row heading-bg">
+            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                <h5 class="txt-dark">Creacion Syllabus</h5>
+            </div>
+
+            <!-- Breadcrumb -->
+            <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+                <ol class="breadcrumb">
+                    <li>
+                        <a ng-href="#!/home">Pagina Principal</a>
+                    </li>
+                    <li class="active">
+                        <span>Creacion Syllabus</span>
+                    </li>
+                </ol>
+            </div>
+            <!-- /Breadcrumb -->
+        </div>
+
+     
+
+
+        <!-- /Title -->
+        <!-- Row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default card-view">
+                    <div class="panel-body">
+                        
+
+                        <div class="">
+                            <div class="row">
+                                <section>
+                                    <div class="wizard" style="margin-top: 0px!important">
+                                        <div class="wizard-inner">
+                                            <div class="connecting-line"></div>
+                                            <ul class="nav nav-tabs nav2" role="tablist" style="margin-top: 0px!important;">
+
+                                                <li role="presentation" class="active">
+                                                    <a href="#step1" target="_self" data-toggle="tab" aria-controls="step1" role="tab">
+                                                        <span class="round-tab">
+                                                            <i class="far fa-folder-open"></i>
+                                                        </span>
+                                                    </a>
+                                                </li>
+
+                                                <li role="presentation" class="disabled">
+                                                    <a href="#step2" target="_self" data-toggle="tab" aria-controls="step2" role="tab" title="Paso 2">
+                                                        <span class="round-tab">
+                                                            <i class="fas fa-edit"></i>
+                                                        </span>
+                                                    </a>
+                                                </li>    
+                                                
+                                                <li role="presentation" class="disabled">
+                                                    <a href="#step3" target="_self" data-toggle="tab" aria-controls="step3" role="tab" title="Paso 3">
+                                                        <span class="round-tab">
+                                                            <i class="fas fa-file-alt"></i>
+                                                        </span>
+                                                    </a>
+                                                </li>
+
+                                                <li role="presentation" class="disabled">
+                                                    <a href="#step4" target="_self" data-toggle="tab" aria-controls="step4" role="tab" title="Paso 4">
+                                                        <span class="round-tab">
+                                                            <i class="fas fa-file-alt"></i>
+                                                        </span>
+                                                    </a>
+                                                </li>                                                
+
+                                                <li role="presentation" class="disabled">
+                                                    <a href="#complete" target="_self" data-toggle="tab" aria-controls="complete" role="tab" title="Completado">
+                                                        <span class="round-tab">
+                                                            <i class="fas fa-check-circle"></i>
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+
+                                        <form role="form" class="container-fluid">
+                                            <div class="tab-content">
+                                                <div class="tab-pane active" role="tabpanel" id="step1" style="padding-top: 20px!important">
+                                                    <!-- <h3>Paso 1</h3> -->
+
+
+                                                    <!-- Row  -->
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="panel panel-default card-view">
+
+                                                                <div class="panel-wrapper collapse in">
+                                                                    <div class="panel-body">
+                                                                        <div class="row">
+                                                                            <div class="col-sm-12 col-xs-12">
+                                                                                <div class="form-wrap">
+                                                                                    <form action="#">
+                                                                                        <div class="form-body">
+                                                                                            <h6 class="txt-dark capitalize-font">
+                                                                                                <i class="fas fa-file-alt"></i> &nbsp; Cabecera Syllabus</h6>
+                                                                                            <hr class="light-grey-hr" />
+                                                                                            <div class="row">
+                                                                                                <div class="col-md-2">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="control-label mb-10">Año</label>
+                                                                                                        <input type="text" id="firstName" class="form-control" placeholder="" ng-disabled="true" ng-model="WizCtrl.currentYear">
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="col-md-3">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="control-label mb-10">Programas</label>
+                                                                                                        <select  class="form-control" name="repeatSelect" id="repeatSelect" ng-model="dataSyllabus.cabecera.programa" ng-change="WizCtrl.ObtProgramasByPrograma(dataSyllabus.cabecera.programa)" ng-disabled="WizCtrl.programaCmb">
+                                                                                                            <option value="" disabled>---Seleccionar---</option> <!-- not selected / blank option -->
+                                                                                                            <option ng-repeat="option in WizCtrl.ListMatProgramas" value="{{option.programa.id_programa}}">{{option.programa.nombre}}</option>
+                                                                                                        </select>  
+                                                                                                        <span class="help-block"> Seleccione Tipo de
+                                                                                                            Progrma </span>
+                                                                                                    </div>
+                                                                                                </div>
+
+                                                                                                <div class="col-md-3">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="control-label mb-10">Materias</label>
+                                                                                                        <select  class="form-control" name="repeatSelect2" id="repeatSelect2" ng-model="dataSyllabus.cabecera.materia" ng-change="WizCtrl.llenarCamposCabecera(dataSyllabus.cabecera.materia)" ng-disabled="WizCtrl.materiaCmb">
+                                                                                                                <option value="" disabled>---Seleccionar---</option> <!-- not selected / blank option -->
+                                                                                                                <option ng-repeat="option2 in WizCtrl.ListMatSelect[0].materias" value="{{option2.id_materia}}">{{ option2.nombre }}</option>
+                                                                                                            </select>  
+                                                                                                                                                                                                                      
+                                                                                                            <span class="help-block"> Seleccione Tipo de
+                                                                                                                materia </span>
+                                                                                                        
+                                                                                                    </div>
+                                                                                                </div>
+
+                                                                                            </div>
+                                                                                            <div class="row">
+                                                                                                <div class="col-md-3">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="control-label mb-10">Codigo Materia</label>
+                                                                                                        <input type="text" class="form-control" placeholder="" ng-disabled="true" ng-model="dataSyllabus.cabecera.codigoMateria">
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="col-md-3">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="control-label mb-10">Facultad</label>
+                                                                                                        <input type="text" class="form-control" placeholder="" ng-disabled="true" ng-model="dataSyllabus.cabecera.facultad">
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="col-md-3">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="control-label mb-10">Creditos</label>                                                                                                      
+                                                                                                        <input type="text" class="form-control" placeholder="" ng-disabled="true" ng-model="dataSyllabus.cabecera.creditos">
+                                                                                                    </div>
+                                                                                                </div>
+
+                                                                                                <div class="col-md-3">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="control-label mb-10">Tipo</label>
+                                                                                                        <input type="text" class="form-control" placeholder="" ng-disabled="true" ng-model="dataSyllabus.cabecera.tipo">                                                                                                         
+                                                                                                    </div>
+                                                                                                </div>
+
+                                                                                            </div>
+
+                                                                                            <div class="row">                                                                                                
+                                                                                                <div class="col-md-3">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="control-label mb-10">Descripcion materia</label>
+                                                                                                        <textarea class="form-control" rows="5" ng-disabled="true">{{dataSyllabus.cabecera.descripcionMateria}}</textarea>                                                                                                                                                                                                              
+                                                                                                    </div>
+                                                                                                </div>    
+                                                                                                <div class="col-md-3">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="control-label mb-10">Observación syllabus</label>
+                                                                                                        <textarea class="form-control" rows="5"  ng-disabled="WizCtrl.obserbtext" ng-model="dataSyllabus.cabecera.obsSyllabusCabecera" > </textarea>                                                                                                                                                                                                                                                                                                                
+                                                                                                    </div>
+                                                                                                </div>                                                                                                
+                                                                                            </div>
+
+                                                                                            <!-- /Row -->
+
+                                                                                        </div>
+                                                                                    </form>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- /Row -->
+
+
+
+
+                                                    <ul class="list-inline pull-right">
+                                                        <li>
+                                                            <button type="button" ng-click="WizCtrl.CrearCabeceraSyllabus()"  class="btn btn-primary" ng-disabled="WizCtrl.BtnGuardar1">Guardar </button>
+                                                        </li>
+                                                        <li>
+                                                            <button type="button"  class="btn btn-primary next-step" ng-disabled="WizCtrl.contCreate1" >continuar</button>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+
+                                                <div class="tab-pane" role="tabpanel" id="step2" style="padding-top: 20px!important">
+                                                  
+                                                    <!-- Row -->
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="panel panel-default card-view">
+
+                                                                <div class="panel-wrapper collapse in">
+                                                                    <div class="panel-body">
+                                                                        <div class="row">
+                                                                            <div class="col-sm-12 col-xs-12">
+                                                                                <div class="form-wrap">
+                                                                                    <form action="#">
+                                                                                        <div class="form-body">
+                                                                                            <h6 class="txt-dark capitalize-font">
+                                                                                                <i class="fas fa-file-alt"></i> &nbsp;   Detalle Syllabus</h6>
+                                                                                            <hr class="light-grey-hr" />
+                                                                                            <div class="row">
+                                                                                                <div class="col-md-3">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="control-label mb-10">Modalidad</label>
+                                                                                                        <select class="form-control" ng-model="dataSyllabus.detalle.modalidad" ng-disabled="WizCtrl.detalleInputs.modalidad" >
+                                                                                                                <option value="" disabled>---Seleccionar---</option> <!-- not selected / blank option -->
+                                                                                                                <option value="Presencial">Presencial</option>
+                                                                                                                <option value="Virtual">Virtual</option>                                                                                                               
+                                                                                                        </select>
+                                                                                                        <span class="help-block"> Seleccione Modalidad de la materia </span> 
+                                                                                                    </div>
+                                                                                                </div>
+
+                                                                                                <div class="col-md-3">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="control-label mb-10">Duracion</label>
+                                                                                                        <select class="form-control" ng-model="dataSyllabus.detalle.duracion" ng-disabled="WizCtrl.detalleInputs.duracion">
+                                                                                                                <option value="" disabled>---Seleccionar---</option> <!-- not selected / blank option -->
+                                                                                                                <option value="Ciclo">Ciclo</option>
+                                                                                                                <option value="Semestre">Semestre</option>
+                                                                                                                <!-- <option value="">Modulo</option>
+                                                                                                                <option value="">C. Virtual</option>
+                                                                                                                <option value="">S. Virtual</option> -->
+                                                                                                            </select>
+                                                                                                            <span class="help-block"> Seleccione Duracion de la materia </span> 
+                                                                                                    </div>
+                                                                                                </div> 
+
+                                                                                                <div class="col-md-2">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="control-label mb-10">HORAS AC. DIRECTO</label>
+                                                                                                        <input type="number"  class="form-control" placeholder="Numero" ng-model="dataSyllabus.detalle.hrs_directas"  ng-disabled="WizCtrl.detalleInputs.hrs_directas">                                                                          
+                                                                                                    </div>
+                                                                                                </div>     
+                                                                                                <div class="col-md-2">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="control-label mb-10">HORAS T. AUTÓNOMO</label>
+                                                                                                        <input type="number"  class="form-control" placeholder="Numero" ng-model="dataSyllabus.detalle.hrs_autonomas" ng-disabled="WizCtrl.detalleInputs.hrs_autonomas">                                                                          
+                                                                                                    </div>
+                                                                                                </div>     
+                                                                                                <div class="col-md-2">
+                                                                                                        <div class="form-group">
+                                                                                                            <label class="control-label mb-10">HORAS TOTALES</label>
+                                                                                                            <input type="number"  class="form-control" placeholder="Numero" ng-disabled="true" ng-model="dataSyllabus.detalle.hrs_tota" ng-value="dataSyllabus.detalle.hrs_autonomas + dataSyllabus.detalle.hrs_directas " >                                                                          
+                                                                                                        </div>
+                                                                                                </div>                                                                                                                            
+                    
+
+                                                                                            </div>    
+
+
+                                                                                            <div class="row">
+                                                                                                <div class="col-md-3">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="control-label mb-10">proposito del curso</label>
+                                                                                                        <textarea class="form-control" rows="5" ng-model="dataSyllabus.detalle.proposito" ng-disabled="WizCtrl.detalleInputs.proposito"></textarea>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                
+                                                                                                <div class="col-md-3">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="control-label mb-10">Competencia global</label>
+                                                                                                        <textarea class="form-control" rows="5" ng-model="dataSyllabus.detalle.competencia_global" ng-disabled="WizCtrl.detalleInputs.competencia_global"></textarea>
+                                                                                                    </div>
+                                                                                                </div>
+
+                                                                                                <div class="col-md-3">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="control-label mb-10">METODOLOGÍA</label>
+                                                                                                        <textarea class="form-control" rows="5" ng-model="dataSyllabus.detalle.metodologia" ng-disabled="WizCtrl.detalleInputs.metodologia"></textarea>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="col-md-3">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="control-label mb-10">RESUMEN DE CONTENIDOS </label>
+                                                                                                        <textarea class="form-control" rows="5" ng-model="dataSyllabus.detalle.resumen" ng-disabled="WizCtrl.detalleInputs.resumen"></textarea>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div> 
+                                                                                            <!-- /Row -->
+
+                                                                                            <div class="row">
+                                                                                                <div class="col-md-3">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="control-label mb-10">EVALUACIÓN</label>
+                                                                                                        <textarea class="form-control" rows="5" ng-model="dataSyllabus.detalle.evaluacion" ng-disabled="WizCtrl.detalleInputs.evaluacion"></textarea>
+                                                                                                    </div>
+                                                                                                </div>
+
+                                                                                                <div class="col-md-3">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="control-label mb-10">RECURSOS TECNOLÓGICOS</label>
+                                                                                                        <textarea class="form-control" rows="5" ng-model="dataSyllabus.detalle.recursos" ng-disabled="WizCtrl.detalleInputs.recursos"></textarea>
+                                                                                                    </div>
+                                                                                                </div>      
+                                                                                                
+                                                                                                <div class="col-md-3">
+                                                                                                        <div class="form-group">
+                                                                                                            <label class="control-label mb-10">UNIDADES DE ESTUDIO PRE-REQUISITO</label>
+                                                                                                            <textarea class="form-control" rows="5" ng-model="dataSyllabus.detalle.pre_requisito" ng-disabled="WizCtrl.detalleInputs.pre_requisito"></textarea>
+                                                                                                        </div>
+                                                                                                    </div>
+    
+                                                                                                    <div class="col-md-3">
+                                                                                                        <div class="form-group">
+                                                                                                            <label class="control-label mb-10">UNIDADES DE ESTUDIO CO-REQUISITO</label>
+                                                                                                            <textarea class="form-control" rows="5" ng-model="dataSyllabus.detalle.co_requisito" ng-disabled="WizCtrl.detalleInputs.co_requisito"></textarea>
+                                                                                                        </div>
+                                                                                                    </div>    
+
+                                                                                               
+                                                                                               
+                                                                                            </div> 
+
+                                                                                            <div class="row">
+                                                                                                <div class="col-md-6">                                                                                                   
+                                                                                                        <div class="form-group">
+                                                                                                            <label class="control-label mb-10">BIBLIOGRAFÍA</label>
+                                                                                                            <textarea class="form-control" rows="5" ng-model="dataSyllabus.detalle.bibliografia" ng-disabled="WizCtrl.detalleInputs.bibliografia"></textarea>
+                                                                                                        </div>                                                                                                    
+                                                                                                </div>
+
+                                                                                                <div class="col-md-4">
+                                                                                                        <div class="form-group">
+                                                                                                            <label class="control-label mb-10">COMPONENTE DE LENGUA EXTRANJERA</label>
+                                                                                                                <div class="row">
+                                                                                                                    <div class="col-md-6">
+                                                                                                                        <div class="form-group">
+                                                                                                                            <label class="control-label mb-8">LENGUA EXTRANJERA:</label>
+                                                                                                                            <select class="form-control" ng-model="dataSyllabus.detalle.lengua" ng-disabled="WizCtrl.detalleInputs.lengua">
+                                                                                                                                    <option value="" disabled>---Seleccionar---</option> <!-- not selected / blank option -->
+                                                                                                                                    <option value="N/A">N/A </option>  
+                                                                                                                                    <option value="Ingles">Ingles </option>  
+                                                                                                                                    <option value="Frances">Frances </option>  
+                                                                                                                                    <option value="Portugues">Portugues </option> 
+                                                                                                                            </select>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                    <div class="col-md-3">
+                                                                                                                            <div class="form-group">
+                                                                                                                                    <label class="control-label mb-8">PORCENTAJE</label>
+                                                                                                                                    <select class="form-control" ng-model="dataSyllabus.detalle.pr_lengua" ng-disabled="WizCtrl.detalleInputs.pr_lengua">
+                                                                                                                                        <option value="" disabled>---Seleccionar---</option> <!-- not selected / blank option -->
+                                                                                                                                        <option value="10">10 </option>      
+                                                                                                                                        <option value="20">20 </option>    
+                                                                                                                                        <option value="30">30 </option>    
+                                                                                                                                        <option value="40">40 </option>    
+                                                                                                                                        <option value="50">50 </option>    
+                                                                                                                                        <option value="60">60 </option>    
+                                                                                                                                        <option value="70">70 </option>    
+                                                                                                                                        <option value="80">80 </option>    
+                                                                                                                                        <option value="90">90 </option>      
+                                                                                                                                        <option value="100">100 </option>   
+                                                                                                                                    </select>
+                                                                                                                            </div>
+                                                                                                                        
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                          
+                                                                                                        </div>
+                                                                                                    </div>
+
+
+                                                                                            </div>
+                                                                                            <!-- /Row -->
+
+                                                                                        </div>
+                                                                                    </form>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- /Row -->
+                                                    <ul class="list-inline pull-right">
+                                                        <li>
+                                                            <button type="button" class="btn btn-default prev-step">Anterior</button>
+                                                        </li>
+                                                        <li>
+                                                            <button type="button" ng-click="WizCtrl.ValidarCamposDetalleSyllabus()"  class="btn btn-primary" ng-disabled="WizCtrl.BtnGuardar2">Guardar </button>
+                                                        </li>
+                                                        <li>
+                                                            <button type="button"  class="btn btn-primary next-step" ng-disabled="WizCtrl.contCreate2" >continuar</button>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+
+
+                                                <div class="tab-pane" role="tabpanel" id="step3" style="padding-top: 20px!important">
+                                                   
+                                                    <!-- Row -->
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="panel panel-default card-view">
+
+                                                                <div class="panel-wrapper collapse in">
+                                                                    <div class="panel-body">
+                                                                        <div class="row">
+                                                                            <div class="col-sm-12 col-xs-12">
+                                                                                <div class="form-wrap">
+                                                                                    <form action="#">
+                                                                                        <div class="form-body">
+                                                                                            <h6 class="txt-dark capitalize-font">
+                                                                                                <i class="fas fa-file-alt"></i> &nbsp; Competencias
+                                                                                                Syllabus</h6>
+                                                                                            <hr class="light-grey-hr" />
+                                                                                    
+                                                                                            <div class="row">
+                                                                                                <div class="col-md-6">
+                                                                                                    <div class="panel panel-default border-panel card-view">
+                                                                                                        <div class="panel-heading">
+                                                                                                            <div class="pull-left">
+                                                                                                                <h6 class="panel-title txt-dark">COMPETENCIAS
+                                                                                                                    ESPECÍFICAS
+                                                                                                                    (C.E.)</h6>
+                                                                                                            </div>
+                                                                                                            <div class="pull-right">
+                                                                                                                <div class="pull-left inline-block dropdown mr-15">
+                                                                                                                    <a class="dropdown-toggle" data-toggle="dropdown" target="_self" href="#" aria-expanded="false" role="button">
+                                                                                                                        <i class="zmdi zmdi-more-vert"></i>
+                                                                                                                    </a>
+                                                                                                                    <ul class="dropdown-menu bullet dropdown-menu-right" role="menu">
+                                                                                                                        <li role="presentation">
+                                                                                                                            <a
+                                                                                                                                href="javascript:void(0)"
+                                                                                                                                role="menuitem">
+                                                                                                                                <i
+                                                                                                                                    class="icon wb-reply"
+                                                                                                                                    aria-hidden="true"></i>Edit</a>
+                                                                                                                        </li>
+                                                                                                                        <li role="presentation">
+                                                                                                                            <a
+                                                                                                                                href="javascript:void(0)"
+                                                                                                                                role="menuitem">
+                                                                                                                                <i
+                                                                                                                                    class="icon wb-share"
+                                                                                                                                    aria-hidden="true"></i>Clear
+                                                                                                                                All</a>
+                                                                                                                        </li>
+                                                                                                                        <li role="presentation">
+                                                                                                                            <a
+                                                                                                                                href="javascript:void(0)"
+                                                                                                                                role="menuitem">
+                                                                                                                                <i
+                                                                                                                                    class="icon wb-trash"
+                                                                                                                                    aria-hidden="true"></i>Select
+                                                                                                                                All</a>
+                                                                                                                        </li>                                                                                                                    
+                                                                                                                    </ul>
+                                                                                                                </div>
+
+                                                                                                            </div>
+                                                                                                            <div class="clearfix"></div>
+                                                                                                        </div>
+                                                                                                        <div class="panel-wrapper collapse in">
+                                                                                                            <div class="panel-body row pa-0">
+                                                                                                                <div class="todo-box-wrap">
+                                                                                                                    <!-- Todo-List -->
+                                                                                                                    <ul class="todo-list todo-box-nicescroll-bar">
+                                                                                                                        <li class="todo-item">
+                                                                                                                            <div class="">
+                                                                                                                                <label for="checkbox001" style="font-size: medium;font-weight: bold;margin-right: 3%;">A.</label>
+                                                                                                                                <textarea class="form-control" rows="3" ng-model="dataSyllabus.competenciasEsp.A" ng-disabled="WizCtrl.CompetenciasInputs.A"> </textarea>                                                                                                                                                                                                                                                                     
+                                                                                                                            </div>
+                                                                                                                        </li>
+                                                                                                                        
+                                                                                                                        <li class="todo-item">
+                                                                                                                            <div class="">
+                                                                                                                                <label for="checkbox001" style="font-size: medium;font-weight: bold;margin-right: 3%;">B.</label>
+                                                                                                                                <textarea class="form-control" rows="3" ng-model="dataSyllabus.competenciasEsp.B" ng-disabled="WizCtrl.CompetenciasInputs.B">  </textarea>
+                                                                                                                            </div>
+                                                                                                                        </li>
+                                                                                                                      
+                                                                                                                        <li class="todo-item">
+                                                                                                                            <div class="">
+                                                                                                                                <label for="checkbox001" style="font-size: medium;font-weight: bold;margin-right: 3%;">C.</label>
+                                                                                                                                <textarea class="form-control" rows="3" ng-model="dataSyllabus.competenciasEsp.C" ng-disabled="WizCtrl.CompetenciasInputs.C">  </textarea>
+                                                                                                                            </div>
+                                                                                                                        </li>
+                                                                                                                       
+                                                                                                                        <li class="todo-item">
+                                                                                                                            <div class="">
+                                                                                                                                <label for="checkbox001" style="font-size: medium;font-weight: bold;margin-right: 3%;">D.</label>
+                                                                                                                                <textarea class="form-control" rows="3" ng-model="dataSyllabus.competenciasEsp.D" ng-disabled="WizCtrl.CompetenciasInputs.D">  </textarea>
+                                                                                                                            </div>
+                                                                                                                        </li>
+                                                                                                                      
+                                                                                                                        <li class="todo-item">
+                                                                                                                            <div class="">
+                                                                                                                                <label for="checkbox001" style="font-size: medium;font-weight: bold;margin-right: 3%;">E.</label>
+                                                                                                                                <textarea class="form-control" rows="3" ng-model="dataSyllabus.competenciasEsp.E" ng-disabled="WizCtrl.CompetenciasInputs.E">  </textarea>
+                                                                                                                            </div>
+                                                                                                                        </li>
+
+                                                                                                                    </ul>
+                                                                                                                    <!-- /Todo-List -->
+
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+
+                                                                                                <div class="col-md-6">
+                                                                                                    <div class="panel panel-default border-panel card-view">
+                                                                                                        <div class="panel-heading">
+                                                                                                            <div class="pull-left">
+                                                                                                                <h6 class="panel-title txt-dark">Competencias
+                                                                                                                    transversales
+                                                                                                                    (C.T.)</h6>
+                                                                                                            </div>
+                                                                                     
+                                                                                                            <div class="clearfix"></div>
+                                                                                                        </div>
+                                                                                                        <div class="panel-wrapper collapse in">
+                                                                                                            <div class="panel-body row pa-0">
+                                                                                                                <div class="todo-box-wrap">
+                                                                                                                    <!-- Todo-List -->
+                                                                                                                    <ul class="todo-list todo-box-nicescroll-bar">
+                                                                                                                        <li class="todo-item">
+                                                                                                                            <div class="form-inline">
+                                                                                                                                
+                                                                                                                                <label for="checkbox001" style="font-size: medium;font-weight: bold;margin-right: 3%;">EM</label>
+                                                                                                                                <select class="form-control" ng-model="dataSyllabus.competenciasTra.EM" ng-disabled="WizCtrl.CompetenciasInputs.EM" >
+                                                                                                                                        <option value="" disabled>---Seleccionar---</option> <!-- not selected / blank option -->
+                                                                                                                                        <option ng-repeat="option in WizCtrl.jsonComboEM" value="{{option.id_competencia}}">{{option.contenido}}</option>
+                                                                                                                                </select>
+                                                                                                                                {{ dataSyllabus.competenciasTra.EM}}
+                                                                                                                            </div>
+                                                                                                                        </li>
+                                                                                                                        <li>
+                                                                                                                            <hr class="light-grey-hr" />
+                                                                                                                        </li>
+                                                                                                                        <li class="todo-item">
+                                                                                                                            <div class="form-inline">
+                                                                                                                                <label for="checkbox001" style="font-size: medium;font-weight: bold;margin-right: 3%;">SH</label>
+                                                                                                                                <select class="form-control"  ng-model="dataSyllabus.competenciasTra.SH" ng-disabled="WizCtrl.CompetenciasInputs.SH">
+                                                                                                                                        <option value="" disabled>---Seleccionar---</option> <!-- not selected / blank option -->
+                                                                                                                                        <option ng-repeat="option in WizCtrl.jsonComboSH" value="{{option.id_competencia}}">{{option.contenido}}</option>
+                                                                                                                                </select>
+                                                                                                                                {{ dataSyllabus.competenciasTra.SH }}
+                                                                                                                            </div>
+                                                                                                                        </li>
+                                                                                                                        <li>
+                                                                                                                            <hr class="light-grey-hr" />
+                                                                                                                        </li>
+                                                                                                                        <li class="todo-item">
+                                                                                                                            <div class="form-inline">
+                                                                                                                                <label for="checkbox001" style="font-size: medium;font-weight: bold;margin-right: 3%;">IN</label>
+                                                                                                                                <select class="form-control"  ng-model="dataSyllabus.competenciasTra.IN" ng-disabled="WizCtrl.CompetenciasInputs.IN">
+                                                                                                                                        <option value="" disabled>---Seleccionar---</option> <!-- not selected / blank option -->
+                                                                                                                                        <option ng-repeat="option in WizCtrl.jsonComboIN" value="{{option.id_competencia}}">{{option.contenido}}</option>
+                                                                                                                                </select>
+                                                                                                                            </div>
+                                                                                                                        </li>
+                                                                                                                        <li>
+                                                                                                                            <hr class="light-grey-hr" />
+                                                                                                                        </li>
+                                                                                                                        <li class="todo-item">
+                                                                                                                            <div class="form-inline">
+                                                                                                                                <label for="checkbox001" style="font-size: medium;font-weight: bold;margin-right: 3%;">CO</label>
+                                                                                                                                <select class="form-control"  ng-model="dataSyllabus.competenciasTra.CO" ng-disabled="WizCtrl.CompetenciasInputs.CO">
+                                                                                                                                        <option value="" disabled>---Seleccionar---</option> <!-- not selected / blank option -->
+                                                                                                                                        <option ng-repeat="option in WizCtrl.jsonComboCO" value="{{option.id_competencia}}">{{option.contenido}}</option>
+                                                                                                                                </select>
+                                                                                                                            </div>
+                                                                                                                        </li>
+                                                                                                                        <li class="todo-item">
+                                                                                                                                <div class="form-inline">
+                                                                                                                                    <label for="checkbox001" style="font-size: medium;font-weight: bold;margin-right: 3%;">TE</label>
+                                                                                                                                    <select class="form-control"  ng-model="dataSyllabus.competenciasTra.TE" ng-disabled="WizCtrl.CompetenciasInputs.TE">
+                                                                                                                                            <option value="" disabled>---Seleccionar---</option> <!-- not selected / blank option -->
+                                                                                                                                            <option ng-repeat="option in WizCtrl.jsonComboTE" value="{{option.id_competencia}}">{{option.contenido}}</option>
+                                                                                                                                    </select>
+                                                                                                                                </div>
+                                                                                                                            </li>
+
+                                                                                                                        <li>
+                                                                                                                            <hr class="light-grey-hr" />
+                                                                                                                        </li>
+                                                                                                                    </ul>
+                                                                                                                    <!-- /Todo-List -->
+
+                                   
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+
+                                                                                            </div>
+
+
+
+
+
+
+                                                                                            <!-- /Row -->
+
+                                                                                        </div>
+
+                                                                                    </form>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- /Row -->
+                                                    <ul class="list-inline pull-right">
+                                                        <li>
+                                                            <button type="button" class="btn btn-default prev-step">Anterior</button>
+                                                        </li>                                                      
+                                                        <li>
+                                                            <button type="button" ng-click="WizCtrl.ValidarCamposCompeSyllabus()"  class="btn btn-primary" ng-disabled="WizCtrl.BtnGuardar3">Guardar </button>
+                                                        </li>
+                                                        <li>
+                                                            <button type="button"  class="btn btn-primary next-step" ng-disabled="WizCtrl.contCreate3" >continuar</button>
+                                                        </li>
+
+
+                                                    </ul>
+                                                </div>                                               
+
+                                                <div class="tab-pane" role="tabpanel" id="step4" style="padding-top: 20px!important">                                                    
+
+                                                    <!-- <button type="button" class="btn btn-default btn-circle"><i class="fa fa-check"></i> -->
+                                                    </button>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="panel panel-default card-view">
+                                                                <div class="panel-wrapper collapse in">
+                                                                    <div class="panel-body">
+                                                                        <div class="row">
+                                                                            <div class="col-sm-12 col-xs-12">
+                                                                                <div class="form-wrap">
+                                                                                    <form action="#">
+                                                                                        <div class="form-body">
+                                                                                            <h6 class="txt-dark capitalize-font">
+                                                                                                <i class="fas fa-file-alt"></i> &nbsp; Creacion de sesiones</h6>
+                                                                                            <hr class="light-grey-hr" />
+                                                                                            <div class="row">
+                                                                                                <div class="col-md-2">
+                                                                                                    <button type="button" target='_self' class="btn btn-primary btn-rounded btn-icon left-icon" ng-click="WizCtrl.armarCompetenciasHtml();" ng-disabled="WizCtrl.addSession" >
+                                                                                                        <i class="fas fa-plus"></i>
+                                                                                                        <span>Agregar sesion</span>
+                                                                                                    </button>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                           
+                                                                                            <div class="row" id="sesionesSyl"  style="padding-top: 1%" >
+
+
+                                                                                            </div>
+                                                                                            <!-- /Row -->
+                                                                                        </div>
+
+                                                                                    </form>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- /Row -->
+
+
+
+                                                    <ul class="list-inline pull-right">
+                                                        <li>
+                                                            <button type="button" class="btn btn-default prev-step">Anterior</button>
+                                                        </li>
+                                                        <!-- <li><button type="button" class="btn btn-default next-step">Skip</button></li> -->
+                                                        <li>
+                                                            <button type="button" class="btn btn-primary btn-info-full next-step" ng-disabled="WizCtrl.BtnGuardar4">Guardar y continuar</button>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="tab-pane" role="tabpanel" id="complete" style="padding-top: 20px!important">
+                                                    <h3>Completado</h3>
+                                                    <p>Ha completado con éxito todos los pasos.</p>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Main Content -->
+
+

@@ -1,4 +1,14 @@
-﻿
+﻿var profile= {}
+var auth2;
+
+
+// function onSignIn(googleUser){
+
+// 	 profile = googleUser.getBasicProfile();
+// 	angular.element(document.getElementById('loginIdTotal')).scope().loginGoogle(profile)
+
+// }
+
 
 IdentiApp.controller("LoginController", ['$scope', '$location', '$rootScope', '$modal', 'Enviar','Recibir',
 	function ($scope, $location, $rootScope, $modal, Enviar, Recibir) {
@@ -125,7 +135,52 @@ IdentiApp.controller("LoginController", ['$scope', '$location', '$rootScope', '$
 			}
 
 		}
-	
+		
+		$scope.loginGoogle = function(objUser){
+
+			
+			console.log(objUser)
+			var resp = $scope.validarCorreo(objUser.U3)
+
+			if(resp == true){
+				var Ctrl = this;
+				var Url =  $rootScope.baseUri + "/restapi-syllabusean/public/api/index/aut";
+				var success = function (json) {	
+
+				   if (json.data.status != "OK") {
+					   $scope.message = 'Usuario o Contraseña incorrectos';
+					   swal("Error", $scope.message, "info");
+				   } else {	                
+					  json.data.data.imgProfile = objUser.Paa ;
+					   sessionStorage.user = JSON.stringify(json.data.data);
+					   sessionStorage.token =  json.data.token;
+					   $rootScope.user = json.data.data;
+					   $rootScope.user.imgProfile = objUser.Paa ;
+					   $rootScope.user.nameProfile = objUser.ig;
+					   $rootScope.token = json.data.token;
+					   console.log($rootScope.user);	
+					   $location.path('/home');
+					//    $scope.$apply();	
+				   }
+				};
+			   var error = function (json) {	
+				   swal("Error","Usuario incorrectos", "info");	
+			   };			   
+			   var Data = { "correo": objUser.U3 }
+			   Enviar.elemento(Ctrl, Url, success, error, Data);
+
+					
+					// sessionStorage.user = JSON.stringify(objUser);
+					// sessionStorage.token =  0;
+					// $rootScope.user = objUser;
+					// $rootScope.token = 0;						
+					// $rootScope.GoHome(); 
+									
+					
+			}else{
+						$rootScope.LogOutGoogle();
+			}
+		}
 
 	    $scope.login = function (forma) {
 			
@@ -185,7 +240,15 @@ IdentiApp.controller("LoginController", ['$scope', '$location', '$rootScope', '$
 			$location.path('/login');
 		}		
 
-		
+		$rootScope.LogOutGoogle = function(){	
+			sessionStorage.removeItem('user');
+			$rootScope.user = null;
+			$rootScope.token = '';		
+			var auth2 = gapi.auth2.getAuthInstance();
+			auth2.signOut().then(function () {
+				$location.path('/login');
+			});			
+		}	
 		
 		$rootScope.GoHome = function(){		
 			$location.path('/home');
@@ -219,6 +282,26 @@ IdentiApp.controller("LoginController", ['$scope', '$location', '$rootScope', '$
 ]);
 
 
+function onSuccess(googleUser) {
+	
+	console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
+	profile = googleUser.getBasicProfile();
+	angular.element(document.getElementById('loginIdTotal')).scope().loginGoogle(profile)
+  }
+  function onFailure(error) {
+	console.log(error);
+  }
+  function renderButton() {
+	gapi.signin2.render('my-signin2', {
+	  'scope': 'profile email',
+	  'width': 240,
+	  'height': 50,
+	  'longtitle': true,
+	  'theme': 'dark',
+	  'onsuccess': onSuccess,
+	  'onfailure': onFailure
+	});
+  }
 
   
 
