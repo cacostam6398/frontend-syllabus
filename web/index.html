@@ -538,7 +538,7 @@
 			var onFailure2 = function(error) {
 				var inst = gapi.auth2.getAuthInstance().isSignedIn.get();				
 				if(inst == false){
-					window.location = "http://localhost:90/frontend-syllabus/web/#!/login"
+					window.top.location.href = ("#!/login") 
 				}
 				console.log(error);
 			};

@@ -178,6 +178,7 @@ IdentiApp.controller("LoginController", ['$scope', '$location', '$rootScope', '$
 									
 					
 			}else{
+						swal("Error","Usuario incorrecto", "info");	
 						$rootScope.LogOutGoogle();
 			}
 		}
