@@ -37,7 +37,7 @@ function (Enviar, Cargar, $location, $route, $scope, $rootScope, $modal, $filter
         }
     
 
-     this.cargarListaSyllabus();
+    //  this.cargarListaSyllabus();
 
 
 }

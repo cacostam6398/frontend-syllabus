@@ -21,71 +21,7 @@ IdentiApp.controller("LoginController", ['$scope', '$location', '$rootScope', '$
 	    $scope.MostrarCargaReg = false;
 
 
-
-	
-
-
-	    jQuery('#myform2').validate({ // initialize the plugin
-	        rules: {
-	            'nombre': {
-	                required: true,
-	                noSpecials: true
-	            },
-	            'apellido': {
-	                required: true,
-	                noSpecials: true
-
-	            },
-	            'email': {
-	                required: true,
-	                minlength: 2,
-	                email: true
-	            },
-	            'telefono': {
-	                required: true,
-	                minlength: 2,
-	                number: true
-	            },
-	            'contra': {
-	                required: true,
-	                minlength: 10,
-	                maxlength: 20,
-	                noSpecials: true
-	            },
-	            'numDoc': {
-	                required: true,
-	                minlength: 2,
-	                number: true
-	            },
-	            'ciud': {
-	                required: true,
-	                minlength: 2
-	            },
-	            'dire': {
-	                required: true,
-	                minlength: 2
-	            }
-
-	        },
-	        submitHandler: function (form) { // for demo
-	            return false; // for demo
-	        }
-	    });
-
-
-
-	    $scope.translateFormReg = function (esta2){	    
-	        if (esta2 == false) {
-	            $scope.formR1 = false;
-	            $scope.formR2 = true;
-	            $scope.esta = true;
-	        } else {
-	            $scope.formR1 = true;
-	            $scope.formR2 = false;
-	            $scope.esta = false;
-	        }	    
-	    }
-
+ 
 	    $scope.registrar = function (registro) {
 	        $scope.MostrarCargaReg = true;
 
@@ -111,16 +47,7 @@ IdentiApp.controller("LoginController", ['$scope', '$location', '$rootScope', '$
 	            $scope.MostrarCargaReg = false;
 	        }
 	    }
-
-
-	    $scope.ModalRecuperacion = function () {
-	        this.Modal = $modal.open({
-	            templateUrl: 'Modal.html',
-	            scope: $scope,
-	            size: 'sm'
-	        });
-	    };
-		
+	
 		$scope.validarCorreo = function(correo){
 
 			var array1 = correo.split('@');
@@ -144,20 +71,21 @@ IdentiApp.controller("LoginController", ['$scope', '$location', '$rootScope', '$
 
 			if(resp == true){
 				var Ctrl = this;
-				var Url =  $rootScope.baseUri + "/restapi-syllabusean/public/api/index/aut";
+				var Url =  $rootScope.baseUri + "/syllabus_ean/public/api/index/aut";
 				var success = function (json) {	
 
 				   if (json.data.status != "OK") {
 					   $scope.message = 'Usuario o Contraseña incorrectos';
 					   swal("Error", $scope.message, "info");
 				   } else {	                
-					  json.data.data.imgProfile = objUser.Paa ;
-					   sessionStorage.user = JSON.stringify(json.data.data);
-					   sessionStorage.token =  json.data.token;
-					   $rootScope.user = json.data.data;
+					  json.data.usuario.imgProfile = objUser.Paa ;
+					   sessionStorage.user = JSON.stringify(json.data.usuario);
+					   sessionStorage.token =  json.data.usuario.token;
+					   $rootScope.user = json.data.usuario;
 					   $rootScope.user.imgProfile = objUser.Paa ;
 					   $rootScope.user.nameProfile = objUser.ig;
-					   $rootScope.token = json.data.token;
+					   $rootScope.user.Au = objUser.Eea;
+					   $rootScope.token = json.data.usuario.token;
 					   console.log($rootScope.user);	
 					   $location.path('/home');
 					//    $scope.$apply();	
@@ -166,16 +94,8 @@ IdentiApp.controller("LoginController", ['$scope', '$location', '$rootScope', '$
 			   var error = function (json) {	
 				   swal("Error","Usuario incorrectos", "info");	
 			   };			   
-			   var Data = { "correo": objUser.U3 }
-			   Enviar.elemento(Ctrl, Url, success, error, Data);
-
-					
-					// sessionStorage.user = JSON.stringify(objUser);
-					// sessionStorage.token =  0;
-					// $rootScope.user = objUser;
-					// $rootScope.token = 0;						
-					// $rootScope.GoHome(); 
-									
+			   var Data = { "correo": objUser.U3 , "idSesionAut": objUser.Eea }
+			   Enviar.elemento(Ctrl, Url, success, error, Data);	
 					
 			}else{
 						swal("Error","Usuario incorrecto", "info");	
@@ -183,72 +103,29 @@ IdentiApp.controller("LoginController", ['$scope', '$location', '$rootScope', '$
 			}
 		}
 
-	    $scope.login = function (forma) {
-			
-	        jQuery('#myform').validate({ // initialize the plugin
-	            rules: {
-	                'email': {
-	                    required: true,
-	             
-	                },
-	                'pass': {
-	                    required: true,
-	                    minlength: 2
-	                }
-
-	            },
-	            submitHandler: function (form) { // for demo
-	           
-	                return false; // for demo
-	            }
-	        });
-
-	        if (jQuery('#myform').valid()) {
-	            var user = { "UsuaUsua": "", "UsuaPwd": "" };	          
-	            var Ctrl = this;
-	            var Url =  $rootScope.baseUri + "/restapi-syllabusean/public/api/index/aut";
-	             var success = function (json) {	
-
-	                if (json.data.status != "OK") {
-	                    $scope.message = 'Usuario o Contraseña incorrectos';
-	                    swal("Error", $scope.message, "info");
-	                } else {	                
-						sessionStorage.user = JSON.stringify(json.data.data);
-						sessionStorage.token =  json.data.token;
-						$rootScope.user = json.data.data;
-						$rootScope.token = json.data.token;
-	                    console.log($rootScope.user);	            
-	                    jQuery('.modal-backdrop').remove();		
-	                    $location.path('/home');
-	                }
-	             };
-				var error = function (json) {	
-					swal("Error","Usuario o Contraseña incorrectos", "info");	
-				};
-	            // var user = { "UsuaEmail": "", "UsuaPsw": "" };
-	            // user.UsuaEmail = $scope.email;
-	            // user.UsuaPsw = $scope.password;
-	            var Data = { "correo": forma.email }
-			    Enviar.elemento(Ctrl, Url, success, error, Data);
-	        }
-		};
+	  
 		
-		$rootScope.LogOut = function(){
-
-			sessionStorage.removeItem('user');
-			$rootScope.user = {};
-			$rootScope.token = '';
-			$location.path('/login');
-		}		
 
 		$rootScope.LogOutGoogle = function(){	
-			sessionStorage.removeItem('user');
-			$rootScope.user = null;
-			$rootScope.token = '';		
-			var auth2 = gapi.auth2.getAuthInstance();
-			auth2.signOut().then(function () {
-				$location.path('/login');
-			});			
+			var Ctrl = this;
+			var Url =  $rootScope.baseUri + "/syllabus_ean/public/api/index/salir";
+			var success = function (json) {	
+				sessionStorage.removeItem('user');
+				$rootScope.user = null;
+				$rootScope.token = '';		
+				var auth2 = gapi.auth2.getAuthInstance();
+				auth2.signOut().then(function () {
+					$location.path('/login');
+				});			
+
+			}
+			var error = function (json) {	
+				swal("Error","Error en el servicio Log Out", "info");	
+			};
+			var Data = { "correo":  $rootScope.user.correo , "idSesionAut":  $rootScope.user.Au }
+			Recibir.elemento(Ctrl, Url, success, error,Data);	
+
+			
 		}	
 		
 		$rootScope.GoHome = function(){		
@@ -259,6 +136,71 @@ IdentiApp.controller("LoginController", ['$scope', '$location', '$rootScope', '$
 			$location.path('/CreacionSyllabus');
 		}
 
+
+		sessionStorage.clear();
+	    $rootScope.permissions = []; 	
+	    sessionStorage.clear();
+	    $rootScope.permissions = [];
+	    $rootScope.user = '';
+
+		  // $scope.login = function (forma) {
+			
+	    //     jQuery('#myform').validate({ // initialize the plugin
+	    //         rules: {
+	    //             'email': {
+	    //                 required: true,
+	             
+	    //             },
+	    //             'pass': {
+	    //                 required: true,
+	    //                 minlength: 2
+	    //             }
+
+	    //         },
+	    //         submitHandler: function (form) { // for demo
+	           
+	    //             return false; // for demo
+	    //         }
+	    //     });
+
+	    //     if (jQuery('#myform').valid()) {
+	    //         var user = { "UsuaUsua": "", "UsuaPwd": "" };	          
+	    //         var Ctrl = this;
+	    //         var Url =  $rootScope.baseUri + "/restapi-syllabusean/public/api/index/aut";
+	    //          var success = function (json) {	
+
+	    //             if (json.data.status != "OK") {
+	    //                 $scope.message = 'Usuario o Contraseña incorrectos';
+	    //                 swal("Error", $scope.message, "info");
+	    //             } else {	                
+		// 				sessionStorage.user = JSON.stringify(json.data.data);
+		// 				sessionStorage.token =  json.data.token;
+		// 				$rootScope.user = json.data.data;
+		// 				$rootScope.token = json.data.token;
+	    //                 console.log($rootScope.user);	            
+	    //                 jQuery('.modal-backdrop').remove();		
+	    //                 $location.path('/home');
+	    //             }
+	    //          };
+		// 		var error = function (json) {	
+		// 			swal("Error","Usuario o Contraseña incorrectos", "info");	
+		// 		};
+	    //         // var user = { "UsuaEmail": "", "UsuaPsw": "" };
+	    //         // user.UsuaEmail = $scope.email;
+	    //         // user.UsuaPsw = $scope.password;
+	    //         var Data = { "correo": forma.email }
+		// 	    Enviar.elemento(Ctrl, Url, success, error, Data);
+	    //     }
+		// };
+		
+
+		// $rootScope.LogOut = function(){
+
+		// 	sessionStorage.removeItem('user');
+		// 	$rootScope.user = {};
+		// 	$rootScope.token = '';
+		// 	$location.path('/login');
+		// }	
 
 	    //$scope.setCredentials = function (username, password) {
 	    //    var authdata = Base(username + ':' + password);
@@ -273,12 +215,9 @@ IdentiApp.controller("LoginController", ['$scope', '$location', '$rootScope', '$
 	    //    };	
 	    //    Enviar.elemento(Ctrl, Url, success, error, Data);
 
-	    //}
-	    sessionStorage.clear();
-	    $rootScope.permissions = []; 	
-	    sessionStorage.clear();
-	    $rootScope.permissions = [];
-	    $rootScope.user = '';
+		//}
+		
+	   
 	}
 ]);
 
