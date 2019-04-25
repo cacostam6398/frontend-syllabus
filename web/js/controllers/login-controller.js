@@ -80,12 +80,12 @@ IdentiApp.controller("LoginController", ['$scope', '$location', '$rootScope', '$
 				   } else {	                
 					  json.data.usuario.imgProfile = objUser.Paa ;
 					   sessionStorage.user = JSON.stringify(json.data.usuario);
-					   sessionStorage.token =  json.data.usuario.token;
+					   sessionStorage.token =  json.data.token;
 					   $rootScope.user = json.data.usuario;
-					   $rootScope.user.imgProfile = objUser.Paa ;
+					   $rootScope.user.imgProfile = objUser.Paa;
 					   $rootScope.user.nameProfile = objUser.ig;
 					   $rootScope.user.Au = objUser.Eea;
-					   $rootScope.token = json.data.usuario.token;
+					   $rootScope.token = json.data.token;
 					   console.log($rootScope.user);	
 					   $location.path('/home');
 					//    $scope.$apply();	
@@ -107,9 +107,9 @@ IdentiApp.controller("LoginController", ['$scope', '$location', '$rootScope', '$
 		
 
 		$rootScope.LogOutGoogle = function(){	
-			var Ctrl = this;
-			var Url =  $rootScope.baseUri + "/syllabus_ean/public/api/index/salir";
-			var success = function (json) {	
+			// var Ctrl = this;
+			// var Url =  $rootScope.baseUri + "/syllabus_ean/public/api/index/salir";
+			// var success = function (json) {	
 				sessionStorage.removeItem('user');
 				$rootScope.user = null;
 				$rootScope.token = '';		
@@ -118,12 +118,12 @@ IdentiApp.controller("LoginController", ['$scope', '$location', '$rootScope', '$
 					$location.path('/login');
 				});			
 
-			}
-			var error = function (json) {	
-				swal("Error","Error en el servicio Log Out", "info");	
-			};
-			var Data = { "correo":  $rootScope.user.correo , "idSesionAut":  $rootScope.user.Au }
-			Recibir.elemento(Ctrl, Url, success, error,Data);	
+			// }
+			// var error = function (json) {	
+			// 	swal("Error","Error en el servicio Log Out", "info");	
+			// };
+			// var Data = { "correo":  $rootScope.user.correo , "idSesionAut":  $rootScope.user.Au }
+			// Recibir.elemento(Ctrl, Url, success, error,Data);	
 
 			
 		}	

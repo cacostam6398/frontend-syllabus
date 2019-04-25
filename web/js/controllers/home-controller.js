@@ -36,9 +36,27 @@ function (Enviar, Cargar, $location, $route, $scope, $rootScope, $modal, $filter
     
         }
     
+    this.cargarOpcionesPermisos = function () {
+
+        var jsonEnvio = {
+            'correo': $rootScope.user.correo,
+            'token': $rootScope.token
+        }
+        var url = $rootScope.baseUri + "/syllabus_ean/public/api/index/obt_permisos";
+        var Ctrl = this;
+        var success = function (json) {
+            // Ctrl.ListSyllabus = json.data.Syllabus;
+            console.log(json)
+        };
+        var error = function (resp) {
+            console.log("Error: " + resp);          
+        };
+        Enviar.elemento(Ctrl, url, success, error, jsonEnvio);
+
+    }
 
     //  this.cargarListaSyllabus();
 
-
+    this.cargarOpcionesPermisos();
 }
 ]); 
