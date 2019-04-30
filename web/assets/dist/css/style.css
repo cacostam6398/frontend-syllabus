@@ -2999,7 +2999,8 @@ a#toggle_mobile_nav {
       opacity: 1;
       visibility: visible;
       height: auto;
-      overflow: auto; }
+      /* overflow: auto;  */
+    }
     .navbar.navbar-inverse.navbar-fixed-top .nav.top-nav > li {
       display: inline-block;
       float: left; }
