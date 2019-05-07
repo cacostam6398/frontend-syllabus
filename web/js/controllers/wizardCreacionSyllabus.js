@@ -254,7 +254,7 @@ IdentiApp.controller("WizardCreacionSyllabus", ['Enviar', 'Cargar', '$location',
                 'id_usuario': $rootScope.user.id_usuario,
                 'token': $rootScope.token
             }
-            var url = $rootScope.baseUri + "/restapi-syllabusean/public/programas/obtmat";
+            var url = $rootScope.baseUri + "/syllabus_ean/public/programas/obtmat";
             var Ctrl = this;
             var success = function (json) {
                 Ctrl.ListMatProgramas = json.data.programas;
@@ -344,7 +344,7 @@ IdentiApp.controller("WizardCreacionSyllabus", ['Enviar', 'Cargar', '$location',
                         "correo": $rootScope.user.correo,
                         "observacion": data.obsSyllabusCabecera
                     }
-                    var url = $rootScope.baseUri + "/restapi-syllabusean/public/syllabus/crearsyl";
+                    var url = $rootScope.baseUri + "/syllabus_ean/public/syllabus/crearsyl";
 
                     var success = function (json) {
                         swal("info", 'cabecera creada', "success");
@@ -385,7 +385,7 @@ IdentiApp.controller("WizardCreacionSyllabus", ['Enviar', 'Cargar', '$location',
 
         this.CreardetalleSyllabus = function (objEnv) {
             var jsonEnvio = objEnv
-            var url = $rootScope.baseUri + "/restapi-syllabusean/public/syllabus/creardet";
+            var url = $rootScope.baseUri + "/syllabus_ean/public/syllabus/creardet";
             var Ctrl = this;
             var success = function (json) {
                 $rootScope.dataSyllabus.detalle.id_detalle = json.data.syllabus
@@ -543,7 +543,7 @@ IdentiApp.controller("WizardCreacionSyllabus", ['Enviar', 'Cargar', '$location',
                 'id_usuario': $rootScope.user.id_usuario,
                 'token': $rootScope.token
             }
-            var url = $rootScope.baseUri + "/restapi-syllabusean/public/syllabus/obtcompt";
+            var url = $rootScope.baseUri + "/syllabus_ean/public/syllabus/obtcompt";
             var Ctrl = this.WizCtrl;
             var success = function (json) {
 
@@ -628,7 +628,7 @@ IdentiApp.controller("WizardCreacionSyllabus", ['Enviar', 'Cargar', '$location',
 
 
             var jsonEnvio = data
-            var url = $rootScope.baseUri + "/restapi-syllabusean/public/syllabus/crearcomp";
+            var url = $rootScope.baseUri + "/syllabus_ean/public/syllabus/crearcomp";
             var Ctrl = this;
             var success = function (json) {
                 console.log(json)
@@ -796,7 +796,7 @@ IdentiApp.controller("WizardCreacionSyllabus", ['Enviar', 'Cargar', '$location',
               }
               
          
-            var url = $rootScope.baseUri + "/restapi-syllabusean/public/syllabus/crearses";
+            var url = $rootScope.baseUri + "/syllabus_ean/public/syllabus/crearses";
             var Ctrl = this;
             var success = function (json) {                
                 console.log('session 0 creada');          
@@ -813,7 +813,7 @@ IdentiApp.controller("WizardCreacionSyllabus", ['Enviar', 'Cargar', '$location',
         this.CrearSesionSyllabus = function (data) {
 
             var jsonEnvio = data
-            var url = $rootScope.baseUri + "/restapi-syllabusean/public/syllabus/crearses";
+            var url = $rootScope.baseUri + "/syllabus_ean/public/syllabus/crearses";
             var Ctrl = this;
             var success = function (json) {
                 console.log(json)
@@ -840,7 +840,7 @@ IdentiApp.controller("WizardCreacionSyllabus", ['Enviar', 'Cargar', '$location',
         }
 
         setTimeout(function () {
-            $scope.cargarCompetenciasTransversales();
+            // $scope.cargarCompetenciasTransversales();
         }, 500)
         this.cargarCombos();
         funcionalidadWiz();
