@@ -1,0 +1,150 @@
+﻿
+ 
+<!-- Main Content -->
+<div class="page-wrapper">
+        <div class="container-fluid">
+            
+            	<!-- Title -->
+					<div class="row heading-bg">
+                            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                                <h5 class="txt-dark">Jerarquias</h5>
+                            </div>  
+                            
+                            <!-- Breadcrumb -->
+						<div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+                                <ol class="breadcrumb">
+                                    <li><a ng-href="#!/home">Pagina Principal</a></li>                             
+                                    <li class="active"><span>Jerarquias</span></li>
+                                </ol>
+                            </div>
+                            <!-- /Breadcrumb -->
+                        </div>
+                        
+                        <!-- /Title -->
+                  
+                        
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="panel panel-default card-view">
+                                    <div class="panel-heading">
+                                        <div class="pull-left">
+                                            <h6 class="panel-title txt-dark"></h6>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="panel-wrapper collapse in">
+                                        <div class="panel-body">
+                                                <div class="row">
+                                                    <button style="float: right;    margin-right: 3%;" class="btn  btn-success" data-toggle="modal" data-target="#myModal">Insertar</button>
+                                                </div>
+                                                
+                                            
+                                                <div class="table-wrap">
+                                                <div class="table-responsive">
+                                                    <table id="datable_1" class="table table-hover display  pb-30" >
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Id</th>
+                                                                <th>Nombre</th>
+                                                                <th>Tipo</th>
+                                                                <th>Jerarquia Superior</th>
+                                                                <th>Acciónes</th>
+
+
+                                                           
+                                                            </tr>
+                                                        </thead>
+                                                        
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>Tiger Nixon</td>
+                                                                <td>System Architect</td>
+                                                                <td>Edinburgh</td>
+                                                                <td>61</td>
+                                                                <td>
+                                                                        <div class="btn-group" role="group" aria-label="...">                                                                             
+                                                                            <button type="button" class="btn btn-default" ng-click="editRecord(row.id)"> <i class="fa fa-pencil" aria-hidden="true"></i>  </button>
+                                                                            <button type="button" class="btn btn-danger" ng-click="deletRecord(row.id)"> <i class="fa fa-trash" aria-hidden="true"></i></button>
+                                                                        </div>
+                                                              
+                                                                </td>
+                                                               
+                                                            </tr>
+                                                          
+                                                        </tbody>
+                                                   
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>	
+                            </div>
+                        </div>
+                        <!-- /Row -->
+
+
+    </div>    
+</div>
+<!-- /Main Content -->
+
+
+<!-- sample modal content -->
+<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h5 class="modal-title" id="myModalLabel">Crear jerarquia</h5>
+                </div>
+                <div class="modal-body">
+                        <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-wrap">
+                                        <form name="formJerarquia" id="formJerarquia" role="form">
+                                            <div class="form-group">
+                                                <label for="inputNombre" class="control-label mb-10">Nombre</label>
+                                                <input type="text" class="form-control" name="inputNombre" id="inputNombre" placeholder=""  ng-model="JrqCtrl.jerarquiaJson.nombre" required>
+                                            </div>
+                                            
+                                             
+                                            <div class="form-group">
+                                                <label for="inputTipo" class="control-label mb-10">Tipo</label>
+                                                 <select  name="inputTipo"  id="inputTipo" class="form-control" ng-model="JrqCtrl.jerarquiaJson.tipo" required >
+                                                    <option value="" selected disabled>Seleccionar</option>   
+                                                    <option value="1">Facultad</option>   
+                                                    <option value="2">Departamento</option> 
+                                                    <option value="3">Programa</option> 
+                                                    
+                                                </select>      
+                                            
+                                            </div>		
+                                            
+                                                    
+                                             
+                                            <div class="form-group">
+                                                    <label for="inputJerSup" class="control-label mb-10">Jeraruqia Superior</label>
+                                                    <select  name="inputJerSup" id="inputJerSup" class="form-control" ng-model="JrqCtrl.jerarquiaJson.jer_sup">
+                                                            <option value="" selected >Seleccionar</option>   
+                                                            <option value="1">VICERRECTORIA</option> 
+                                                            <option value="2">Facultad de ingenieria</option> 
+                                                            <!-- <option ng-repeat="option in paises"  value="{{ option }}">{{ option }}</option>    -->
+                                                     </select>                                                       
+                                                
+                                            </div>	
+                                                                                  
+                                            <div class="form-group mb-0">
+                                                <button type="button" ng-click="JrqCtrl.Add(JrqCtrl.jerarquiaJson)" class="btn btn-success btn-anim"><i class="icon-rocket"></i><span class="btn-text">Guardar</span></button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-info" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->

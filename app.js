@@ -81,9 +81,9 @@ IdentiApp.config(['$routeProvider', '$locationProvider', '$httpProvider', 'IdleP
         .when('/detalleSyllabus', { controller: 'HistoriaSyllabusController', controllerAs: 'HstSCtrl', templateUrl: 'partials/historiaSyllabus.html' })
         .when('/CreacionSyllabus', { controller: 'WizardCreacionSyllabus', controllerAs: 'WizCtrl', templateUrl: 'partials/wizardCreacionSyllabus.html',data: {
                                      authorized: [ROLES.PROFESOR]}
-             })
-            
+             })            
         .when('/MostrarSyllabus', { controller: 'mostrarSyllabusController', controllerAs: 'MsylCtrl', templateUrl: 'partials/MostrarSyllabus.html' })
+        .when('/Jerarquias', { controller: 'JerarquiasController', controllerAs: 'JrqCtrl', templateUrl: 'partials/Jerarquias.html' })
 
 	    
         .otherwise({ redirectTo: '/login' });
