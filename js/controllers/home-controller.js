@@ -23,8 +23,6 @@ function (Enviar, Cargar, $location, $route, $scope, $rootScope, $modal, $filter
         var success = function (json) {
             // Ctrl.ListSyllabus = json.data.Syllabus;
             $rootScope.PermisosOpt = json.data.permisos
-            console.log(json)        
-           
             $rootScope.menuHtml= Ctrl.ArmarMenuHtml($rootScope.PermisosOpt);
         };
         var error = function (resp) {

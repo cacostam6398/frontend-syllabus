@@ -7122,7 +7122,8 @@ ul.inbox-nav li a:hover, ul.inbox-nav li.active a, ul.inbox-nav li a:focus {
     .navbar.navbar-inverse.navbar-fixed-top .mobile-only-brand {
       background: #fff;
       position: relative;
-      z-index: 2; }
+      /* z-index: 2;  */
+    }
     .navbar.navbar-inverse.navbar-fixed-top .mobile-only-nav {
       float: left;
       width: 100%;
@@ -7583,4 +7584,8 @@ span.round-tab:hover {
 
 label.error{
   color: #c7254e;
+}
+
+.container-fluid {
+    padding-top: 1%;
 }
