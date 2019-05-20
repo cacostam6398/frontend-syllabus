@@ -6,6 +6,7 @@ function (Enviar, Cargar, $location, $route, $scope, $rootScope, $modal, $filter
     this.Lista = []
     this.jerarquiaJson= {};
     this.jerarquiaEditJson= {};
+    
     this.myFilter = function (item) { 
         return item.eliminado === null;
     };
