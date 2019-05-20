@@ -66,7 +66,7 @@ IdentiApp.controller("LoginController", ['$scope', '$location', '$rootScope', '$
 		$scope.loginGoogle = function(objUser){
 
 			
-			console.log(objUser)
+
 			var resp = $scope.validarCorreo(objUser.U3)
 
 			if(resp == true){
@@ -86,7 +86,7 @@ IdentiApp.controller("LoginController", ['$scope', '$location', '$rootScope', '$
 					   $rootScope.user.nameProfile = objUser.ig;
 					   $rootScope.user.Au = objUser.Eea;
 					   $rootScope.token = json.data.token;
-					   console.log($rootScope.user);	
+					//    console.log($rootScope.user);	
 					   $location.path('/home');
 					//    $scope.$apply();	
 				   }
@@ -224,7 +224,7 @@ IdentiApp.controller("LoginController", ['$scope', '$location', '$rootScope', '$
 
 function onSuccess(googleUser) {
 	
-	console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
+	// console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
 	profile = googleUser.getBasicProfile();
 	angular.element(document.getElementById('loginIdTotal')).scope().loginGoogle(profile)
   }

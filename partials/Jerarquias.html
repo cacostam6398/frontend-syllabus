@@ -38,7 +38,7 @@
                                                     <button style="float: right;    margin-right: 3%;" class="btn  btn-success" data-toggle="modal" data-target="#myModal">Insertar</button>
                                                 </div>
                                                 
-                                            
+                                       
                                                 <div class="table-wrap">
                                                 <div class="table-responsive">
                                                     <table id="datable_1" class="table table-hover display  pb-30" >
@@ -56,15 +56,15 @@
                                                         </thead>
                                                         
                                                         <tbody>
-                                                            <tr>
-                                                                <td>Tiger Nixon</td>
-                                                                <td>System Architect</td>
-                                                                <td>Edinburgh</td>
-                                                                <td>61</td>
+                                                            <tr ng-repeat="option in JrqCtrl.Lista | filter: JrqCtrl.myFilter">
+                                                                <td>{{ option.idJerarquia }}</td>
+                                                                <td>{{ option.nombre }}</td>
+                                                                <td>{{ option.tipo == 1 ? 'Facultad' : option.tipo == 2 ? 'Departamento' : 'Programa'  }}</td>
+                                                                <td>{{ option.jerarquiaSuperior }}</td>                                                              
                                                                 <td>
                                                                         <div class="btn-group" role="group" aria-label="...">                                                                             
-                                                                            <button type="button" class="btn btn-default" ng-click="editRecord(row.id)"> <i class="fa fa-pencil" aria-hidden="true"></i>  </button>
-                                                                            <button type="button" class="btn btn-danger" ng-click="deletRecord(row.id)"> <i class="fa fa-trash" aria-hidden="true"></i></button>
+                                                                            <button type="button" class="btn btn-default" ng-click="JrqCtrl.GetRecord(option)"> <i class="fa fa-pencil" aria-hidden="true"></i>  </button>
+                                                                            <button type="button" class="btn btn-danger" ng-click="JrqCtrl.Delete(option.idJerarquia)"> <i class="fa fa-trash" aria-hidden="true"></i></button>
                                                                         </div>
                                                               
                                                                 </td>
@@ -89,7 +89,71 @@
 <!-- /Main Content -->
 
 
-<!-- sample modal content -->
+<div id="myModalEdit" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalEditLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h5 class="modal-title" id="myModalEditLabel">Editar jerarquia</h5>
+            </div>
+        
+            <div class="modal-body">
+                    <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-wrap">
+                                    <form name="formJerarquiaEdit" id="formJerarquiaEdit" role="form">
+                                        <div class="form-group">
+                                            <label for="inputNombre" class="control-label mb-10">Nombre</label>
+                                            <input type="text" class="form-control" name="inputNombre" id="inputNombre" placeholder=""  ng-model="JrqCtrl.jerarquiaEditJson.nombre" required>
+                                        </div>
+                                        
+                                         
+                                        <div class="form-group">
+                                            <label for="inputTipo" class="control-label mb-10">Tipo</label>
+                                             <select  name="inputTipo"  id="inputTipo" class="form-control" ng-model="JrqCtrl.jerarquiaEditJson.tipo" required >
+                                                <option value="" selected disabled>Seleccionar</option>   
+                                                <option value="1">Facultad</option>   
+                                                <option value="2">Departamento</option> 
+                                                <option value="3">Programa</option> 
+                                                
+                                            </select>      
+                                        
+                                        </div>		
+                                        
+                                                
+                                         
+                                        <div class="form-group">
+                                                <label for="inputJerSup" class="control-label mb-10">Jeraruqia Superior</label>
+                                                <select  name="inputJerSup" id="inputJerSup" class="form-control" ng-model="JrqCtrl.jerarquiaEditJson.jerarquiaSuperior">
+                                                        <option value="" selected disabled>Seleccionar</option>   
+                                                        <option value="0">N\A</option> 
+                                                        <option value="1">VICERRECTORIA</option> 
+                                                        <option value="2">Facultad de ingenieria</option> 
+                                                        <!-- <option ng-repeat="option in paises"  value="{{ option }}">{{ option }}</option>    -->
+                                                 </select>                                                       
+                                            
+                                        </div>	
+                                                                              
+                                        <div class="form-group mb-0">
+                                            <button type="button" ng-click="JrqCtrl.Update(JrqCtrl.jerarquiaEditJson)" class="btn btn-success btn-anim"><i class="icon-rocket"></i><span class="btn-text">Guardar</span></button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+        </div>
+    </div>
+
+    <!-- /.modal-dialog -->
+
+
+
 <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -147,4 +211,5 @@
             </div>
             <!-- /.modal-content -->
         </div>
+    </div>
         <!-- /.modal-dialog -->
