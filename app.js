@@ -84,6 +84,7 @@ IdentiApp.config(['$routeProvider', '$locationProvider', '$httpProvider', 'IdleP
              })            
         .when('/MostrarSyllabus', { controller: 'mostrarSyllabusController', controllerAs: 'MsylCtrl', templateUrl: 'partials/MostrarSyllabus.html' })
         .when('/Jerarquias', { controller: 'JerarquiasController', controllerAs: 'JrqCtrl', templateUrl: 'partials/Jerarquias.html' })
+        .when('/Unidades', { controller: 'UnidadesController', controllerAs: 'UnidCtrl', templateUrl: 'partials/Unidades.html' })
 
 	    
         .otherwise({ redirectTo: '/login' });
