@@ -4,8 +4,9 @@ IdentiApp.controller("UnidadesController", ['Enviar', 'Cargar', '$location', '$r
 function (Enviar, Cargar, $location, $route, $scope, $rootScope, $modal, $filter) {
 
     this.Lista = []
-    this.jerarquiaJson= {};
-    this.jerarquiaEditJson= {};
+    this.InserJson= {};
+    this.EditJson= {};
+    this.jerarquiasCbo = [];
     
     this.myFilter = function (item) { 
         return item.eliminado === null;
@@ -29,26 +30,27 @@ function (Enviar, Cargar, $location, $route, $scope, $rootScope, $modal, $filter
         Enviar.elemento(Ctrl, url, success, error, jsonEnvio);
 
     }
+    
 
     this.GetRecord = function(record){
         var Ctrl = this;  
-        Ctrl.jerarquiaEditJson = record;
+        Ctrl.EditJson = record;
         jQuery('#myModalEdit').modal('show');
     }
 
 
     this.Add = function(){
         var Ctrl = this;  
-        Ctrl.jerarquiaJson.correo = $rootScope.user.correo;
-        Ctrl.jerarquiaJson.token = $rootScope.token;   
-        var url = $rootScope.baseUri + "/syllabus_ean/public/admin/c_jerarquia";
+        Ctrl.InserJson.correo = $rootScope.user.correo;
+        Ctrl.InserJson.token = $rootScope.token;   
+        var url = $rootScope.baseUri + "/syllabus_ean/public/admin/c_unidad";
      
         var success = function (json) {
             
-            swal("info", 'Se creo Jerarquia', "success");         
-            Ctrl.jerarquiaJson= {};
+            swal("info", 'Se creo Unidad', "success");         
+            Ctrl.InserJson= {};
             Ctrl.cargarLista(); 
-            $('#myModal').modal('toggle');
+            $('#MyModal').modal('toggle');
   
         };
         var error = function (resp) {    
@@ -56,8 +58,8 @@ function (Enviar, Cargar, $location, $route, $scope, $rootScope, $modal, $filter
             swal("info", 'Error en el servicio', "info")
         };  
 
-        if (jQuery('form[id="formJerarquia"]').valid()) {  
-            Enviar.elemento($scope, url, success, error,  Ctrl.jerarquiaJson);  
+        if (jQuery('form[id="formInsert"]').valid()) {  
+            Enviar.elemento($scope, url, success, error,  Ctrl.InserJson);  
         }else {
             swal("info", 'Complete correctamente los campos', "info")
         }
@@ -124,56 +126,109 @@ function (Enviar, Cargar, $location, $route, $scope, $rootScope, $modal, $filter
           });
            
     }
+
+
+    this.cargarJerarquias = function () {        
+        var jsonEnvio = {
+            'correo': $rootScope.user.correo,
+            'token': $rootScope.token           
+        }
+        var url = $rootScope.baseUri + "/syllabus_ean/public/admin/l_jerarquia";
+        var Ctrl = this;
+        var success = function (json) {            
+            Ctrl.jerarquiasCbo = json.data.jerarquias ;  
+         
+        };
+        var error = function (resp) {
+            console.log("Error: " + resp);
+            // swal("info", 'Error en el servicio Listar', "info")
+        };
+        Enviar.elemento(Ctrl, url, success, error, jsonEnvio);
+
+        
+       
+    }
+
   
-    this.cargarLista();   
-    setTimeout(function(){
-        jQuery('#datable_1').DataTable();
-    },100)
+    this.cargarLista();  
+    setTimeout(function(){      
+        jQuery('#datable_1').DataTable();        
+    },100);
     
 
     
-    jQuery('form[id="formJerarquia"]').validate({ // initialize the plugin
+    jQuery('form[id="formInsert"]').validate({ 
         rules: {
            
             inputNombre: {
                 required: true         
             },
-            inputTipo: {
+            inputCodSap: {
                 required: true
                 // minlength: 5
             },
-            inputJerSup: {
+            inputTipo: {
                 required: true
                 // minlength: 5
-            }   
+            }   ,
+            inputNivel: {
+                required: true
+                // minlength: 5
+            }   ,
+            inputCreditos: {
+                required: true
+                // minlength: 5
+            } ,
+            inputJerSup:{
+                required: true
+                // minlength: 5
+            } ,
+            inputJusti:{
+                required: true
+                // minlength: 5
+            } 
         },        
         submitHandler: function (form) {   
             return false; 
         }
     });
 
-    jQuery('form[id="formJerarquiaEdit"]').validate({ // initialize the plugin
+    jQuery('form[id="formEdit"]').validate({ 
         rules: {
            
             inputNombre: {
                 required: true         
             },
-            inputTipo: {
+            inputCodSap: {
                 required: true
                 // minlength: 5
             },
-            inputJerSup: {
+            inputTipo: {
                 required: true
                 // minlength: 5
-            }   
+            }   ,
+            inputNivel: {
+                required: true
+                // minlength: 5
+            }   ,
+            inputCreditos: {
+                required: true
+                // minlength: 5
+            } ,
+            inputJerSup:{
+                required: true
+                // minlength: 5
+            } ,
+            inputJusti:{
+                required: true
+                // minlength: 5
+            } 
         },        
         submitHandler: function (form) {   
             return false; 
         }
     });
-
 
    
-
 }
 ]); 

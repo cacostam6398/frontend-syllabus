@@ -35,7 +35,7 @@
                                     <div class="panel-wrapper collapse in">
                                         <div class="panel-body">
                                                 <div class="row">
-                                                    <button style="float: right;    margin-right: 3%;" class="btn  btn-success" data-toggle="modal" data-target="#myModal">Insertar</button>
+                                                    <button style="float: right;    margin-right: 3%;" class="btn  btn-success" data-toggle="modal" data-target="#MyModal" >Insertar</button>
                                                 </div>
                                                 
                              
@@ -68,15 +68,14 @@
                                                                 <td>{{ option.nivel }}</td>  
                                                                 <td>{{ option.tipo == 1 ? 'Facultad' : option.tipo == 2 ? 'Departamento' : 'Programa'  }}</td>         
                                                                 <td>{{ option.idJerarquia }}</td>           
-                                                                <td>{{ option.justificacion }}</td>                                                                
+                                                                <td >{{ option.justificacion }}</td>                                                                
                                                                 <td>
                                                                         <div class="btn-group" role="group" aria-label="...">                                                                             
                                                                             <button type="button" class="btn btn-default" ng-click="UnidCtrl.GetRecord(option)"> <i class="fa fa-pencil" aria-hidden="true"></i>  </button>
                                                                             <button type="button" class="btn btn-danger" ng-click="UnidCtrl.Delete(option.idUnidad)"> <i class="fa fa-trash" aria-hidden="true"></i></button>
                                                                         </div>
                                                               
-                                                                </td>
-                                                               
+                                                                </td>                                                              
                                                             </tr>
                                                           
                                                         </tbody>
@@ -109,43 +108,57 @@
                     <div class="row">
                             <div class="col-md-12">
                                 <div class="form-wrap">
-                                    <form name="formJerarquiaEdit" id="formJerarquiaEdit" role="form">
+                                <form name="formEdit" id="formEdit" >
                                         <div class="form-group">
                                             <label for="inputNombre" class="control-label mb-10">Nombre</label>
-                                            <input type="text" class="form-control" name="inputNombre" id="inputNombre" placeholder=""  ng-model="JrqCtrl.jerarquiaEditJson.nombre" required>
+                                            <input type="text" class="form-control" name="inputNombre" id="inputNombre" placeholder=""  ng-model="UnidCtrl.EditJson.nombre" required>
                                         </div>
-                                        
-                                         
                                         <div class="form-group">
-                                            <label for="inputTipo" class="control-label mb-10">Tipo</label>
-                                             <select  name="inputTipo"  id="inputTipo" class="form-control" ng-model="JrqCtrl.jerarquiaEditJson.tipo" required >
-                                                <option value="" selected disabled>Seleccionar</option>   
-                                                <option value="1">Facultad</option>   
-                                                <option value="2">Departamento</option> 
-                                                <option value="3">Programa</option> 
-                                                
-                                            </select>      
-                                        
-                                        </div>		
-                                        
-                                                
-                                         
+                                                <label for="inputCodSap" class="control-label mb-10">Codigo Sap</label>
+                                                <input type="text" class="form-control" name="inputCodSap" id="inputCodSap" placeholder=""  ng-model="UnidCtrl.EditJson.codigosSap" >
+                                        </div>  
+            
                                         <div class="form-group">
-                                                <label for="inputJerSup" class="control-label mb-10">Jeraruqia Superior</label>
-                                                <select  name="inputJerSup" id="inputJerSup" class="form-control" ng-model="JrqCtrl.jerarquiaEditJson.jerarquiaSuperior">
-                                                        <option value="" selected disabled>Seleccionar</option>   
-                                                        <option value="0">N\A</option> 
-                                                        <option value="1">VICERRECTORIA</option> 
-                                                        <option value="2">Facultad de ingenieria</option> 
-                                                        <!-- <option ng-repeat="option in paises"  value="{{ option }}">{{ option }}</option>    -->
-                                                 </select>                                                       
-                                            
+                                                <label for="inputTipo" class="control-label mb-10">Tipo</label>
+                                                    <select  name="inputTipo"  id="inputTipo" class="form-control" ng-model="UnidCtrl.EditJson.tipo" required >
+                                                    <option value="" selected disabled>Seleccionar</option>   
+                                                    <option value="1">Nuclear</option>   
+                                                    <option value="2">Transversal</option>                                                    
+                                                </select>
+                                            </div>	
+                                        <div class="form-group">
+                                                <label for="inputNivel" class="control-label mb-10">Nivel</label>
+                                                    <select  name="inputNivel"  id="inputNivel" class="form-control" ng-model="UnidCtrl.EditJson.nivel" required >
+                                                    <option value="" selected disabled>Seleccionar</option>   
+                                                    <option value="1">uno   </option>   
+                                                    <option value="2">Dos</option>                                                    
+                                                </select>
                                         </div>	
-                                                                              
+                                        <div class="form-group">
+                                                <label for="inputCreditos" class="control-label mb-10">Creditos</label>
+                                                <input type="text" class="form-control" name="inputCreditos" id="inputCreditos" placeholder=""  ng-model="UnidCtrl.EditJson.creditos" >
+                                        </div>                              
+                                        <div class="form-group">
+                                                <label for="inputJerSup" class="control-label mb-10">Jerarquia</label>
+                                                <select  name="inputJerSup" id="inputJerSup" class="form-control" ng-model="UnidCtrl.EditJson.idJerarquia">
+                                                        <option value="" selected disabled>Seleccionar</option>   
+                                                        <option ng-repeat="option in UnidCtrl.jerarquiasCbo" ng-selected="option.idJerarquia == UnidCtrl.EditJson.idJerarquia" ng-if="option.eliminado === null " value="{{ option.idJerarquia }}">{{ option.nombre }}</option>  
+                                                        
+                                                        <!-- <option ng-repeat="option in paises"  value="{{ option }}">{{ option }}</option>    -->
+                                                    </select> 
+                                        </div>                                 
+                                                    
+                                        <div class="form-group">
+                                            <label for="inputJusti" class="control-label mb-10">justificacion</label>
+                                            <textarea class="form-control" name="inputJusti" id="inputJusti" rows="3" ng-model="UnidCtrl.EditJson.justificacion" ></textarea>
+                                        </div> 
+                                                                        
                                         <div class="form-group mb-0">
-                                            <button type="button" ng-click="JrqCtrl.Update(JrqCtrl.jerarquiaEditJson)" class="btn btn-success btn-anim"><i class="icon-rocket"></i><span class="btn-text">Guardar</span></button>
-                                        </div>
-                                    </form>
+                                                <button type="button" ng-click="UnidCtrl.Update(UnidCtrl.EditJson)" class="btn btn-success btn-anim"><i class="icon-rocket"></i><span class="btn-text">Guardar</span></button>
+                                            </div>
+                                </form>
+                                
+                                    
                                 </div>
                             </div>
                         </div>
@@ -162,62 +175,76 @@
 
 
 
-<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+    <div class="modal fade" id="MyModal" tabindex="-1" role="dialog" aria-labelledby="modalLabelLarge" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
             <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h5 class="modal-title" id="myModalLabel">Crear jerarquia</h5>
-                </div>
-                <div class="modal-body">
-                        <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-wrap">
-                                        <form name="formJerarquia" id="formJerarquia" role="form">
-                                            <div class="form-group">
-                                                <label for="inputNombre" class="control-label mb-10">Nombre</label>
-                                                <input type="text" class="form-control" name="inputNombre" id="inputNombre" placeholder=""  ng-model="JrqCtrl.jerarquiaJson.nombre" required>
-                                            </div>
-                                            
-                                             
-                                            <div class="form-group">
-                                                <label for="inputTipo" class="control-label mb-10">Tipo</label>
-                                                 <select  name="inputTipo"  id="inputTipo" class="form-control" ng-model="JrqCtrl.jerarquiaJson.tipo" required >
-                                                    <option value="" selected disabled>Seleccionar</option>   
-                                                    <option value="1">Facultad</option>   
-                                                    <option value="2">Departamento</option> 
-                                                    <option value="3">Programa</option> 
-                                                    
-                                                </select>      
-                                            
-                                            </div>		
-                                            
-                                                    
-                                             
-                                            <div class="form-group">
-                                                    <label for="inputJerSup" class="control-label mb-10">Jeraruqia Superior</label>
-                                                    <select  name="inputJerSup" id="inputJerSup" class="form-control" ng-model="JrqCtrl.jerarquiaJson.jer_sup">
-                                                            <option value="" selected >Seleccionar</option>   
-                                                            <option value="1">VICERRECTORIA</option> 
-                                                            <option value="2">Facultad de ingenieria</option> 
-                                                            <!-- <option ng-repeat="option in paises"  value="{{ option }}">{{ option }}</option>    -->
-                                                     </select>                                                       
-                                                
-                                            </div>	
-                                                                                  
-                                            <div class="form-group mb-0">
-                                                <button type="button" ng-click="JrqCtrl.Add(JrqCtrl.jerarquiaJson)" class="btn btn-success btn-anim"><i class="icon-rocket"></i><span class="btn-text">Guardar</span></button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-info" data-dismiss="modal">Cerrar</button>
-                </div>
+            
+            <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title" id="modalLabelLarge">Crear Unidad</h4>
             </div>
-            <!-- /.modal-content -->
-        </div>
-    </div>
+            
+            <div class="modal-body">
+                    <form name="formInsert" id="formInsert" >
+
+                            <div class="form-group">
+                                <label for="inputNombre" class="control-label mb-10">Nombre</label>
+                                <input type="text" class="form-control" name="inputNombre" id="inputNombre" placeholder=""  ng-model="UnidCtrl.InserJson.nombre" required>
+                            </div>
+                            <div class="form-group">
+                                    <label for="inputCodSap" class="control-label mb-10">Codigo Sap</label>
+                                    <input type="text" class="form-control" name="inputCodSap" id="inputCodSap" placeholder=""  ng-model="UnidCtrl.InserJson.codigosSap" >
+                            </div>  
+
+                            <div class="form-group">
+                                    <label for="inputTipo" class="control-label mb-10">Tipo</label>
+                                     <select  name="inputTipo"  id="inputTipo" class="form-control" ng-model="UnidCtrl.InserJson.tipo" required >
+                                        <option value="" selected disabled>Seleccionar</option>   
+                                        <option value="1">Nuclear</option>   
+                                        <option value="2">Transversal</option>                                                    
+                                    </select>
+                                </div>	
+                            <div class="form-group">
+                                    <label for="inputNivel" class="control-label mb-10">Nivel</label>
+                                        <select  name="inputNivel"  id="inputNivel" class="form-control" ng-model="UnidCtrl.InserJson.nivel" required >
+                                        <option value="" selected disabled>Seleccionar</option>   
+                                        <option value="1">uno   </option>   
+                                        <option value="2">Dos</option>                                                    
+                                    </select>
+                            </div>	
+                            <div class="form-group">
+                                    <label for="inputCreditos" class="control-label mb-10">Creditos</label>
+                                    <input type="number" class="form-control" name="inputCreditos" id="inputCreditos" placeholder=""  ng-model="UnidCtrl.InserJson.creditos" >
+                            </div>                              
+                            <div class="form-group">
+                                    <label for="inputJerSup" class="control-label mb-10">Jerarquia</label>
+                                    <select  name="inputJerSup" id="inputJerSup" class="form-control" ng-model="UnidCtrl.InserJson.idJerarquia">
+                                            <option value="" selected disabled>Seleccionar</option>   
+                                            <option ng-repeat="option in UnidCtrl.jerarquiasCbo" ng-if="option.eliminado === null " value="{{ option.idJerarquia }}">{{ option.nombre }}</option>  
+                                          
+                                            <!-- <option ng-repeat="option in paises"  value="{{ option }}">{{ option }}</option>    -->
+                                        </select> 
+                            </div>                                 
+                                        
+                            <div class="form-group">
+                                <label for="inputJusti" class="control-label mb-10">justificacion</label>
+                                <textarea class="form-control" name="inputJusti" id="inputJusti" rows="3" ng-model="UnidCtrl.InserJson.justificacion" ></textarea>
+                            </div> 
+                                                           
+                            <div class="form-group mb-0">
+                                <button type="button" ng-click="UnidCtrl.Add(UnidCtrl.InserJson)" class="btn btn-success btn-anim"><i class="icon-rocket"></i><span class="btn-text">Guardar</span></button>
+                            </div>
+                    </form>
+            </div>
+            
+            </div>
+            </div>
+            </div>
+
+
+
+
+
         <!-- /.modal-dialog -->

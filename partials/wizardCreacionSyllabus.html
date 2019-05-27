@@ -164,27 +164,27 @@
                                                                                                 <div class="col-md-2">
                                                                                                     <div class="form-group">
                                                                                                         <label class="control-label mb-10">Año</label>
-                                                                                                        <input type="text" id="firstName" class="form-control" placeholder="" ng-disabled="true" ng-model="WizCtrl.currentYear">
+                                                                                                        <input type="number" id="firstName" class="form-control" placeholder="" ng-disabled="false" ng-model="WizCtrl.currentYear">
                                                                                                     </div>
                                                                                                 </div>
-                                                                                                <div class="col-md-3">
+                                                                                                <!-- <div class="col-md-3">
                                                                                                     <div class="form-group">
                                                                                                         <label class="control-label mb-10">Programas</label>
                                                                                                         <select  class="form-control" name="repeatSelect" id="repeatSelect" ng-model="dataSyllabus.cabecera.programa" ng-change="WizCtrl.ObtProgramasByPrograma(dataSyllabus.cabecera.programa)" ng-disabled="WizCtrl.programaCmb">
-                                                                                                            <option value="" disabled>---Seleccionar---</option> <!-- not selected / blank option -->
+                                                                                                            <option value="" disabled>---Seleccionar---</option> 
                                                                                                             <option ng-repeat="option in WizCtrl.ListMatProgramas" value="{{option.programa.id_programa}}">{{option.programa.nombre}}</option>
                                                                                                         </select>  
                                                                                                         <span class="help-block"> Seleccione Tipo de
                                                                                                             Progrma </span>
                                                                                                     </div>
-                                                                                                </div>
+                                                                                                </div> -->
 
                                                                                                 <div class="col-md-3">
                                                                                                     <div class="form-group">
-                                                                                                        <label class="control-label mb-10">Materias</label>
+                                                                                                        <label class="control-label mb-10">Unidades</label>
                                                                                                         <select  class="form-control" name="repeatSelect2" id="repeatSelect2" ng-model="dataSyllabus.cabecera.materia" ng-change="WizCtrl.llenarCamposCabecera(dataSyllabus.cabecera.materia)" ng-disabled="WizCtrl.materiaCmb">
                                                                                                                 <option value="" disabled>---Seleccionar---</option> <!-- not selected / blank option -->
-                                                                                                                <option ng-repeat="option2 in WizCtrl.ListMatSelect[0].materias" value="{{option2.id_materia}}">{{ option2.nombre }}</option>
+                                                                                                                <option ng-repeat="option2 in WizCtrl.ListMatSelect" value="{{option2.idUnidad}}">{{ option2.nombre }}</option>
                                                                                                             </select>  
                                                                                                                                                                                                                       
                                                                                                             <span class="help-block"> Seleccione Tipo de
@@ -198,13 +198,13 @@
                                                                                                 <div class="col-md-3">
                                                                                                     <div class="form-group">
                                                                                                         <label class="control-label mb-10">Codigo Materia</label>
-                                                                                                        <input type="text" class="form-control" placeholder="" ng-disabled="true" ng-model="dataSyllabus.cabecera.codigoMateria">
+                                                                                                        <input type="text" class="form-control" placeholder="" ng-disabled="true" ng-model="dataSyllabus.cabecera.idUnidad">
                                                                                                     </div>
                                                                                                 </div>
                                                                                                 <div class="col-md-3">
                                                                                                     <div class="form-group">
-                                                                                                        <label class="control-label mb-10">Facultad</label>
-                                                                                                        <input type="text" class="form-control" placeholder="" ng-disabled="true" ng-model="dataSyllabus.cabecera.facultad">
+                                                                                                        <label class="control-label mb-10">Codigo Sap</label>
+                                                                                                        <input type="text" class="form-control" placeholder="" ng-disabled="true" ng-model="dataSyllabus.cabecera.codigosSap">
                                                                                                     </div>
                                                                                                 </div>
                                                                                                 <div class="col-md-3">
@@ -227,7 +227,7 @@
                                                                                                 <div class="col-md-3">
                                                                                                     <div class="form-group">
                                                                                                         <label class="control-label mb-10">Descripcion materia</label>
-                                                                                                        <textarea class="form-control" rows="5" ng-disabled="true">{{dataSyllabus.cabecera.descripcionMateria}}</textarea>                                                                                                                                                                                                              
+                                                                                                        <textarea class="form-control" rows="5" ng-disabled="true">{{dataSyllabus.cabecera.justificacion}}</textarea>                                                                                                                                                                                                              
                                                                                                     </div>
                                                                                                 </div>    
                                                                                                 <div class="col-md-3">

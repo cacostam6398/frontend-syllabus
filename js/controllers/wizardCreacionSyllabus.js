@@ -251,14 +251,13 @@ IdentiApp.controller("WizardCreacionSyllabus", ['Enviar', 'Cargar', '$location',
         this.cargarCombos = function () {
 
             var jsonEnvio = {
-                'id_usuario': $rootScope.user.id_usuario,
-                'token': $rootScope.token
+                'correo': $rootScope.user.correo,
+                'token': $rootScope.token           
             }
-            var url = $rootScope.baseUri + "/syllabus_ean/public/programas/obtmat";
+            var url = $rootScope.baseUri + "/syllabus_ean/public/admin/l_unidad";
             var Ctrl = this;
             var success = function (json) {
-                Ctrl.ListMatProgramas = json.data.programas;
-                // console.log(Ctrl.ListMatProgramas)
+                Ctrl.ListMatSelect = json.data.jerarquias ;
             };
             var error = function (resp) {
                 console.log("Error: " + resp);
@@ -297,37 +296,20 @@ IdentiApp.controller("WizardCreacionSyllabus", ['Enviar', 'Cargar', '$location',
 
 
         this.llenarCamposCabecera = function (idMateria) {
-            var Ctrl = this;
-            let idPrograma = $rootScope.dataSyllabus.cabecera.programa;
-            let idMaterial = idMateria;
+            var Ctrl = this; 
+            var jsonMateria = Ctrl.ListMatSelect.filter(function (mat) {
+                if (mat.idUnidad == idMateria) {
+                    return true;
+                } else {
+                    return false;
+                }
+            });           
 
-            if (idPrograma != "" && idMaterial != "") {
-                var jsonPrograma = Ctrl.ListMatSelect[0].programa;
-                var jsonMateria = Ctrl.ListMatSelect[0].materias.filter(function (mat) {
-                    if (mat.id_materia == idMateria) {
-                        return true;
-                    } else {
-                        return false;
-                    }
-                });
-
-                $rootScope.dataSyllabus.cabecera.codigoMateria = jsonMateria[0].codigo
-                $rootScope.dataSyllabus.cabecera.facultad = jsonPrograma.facultad
-                $rootScope.dataSyllabus.cabecera.creditos = jsonMateria[0].creditos
-                $rootScope.dataSyllabus.cabecera.tipo = jsonMateria[0].tipo
-                $rootScope.dataSyllabus.cabecera.descripcionMateria = jsonMateria[0].descripcion
-
-            } else {
-
-                $rootScope.dataSyllabus.cabecera.codigoMateria = ''
-                $rootScope.dataSyllabus.cabecera.facultad = ''
-                $rootScope.dataSyllabus.cabecera.creditos = ''
-                $rootScope.dataSyllabus.cabecera.tipo = ''
-                $rootScope.dataSyllabus.cabecera.descripcionMateria = ''
-                $rootScope.dataSyllabus.cabecera.materia = ""
-            }
-
-
+            $rootScope.dataSyllabus.cabecera.idUnidad = jsonMateria[0].idUnidad
+            $rootScope.dataSyllabus.cabecera.codigosSap = jsonMateria[0].codigosSap
+            $rootScope.dataSyllabus.cabecera.creditos = jsonMateria[0].creditos
+            $rootScope.dataSyllabus.cabecera.tipo = jsonMateria[0].tipo
+            $rootScope.dataSyllabus.cabecera.justificacion = jsonMateria[0].justificacion
 
         }
 
