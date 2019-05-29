@@ -310,21 +310,21 @@ IdentiApp.controller("WizardCreacionSyllabus", ['Enviar', 'Cargar', '$location',
             $rootScope.dataSyllabus.cabecera.creditos = jsonMateria[0].creditos
             $rootScope.dataSyllabus.cabecera.tipo = jsonMateria[0].tipo
             $rootScope.dataSyllabus.cabecera.justificacion = jsonMateria[0].justificacion
-
+            $rootScope.dataSyllabus.cabecera.NombreTipo = $rootScope.dataSyllabus.cabecera.tipo == 1 ? 'Pregrado' : $rootScope.dataSyllabus.cabecera.tipo == 2 ? 'Posgrado' : $rootScope.dataSyllabus.cabecera.tipo == 3 ? 'Especializacion' : $rootScope.dataSyllabus.cabecera.tipo == 4 ? 'Maestria': '';
         }
 
         this.CrearCabeceraSyllabus = function () {
             var Ctrl = this;
             let data = $rootScope.dataSyllabus.cabecera
             if (typeof data != 'undefined') {
-                if (data.materia != "" && data.programa != "") {
+                if (data.idUnidad != "" ) {
 
                     var jsonEnvio = {
-                        'id_usuario': $rootScope.user.id_usuario,
-                        'token': $rootScope.token,
-                        "id_materia": data.materia,
-                        "correo": $rootScope.user.correo,
-                        "observacion": data.obsSyllabusCabecera
+                        'correo': $rootScope.user.correo,
+                        'token': $rootScope.token    ,
+                        "codigo": 1,
+                        "observacion": data.justificacion,
+                        "idUnidad": data.idUnidad
                     }
                     var url = $rootScope.baseUri + "/syllabus_ean/public/syllabus/crearsyl";
 

@@ -187,8 +187,7 @@
                                                                                                                 <option ng-repeat="option2 in WizCtrl.ListMatSelect" value="{{option2.idUnidad}}">{{ option2.nombre }}</option>
                                                                                                             </select>  
                                                                                                                                                                                                                       
-                                                                                                            <span class="help-block"> Seleccione Tipo de
-                                                                                                                materia </span>
+                                                                                                            <span class="help-block"> Seleccione Unidad </span>
                                                                                                         
                                                                                                     </div>
                                                                                                 </div>
@@ -217,7 +216,7 @@
                                                                                                 <div class="col-md-3">
                                                                                                     <div class="form-group">
                                                                                                         <label class="control-label mb-10">Tipo</label>
-                                                                                                        <input type="text" class="form-control" placeholder="" ng-disabled="true" ng-model="dataSyllabus.cabecera.tipo">                                                                                                         
+                                                                                                        <input type="text" class="form-control" placeholder="" ng-disabled="true" ng-model="dataSyllabus.cabecera.NombreTipo">                                                                                                         
                                                                                                     </div>
                                                                                                 </div>
 
@@ -226,7 +225,7 @@
                                                                                             <div class="row">                                                                                                
                                                                                                 <div class="col-md-3">
                                                                                                     <div class="form-group">
-                                                                                                        <label class="control-label mb-10">Descripcion materia</label>
+                                                                                                        <label class="control-label mb-10">Justificacion</label>
                                                                                                         <textarea class="form-control" rows="5" ng-disabled="true">{{dataSyllabus.cabecera.justificacion}}</textarea>                                                                                                                                                                                                              
                                                                                                     </div>
                                                                                                 </div>    
