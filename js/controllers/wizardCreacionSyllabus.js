@@ -163,21 +163,15 @@ IdentiApp.controller("WizardCreacionSyllabus", ['Enviar', 'Cargar', '$location',
         // variavles syllabus creacion
         $rootScope.dataSyllabus = {}
         $rootScope.dataSyllabus.detalle = {
-            bibliografia: "",
-            co_requisito: "",
-            competencia_global: "",
+            bibliografia: "",          
             duracion: "",
             evaluacion: "",
             hrs_autonomas: "",
             hrs_directas: "",
             lengua: "",
             metodologia: "",
-            modalidad: "",
-            pr_lengua: "",
-            pre_requisito: "",
-            proposito: "",
-            recursos: "",
-            resumen: ""
+            modalidad: "",          
+            proposito: ""  
         }
 
         this.detalleInputs = {
@@ -241,6 +235,8 @@ IdentiApp.controller("WizardCreacionSyllabus", ['Enviar', 'Cargar', '$location',
         this.obserbtext = false;
         this.programaCmb = false;
         this.materiaCmb = false;
+        this.anioCab = false;
+        this.codigo = false;
         this.addSession = false;
         // FINNN variavles syllabus creacion
 
@@ -322,11 +318,11 @@ IdentiApp.controller("WizardCreacionSyllabus", ['Enviar', 'Cargar', '$location',
                     var jsonEnvio = {
                         'correo': $rootScope.user.correo,
                         'token': $rootScope.token    ,
-                        "codigo": 1,
-                        "observacion": data.justificacion,
+                        "codigo": data.codigo,
+                        "observacion": data.obsSyllabusCabecera,
                         "idUnidad": data.idUnidad
                     }
-                    var url = $rootScope.baseUri + "/syllabus_ean/public/syllabus/crearsyl";
+                    var url = $rootScope.baseUri + "/syllabus_ean/public/syl/c_syl";
 
                     var success = function (json) {
                         swal("info", 'cabecera creada', "success");
@@ -335,7 +331,9 @@ IdentiApp.controller("WizardCreacionSyllabus", ['Enviar', 'Cargar', '$location',
                         Ctrl.obserbtext = true;
                         Ctrl.programaCmb = true;
                         Ctrl.materiaCmb = true;
-                        $rootScope.dataSyllabus.IdSyllabus = json.data.syllabus
+                        Ctrl.anioCab = true;
+                        Ctrl.codigo = true;
+                        $rootScope.dataSyllabus.cabecera.idSyllabusCab = json.data.Syllabus.idSyllabusCab
                     };
                     var error = function (resp) {
                         console.log("Error: " + resp);
@@ -351,6 +349,7 @@ IdentiApp.controller("WizardCreacionSyllabus", ['Enviar', 'Cargar', '$location',
                     Ctrl.obserbtext = false;
                     Ctrl.programaCmb = false;
                     Ctrl.materiaCmb = false;
+                    Ctrl.anioCab = false;
                     swal("info", 'Completar informacion', "info");
 
                 }
@@ -367,10 +366,11 @@ IdentiApp.controller("WizardCreacionSyllabus", ['Enviar', 'Cargar', '$location',
 
         this.CreardetalleSyllabus = function (objEnv) {
             var jsonEnvio = objEnv
-            var url = $rootScope.baseUri + "/syllabus_ean/public/syllabus/creardet";
+            var url = $rootScope.baseUri + "/syllabus_ean/public/syl/c_det_syl";
             var Ctrl = this;
             var success = function (json) {
-                $rootScope.dataSyllabus.detalle.id_detalle = json.data.syllabus
+                console.log(json)
+                $rootScope.dataSyllabus.detalle.idDetalle = json.data.Detalle.idDetalle 
                 swal("info", 'Detalle creado', "success");
                 Ctrl.contCreate2 = false;
                 Ctrl.BtnGuardar2 = true;
@@ -383,7 +383,7 @@ IdentiApp.controller("WizardCreacionSyllabus", ['Enviar', 'Cargar', '$location',
                 swal("info", 'Error en el servicio', "info")
             };
             Enviar.elemento(Ctrl, url, success, error, jsonEnvio);
-
+       
 
 
         }
@@ -394,10 +394,7 @@ IdentiApp.controller("WizardCreacionSyllabus", ['Enviar', 'Cargar', '$location',
             var Ctrl = this;
             let objEnv = $rootScope.dataSyllabus.detalle;
 
-            if (objEnv.bibliografia == "" ||
-                objEnv.bibliografia == "" ||
-                objEnv.co_requisito == "" ||
-                objEnv.competencia_global == "" ||
+            if (objEnv.bibliografia == "" ||               
                 objEnv.duracion == "" ||
                 objEnv.evaluacion == "" ||
                 objEnv.hrs_autonomas == "" ||
@@ -405,11 +402,10 @@ IdentiApp.controller("WizardCreacionSyllabus", ['Enviar', 'Cargar', '$location',
                 objEnv.lengua == "" ||
                 objEnv.metodologia == "" ||
                 objEnv.modalidad == "" ||
-                objEnv.pr_lengua == "" ||
-                objEnv.pre_requisito == "" ||
+                objEnv.prLengua == "" ||               
                 objEnv.proposito == "" ||
-                objEnv.recursos == "" ||
-                objEnv.resumen == ""
+                objEnv.enlacesWeb == "" ||
+                objEnv.resumenContenidos == ""
             ) {
 
                 swal("info", 'Completar informacion', "info");
@@ -418,10 +414,10 @@ IdentiApp.controller("WizardCreacionSyllabus", ['Enviar', 'Cargar', '$location',
 
             } else {
 
-                objEnv.id_syllabus = $rootScope.dataSyllabus.IdSyllabus
+                objEnv.idSyllabusCab = $rootScope.dataSyllabus.cabecera.idSyllabusCab
                 objEnv.correo = $rootScope.user.correo
-                objEnv.token = $rootScope.token
-                objEnv.observacion_version = 'Primera version Syllabus'
+                objEnv.token = $rootScope.token            
+            
 
                 Ctrl.CreardetalleSyllabus(objEnv);
 
@@ -434,9 +430,7 @@ IdentiApp.controller("WizardCreacionSyllabus", ['Enviar', 'Cargar', '$location',
             if (code == 1) {
 
                 Ctrl.detalleInputs = {
-                    bibliografia: true,
-                    co_requisito: true,
-                    competencia_global: true,
+                    bibliografia: true,                
                     duracion: true,
                     evaluacion: true,
                     hrs_autonomas: true,
@@ -444,19 +438,17 @@ IdentiApp.controller("WizardCreacionSyllabus", ['Enviar', 'Cargar', '$location',
                     lengua: true,
                     metodologia: true,
                     modalidad: true,
-                    pr_lengua: true,
-                    pre_requisito: true,
+                    prLengua: true,                  
                     proposito: true,
                     recursos: true,
-                    resumen: true
+                    resumenContenidos: true,
+                    enlacesWeb: true
                 }
 
             } else {
 
                 Ctrl.detalleInputs = {
-                    bibliografia: false,
-                    co_requisito: false,
-                    competencia_global: false,
+                    bibliografia: false,                
                     duracion: false,
                     evaluacion: false,
                     hrs_autonomas: false,
@@ -464,11 +456,11 @@ IdentiApp.controller("WizardCreacionSyllabus", ['Enviar', 'Cargar', '$location',
                     lengua: false,
                     metodologia: false,
                     modalidad: false,
-                    pr_lengua: false,
-                    pre_requisito: false,
+                    prLengua: false,
                     proposito: false,
                     recursos: false,
-                    resumen: false
+                    resumenContenidos: false,
+                    enlacesWeb:false
                 }
 
             }

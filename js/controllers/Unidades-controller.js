@@ -21,7 +21,8 @@ function (Enviar, Cargar, $location, $route, $scope, $rootScope, $modal, $filter
         var url = $rootScope.baseUri + "/syllabus_ean/public/admin/l_unidad";
         var Ctrl = this;
         var success = function (json) {  
-            Ctrl.Lista= json.data.jerarquias ;  
+            Ctrl.Lista= json.data.jerarquias ; 
+            $scope.UnidCtrl.cargarJerarquias();  
         };
         var error = function (resp) {
             console.log("Error: " + resp);
@@ -152,7 +153,7 @@ function (Enviar, Cargar, $location, $route, $scope, $rootScope, $modal, $filter
   
     this.cargarLista();  
     setTimeout(function(){      
-        jQuery('#datable_1').DataTable();        
+        jQuery('#datable_1').DataTable();            
     },100);
     
 
