@@ -180,7 +180,7 @@ IdentiApp.controller("WizardCreacionSyllabus", ['Enviar', 'Cargar', '$location',
             competencia_global: false,
             duracion: false,
             evaluacion: false,
-            hrs_autonomas: false,
+            hrs_autonomas: true,
             hrs_directas: false,
             lengua: false,
             metodologia: false,
@@ -334,13 +334,27 @@ IdentiApp.controller("WizardCreacionSyllabus", ['Enviar', 'Cargar', '$location',
                         Ctrl.anioCab = true;
                         Ctrl.codigo = true;
                         $rootScope.dataSyllabus.cabecera.idSyllabusCab = json.data.Syllabus.idSyllabusCab
+
+                        ///Modifico las horas del detalle respecto a los creditos de la unidad 
+
+                        var creditos = $rootScope.dataSyllabus.cabecera.creditos;
+                        var tipo =  $rootScope.dataSyllabus.cabecera.NombreTipo;
+                        if(tipo == 1){
+                            $rootScope.dataSyllabus.detalle.hrs_autonomas = creditos * 16
+
+                        }else{
+                            $rootScope.dataSyllabus.detalle.hrs_autonomas = creditos * 12
+                        }
+                        
+
+
                     };
                     var error = function (resp) {
                         console.log("Error: " + resp);
                         Ctrl.contCreate1 = true;
                         Ctrl.BtnGuardar1 = false;
                         Ctrl.obserbtext = false;
-                        swal("info", 'Error en el servicio', "info")
+                        swal("info", 'Error: ' +resp.data.messages, "info")
                     };
                     Enviar.elemento(Ctrl, url, success, error, jsonEnvio);
                 } else {

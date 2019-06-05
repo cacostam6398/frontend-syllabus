@@ -146,7 +146,7 @@
                             <div  class="tab-struct custom-tab-1">
                                 <ul role="tablist" class="nav nav-tabs nav-tabs-responsive" id="myTabs_8">
                                   
-                                    <li class="active" role="presentation"><a data-toggle="tab" id="follo_tab_8" role="tab" href="#follo_8" aria-expanded="false"  target="_self"><span>Syllabus<span class="inline-block">(6)</span></span></a></li>
+                                    <li class="active" role="presentation"><a data-toggle="tab" id="follo_tab_8" role="tab" href="#follo_8" aria-expanded="false"  target="_self"><span>Syllabus<span class="inline-block">({{HmeCtrl.ListSyllabus.length}})</span></span></a></li>
                                     <li role="presentation" class="next"><a  data-toggle="tab" id="photos_tab_8" role="tab" href="#photos_8" aria-expanded="false" target="_self"><span>Pendiente aprobacion</span></a></li>
                                     <li role="presentation" class=""><a  data-toggle="tab" id="earning_tab_8" role="tab" href="#earnings_8" aria-expanded="false" target="_self"><span>Borradores</span></a></li>
                                     <li role="presentation" class=""><a  data-toggle="tab" id="settings_tab_8" role="tab" href="#settings_8" aria-expanded="false" target="_self"><span>Configuracion</span></a></li>
@@ -165,43 +165,39 @@
                                     <div  id="follo_8" class="tab-pane fade active in" role="tabpanel" >
                                             <div class="panel-wrapper collapse in">
                                                 
-                                                    <div class="panel-body">
-                                                        <div class="panel-group accordion-struct accordion-style-1" id="accordion_2" role="tablist" aria-multiselectable="true">
-                                                            <div class="panel panel-default">
-                                                                <div class="panel-heading activestate" role="tab" id="heading_10">
-                                                                    <a role="button" data-toggle="collapse" data-parent="#accordion_2" target="_self"  href="#collapse_10" aria-expanded="true" ><div class="icon-ac-wrap pr-20"><span class="plus-ac"><i class="ti-plus"></i></span><span class="minus-ac"><i class="ti-minus"></i></span></div>PREG. EN INGENIERIA DE SISTEMAS</a> 
-                                                                </div>
-                                                                <div id="collapse_10" class="panel-collapse collapse in" role="tabpanel">
-                                                                        <div class="row" style="padding-left: 5%;">
-                                                                                <div class="col-lg-12">
-                                                                                    <div class="followers-wrap">
-                                                                                        <ul class="followers-list-wrap">
-                                                                                            <li class="follow-list">
-                                                                                                <div class="follo-body">
-                                                                                                    <div class="follo-data" ng-repeat="option in HmeCtrl.ListSyllabus">
-                                                                                                        <!-- <img class="user-img img-circle"  src="img/user.png" alt="user"/> -->
-                                                                                                        <i class="user-img img-circle fas fa-file-alt fa-2x"></i>
-                                                                                                        <div class="user-data">
-                                                                                                            <span class="name block capitalize-font">{{ option.materia.nombre }} -{{ option.materia.tipo }} <br>{{  option.observacion }}</span>
-                                                                                                            <span class="time block truncate txt-grey">{{option.fec_creacion}}</span>
-                                                                                                        </div>
-                                                                                                        <a class="btn btn-primary pull-right btn-xs"  ng-click='HmeCtrl.enviarInspeccionar(option.id_syllabus)' > <i class="fas fa-eye"></i>&nbsp; Inspeccionar</a>
-                                                                                                        <a class="btn btn-primary pull-right btn-xs" style="margin-right: 2%;"  ng-click='HmeCtrl.enviarInspeccionar(option.id_syllabus)' > <i class="fas fa-file-pdf"></i> Generar PDF</a>
-                                                                                                        <div class="clearfix"></div>
-                                                                                                    </div>
-                                                                                                   
-                                                                                                   
-                                                                                                                                                                                             
-                                                                                                </div>
-                                                                                            </li>
-                                                                                        </ul>
+                                             <div class="panel-body">
+                                                         
+                                                                                                                     
+                                                    <div class="row" style="padding-left: 5%;">
+                                                            <div class="col-lg-12">
+                                                                <div class="followers-wrap">
+                                                                    <ul class="followers-list-wrap">
+                                                                        <li class="follow-list">
+                                                                            <div class="follo-body">
+                                                                                <div class="follo-data" ng-repeat="option in HmeCtrl.ListSyllabus">
+                                                                                    <!-- <img class="user-img img-circle"  src="img/user.png" alt="user"/> -->
+                                                                                    <i class="user-img img-circle fas fa-file-alt fa-2x"></i>
+                                                                                    <div class="user-data">
+                                                                                        <span class="name block capitalize-font">Syllabus {{ Index +1 }} - {{  option.tipo == 1 ? 'vicerrectoria' : option.tipo == 2 ? 'facultad' :  option.tipo == 3 ? 'Programa' :  option.tipo == 4 ? 'programa': 'NA'  }} <br>{{  option.observacion }}</span>
+                                                                                        <span class="time block truncate txt-grey">{{option.fecCreacion}}</span>
                                                                                     </div>
+                                                                                    <a class="btn btn-primary pull-right btn-xs"  ng-click='HmeCtrl.enviarInspeccionar(option.id_syllabus)' > <i class="fas fa-eye"></i>&nbsp; Inspeccionar</a>
+                                                                                    <a class="btn btn-primary pull-right btn-xs" style="margin-right: 2%;"  ng-click='HmeCtrl.enviarInspeccionar(option.id_syllabus)' > <i class="fas fa-file-pdf"></i> Generar PDF</a>
+                                                                                    <div class="clearfix"></div>
                                                                                 </div>
+                                                                                
+                                                                                
+                                                                                                                                                                            
                                                                             </div>
+                                                                        </li>
+                                                                    </ul>
                                                                 </div>
                                                             </div>
+                                                        </div>
+                                                                
+                                                            
 
-
+                                                        <!-- <div class="panel-group accordion-struct accordion-style-1" id="accordion_2" role="tablist" aria-multiselectable="true">
                                                             <div class="panel panel-default">
                                                                 <div class="panel-heading" role="tab" id="heading_11">
                                                                     <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion_2" target="_self"  href="#collapse_11" aria-expanded="false"  ><div class="icon-ac-wrap pr-20"><span class="plus-ac"><i class="ti-plus"></i></span><span class="minus-ac"><i class="ti-minus"></i></span></div>ESP. EN GERENCIA DE TECNOLOGIA </a>
@@ -266,7 +262,7 @@
                                                                     <div class="panel-body pa-15"> Lorem Ipsum es simplemente el texto de relleno</div>
                                                                 </div>
                                                             </div>
-                                                        </div>
+                                                        </div> -->
                                                     </div>
                                                 </div>
 

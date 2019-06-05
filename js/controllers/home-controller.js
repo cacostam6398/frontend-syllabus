@@ -24,6 +24,8 @@ function (Enviar, Cargar, $location, $route, $scope, $rootScope, $modal, $filter
             // Ctrl.ListSyllabus = json.data.Syllabus;
             $rootScope.PermisosOpt = json.data.permisos
             $rootScope.menuHtml= Ctrl.ArmarMenuHtml($rootScope.PermisosOpt);
+
+            Ctrl.cargarListaSyllabus();
         };
         var error = function (resp) {
             console.log("Error: " + resp);          
@@ -64,10 +66,10 @@ function (Enviar, Cargar, $location, $route, $scope, $rootScope, $modal, $filter
     this.cargarListaSyllabus = function () {
 
         var jsonEnvio = {
-            'id_usuario': $rootScope.user.id_usuario,
-            'token': $rootScope.token
+            'correo': $rootScope.user.correo,
+            'token': $rootScope.token           
         }
-        var url = $rootScope.baseUri + "/restapi-syllabusean/public/usuarios/listarsyl";
+        var url = $rootScope.baseUri + "/syllabus_ean/public/syl/l_syl";
         var Ctrl = this;
         var success = function (json) {
             Ctrl.ListSyllabus = json.data.Syllabus;
@@ -89,7 +91,9 @@ function (Enviar, Cargar, $location, $route, $scope, $rootScope, $modal, $filter
     
 
         this.cargarOpcionesPermisos();
-    //  this.cargarListaSyllabus();
+
+
+        
 
 }
 ]); 

@@ -59,7 +59,7 @@
                                                             <tr ng-repeat="option in JrqCtrl.Lista | filter: JrqCtrl.myFilter">
                                                                 <td>{{ option.idJerarquia }}</td>
                                                                 <td>{{ option.nombre }}</td>
-                                                                <td>{{ option.tipo == 1 ? 'Facultad' : option.tipo == 2 ? 'Departamento' : 'Programa'  }}</td>
+                                                                <td>{{ option.tipo == 1 ? 'vicerrectoria' : option.tipo == 2 ? 'facultad' :  option.tipo == 3 ? 'Programa' :  option.tipo == 4 ? 'programa': 'NA'  }}</td>
                                                                 <td>{{ option.jerarquiaSuperior }}</td>                                                              
                                                                 <td>
                                                                         <div class="btn-group" role="group" aria-label="...">                                                                             
